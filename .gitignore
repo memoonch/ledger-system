@@ -1,0 +1,10 @@
+node_modules/
+dist/
+src-tauri/target/
+*.local
+*.db
+*.db-shm
+*.db-wal
+*.tsbuildinfo
+.qa/
+
