@@ -1,0 +1,17 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main-capability",
+  "description": "Local ledger database and user-selected export and backup files",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "sql:default",
+    "sql:allow-execute",
+    "dialog:allow-save",
+    "dialog:allow-open",
+    "fs:allow-write-file",
+    "fs:allow-read-text-file"
+  ]
+}

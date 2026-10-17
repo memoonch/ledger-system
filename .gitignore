@@ -8,3 +8,4 @@ src-tauri/target/
 *.tsbuildinfo
 .qa/
 
+src-tauri/gen/
