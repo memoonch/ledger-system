@@ -17,6 +17,26 @@ pub fn run() {
         description: "customer_import",
         sql: include_str!("../migrations/003_customer_import.sql"),
         kind: MigrationKind::Up,
+    }, Migration {
+        version: 4,
+        description: "customer_archive_and_delete",
+        sql: include_str!("../migrations/004_customer_archive.sql"),
+        kind: MigrationKind::Up,
+    }, Migration {
+        version: 5,
+        description: "supplier_ledgers",
+        sql: include_str!("../migrations/005_suppliers.sql"),
+        kind: MigrationKind::Up,
+    }, Migration {
+        version: 6,
+        description: "daily_cash_book",
+        sql: include_str!("../migrations/006_cash_book.sql"),
+        kind: MigrationKind::Up,
+    }, Migration {
+        version: 7,
+        description: "customer_due_dates",
+        sql: include_str!("../migrations/007_customer_due_dates.sql"),
+        kind: MigrationKind::Up,
     }];
     tauri::Builder::default()
         .plugin(tauri_plugin_sql::Builder::default().add_migrations("sqlite:alfazal.db", migrations).build())

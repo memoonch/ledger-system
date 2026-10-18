@@ -1,10 +1,10 @@
 {
-  "notes": 56,
+  "notes": 112,
   "unresolved_links": 0,
-  "captured_at": "2026-10-18T23:19:27+05:00",
-  "snapshot_date": "2026-10-18",
-  "source_files": 42,
-  "named_tests": 39,
+  "captured_at": "2026-10-19T01:12:18+05:00",
+  "snapshot_date": "2026-10-19",
+  "source_files": 52,
+  "named_tests": 67,
   "root_bridge": "Project Documentation.md",
   "source_manifest": [
     {
@@ -12,352 +12,438 @@
       "sha256": "ec3cabb0e095e7ba77ebdde5e2da560968ef9f59a8a62c7ddc149d63c86f62ce",
       "bytes": 106,
       "lines": 11,
-      "note": "Source Snapshot 2026-10-18/dot - gitignore.md"
+      "note": "Source Snapshot 2026-10-19/dot - gitignore.md"
     },
     {
       "source": ".qa/generic-check.cjs",
       "sha256": "765268d0d97e690cb7062b5d04529433af1c5b76e1a9820bcbad188cb21e5eac",
       "bytes": 5765,
       "lines": 46,
-      "note": "Source Snapshot 2026-10-18/dot - qa - generic-check.cjs.md"
+      "note": "Source Snapshot 2026-10-19/dot - qa - generic-check.cjs.md"
     },
     {
       "source": ".qa/native-check.cjs",
       "sha256": "64c0ba553708a8ae580e2e882efdd0012674e616163bd7b2b5b8237160f36d7d",
       "bytes": 3807,
       "lines": 52,
-      "note": "Source Snapshot 2026-10-18/dot - qa - native-check.cjs.md"
+      "note": "Source Snapshot 2026-10-19/dot - qa - native-check.cjs.md"
     },
     {
       "source": ".qa/native-profile-check.cjs",
       "sha256": "94bdfef25c31f938cd384a979ea507cf5cb18e7a6898fe35f6775e4d05744e9f",
       "bytes": 2770,
       "lines": 14,
-      "note": "Source Snapshot 2026-10-18/dot - qa - native-profile-check.cjs.md"
+      "note": "Source Snapshot 2026-10-19/dot - qa - native-profile-check.cjs.md"
     },
     {
       "source": ".qa/ui-check.cjs",
       "sha256": "bb0b62fd471d64dbfdcf47c494e32c92f1d50a571f3e4bf7b32daf40d50c5006",
       "bytes": 5111,
       "lines": 72,
-      "note": "Source Snapshot 2026-10-18/dot - qa - ui-check.cjs.md"
+      "note": "Source Snapshot 2026-10-19/dot - qa - ui-check.cjs.md"
     },
     {
       "source": "README.md",
-      "sha256": "c6b0c9d9610b01f95fd1f0af3404cdba8bf3631202e4452d287504b6736a6ecf",
-      "bytes": 5615,
-      "lines": 55,
-      "note": "Source Snapshot 2026-10-18/README - markdown.md"
+      "sha256": "b215ffb9f9d75f5f535931c1f36d8db28e6da9e9e96e47a54c3e599a59f3d857",
+      "bytes": 7515,
+      "lines": 71,
+      "note": "Source Snapshot 2026-10-19/README - markdown.md"
     },
     {
       "source": "REQUIREMENTS.md",
-      "sha256": "ed5d5721d4167d9570cc0f1b6f8aa634995d74ac281a0ffee7d300de75bedc12",
-      "bytes": 2676,
-      "lines": 43,
-      "note": "Source Snapshot 2026-10-18/REQUIREMENTS - markdown.md"
+      "sha256": "41dc55da11ad4c6b5682c8c3c6e7ec9536f4696746cdda316b0d341ccf6db95a",
+      "bytes": 3948,
+      "lines": 58,
+      "note": "Source Snapshot 2026-10-19/REQUIREMENTS - markdown.md"
     },
     {
       "source": "assets/icon.svg",
       "sha256": "5d9b09e5045a3b713a3c812b8634d867dd6b030cfb30e36b112e43ee818a352b",
       "bytes": 383,
       "lines": 1,
-      "note": "Source Snapshot 2026-10-18/assets - icon.svg.md"
+      "note": "Source Snapshot 2026-10-19/assets - icon.svg.md"
     },
     {
       "source": "index.html",
       "sha256": "c6a37b7c0518ad0342495454963e07d729a2c2203350b9cfa358866d3bcee917",
       "bytes": 302,
       "lines": 1,
-      "note": "Source Snapshot 2026-10-18/index.html.md"
+      "note": "Source Snapshot 2026-10-19/index.html.md"
     },
     {
       "source": "package-lock.json",
-      "sha256": "efc210c70b4408259492648e65545ae613ccde8ef65abe7406117e0237ca6bed",
+      "sha256": "4abb22a7006b689c4d8eccebfdbd33a6063c31dff22e3fa945f39e260fec9603",
       "bytes": 209079,
       "lines": 5839,
-      "note": "Source Snapshot 2026-10-18/package-lock.json.md"
+      "note": "Source Snapshot 2026-10-19/package-lock.json.md"
     },
     {
       "source": "package.json",
-      "sha256": "e444b15e92df691739700c006ae0c18f66e542208635e4b8d84ea723a88f6cd7",
+      "sha256": "5570eae70a515fdd2d691852610a9527d14de05319a00e9bb304685366e1949f",
       "bytes": 1067,
       "lines": 42,
-      "note": "Source Snapshot 2026-10-18/package.json.md"
+      "note": "Source Snapshot 2026-10-19/package.json.md"
     },
     {
       "source": "scripts/export-obsidian.py",
       "sha256": "032828b47a3a8fe3ae7ac23f0dbfc4702626b96c020b4da6e7dbe8f204852e2c",
       "bytes": 13034,
       "lines": 218,
-      "note": "Source Snapshot 2026-10-18/scripts - export-obsidian.py.md"
+      "note": "Source Snapshot 2026-10-19/scripts - export-obsidian.py.md"
     },
     {
       "source": "src-tauri/Cargo.lock",
-      "sha256": "0e6535903e4b2af22db741673ec70928fe352694d135528c82b670a65916b943",
-      "bytes": 129922,
+      "sha256": "23ea3585a658517fb4087834bcc954de2aefda7a3c6ca4e8d22caea7108a7eb0",
+      "bytes": 135309,
       "lines": 5387,
-      "note": "Source Snapshot 2026-10-18/src-tauri - Cargo.lock.md"
+      "note": "Source Snapshot 2026-10-19/src-tauri - Cargo.lock.md"
     },
     {
       "source": "src-tauri/Cargo.toml",
-      "sha256": "dbda88afb9a18eafeb394647ee6dd9ce8dc2b312bdca0005c761448d5fe52059",
-      "bytes": 467,
+      "sha256": "85316ecfe5a76076d3d78a59fe543017bd81f77842778879bbefadcfb97ad51f",
+      "bytes": 486,
       "lines": 23,
-      "note": "Source Snapshot 2026-10-18/src-tauri - Cargo.toml.md"
+      "note": "Source Snapshot 2026-10-19/src-tauri - Cargo.toml.md"
     },
     {
       "source": "src-tauri/build.rs",
       "sha256": "ce55d94ef836cc138523951d99018387fd9eba7a8ae5875a622aada3f5b06ce1",
       "bytes": 36,
       "lines": 1,
-      "note": "Source Snapshot 2026-10-18/src-tauri - build.rs.md"
+      "note": "Source Snapshot 2026-10-19/src-tauri - build.rs.md"
     },
     {
       "source": "src-tauri/capabilities/default.json",
       "sha256": "d96c2e21b8f36f234eb095c47f70f8567e0a5bc39c586275268b0ac49d30d3c9",
       "bytes": 465,
       "lines": 19,
-      "note": "Source Snapshot 2026-10-18/src-tauri - capabilities - default.json.md"
+      "note": "Source Snapshot 2026-10-19/src-tauri - capabilities - default.json.md"
     },
     {
       "source": "src-tauri/migrations/001_initial.sql",
       "sha256": "5c837f8b44922a3792ae6a8c2721b53fa93e7215b517fb8753203b0b64f66da3",
       "bytes": 3713,
       "lines": 51,
-      "note": "Source Snapshot 2026-10-18/src-tauri - migrations - 001_initial.sql.md"
+      "note": "Source Snapshot 2026-10-19/src-tauri - migrations - 001_initial.sql.md"
     },
     {
       "source": "src-tauri/migrations/002_shop_profile.sql",
       "sha256": "49ffafdf1fb5dfc5fc20a3cebe798fc61e51839a9a11ac0eef6d3b5037d9dc78",
       "bytes": 1797,
       "lines": 20,
-      "note": "Source Snapshot 2026-10-18/src-tauri - migrations - 002_shop_profile.sql.md"
+      "note": "Source Snapshot 2026-10-19/src-tauri - migrations - 002_shop_profile.sql.md"
     },
     {
       "source": "src-tauri/migrations/003_customer_import.sql",
       "sha256": "2100b85d11543c06b9014ff8777c7def3f199c795fdfe79cb7a31880d7437a52",
       "bytes": 1210,
       "lines": 9,
-      "note": "Source Snapshot 2026-10-18/src-tauri - migrations - 003_customer_import.sql.md"
+      "note": "Source Snapshot 2026-10-19/src-tauri - migrations - 003_customer_import.sql.md"
+    },
+    {
+      "source": "src-tauri/migrations/004_customer_archive.sql",
+      "sha256": "1cda48800dd68745daaf2f3ce8db96ee6322ee43658e7a54d8c29416e44c133d",
+      "bytes": 1672,
+      "lines": 21,
+      "note": "Source Snapshot 2026-10-19/src-tauri - migrations - 004_customer_archive.sql.md"
+    },
+    {
+      "source": "src-tauri/migrations/005_suppliers.sql",
+      "sha256": "2968e0a3da00ce2c9ccff71caa6bf0cda8cd890755d8be45b6ba8273a7346bab",
+      "bytes": 7419,
+      "lines": 78,
+      "note": "Source Snapshot 2026-10-19/src-tauri - migrations - 005_suppliers.sql.md"
+    },
+    {
+      "source": "src-tauri/migrations/006_cash_book.sql",
+      "sha256": "d826e05cc6c3bf9d938a5ce45544d3bcee8e3542a26be0b6d64536cb1787b67c",
+      "bytes": 10386,
+      "lines": 66,
+      "note": "Source Snapshot 2026-10-19/src-tauri - migrations - 006_cash_book.sql.md"
     },
     {
       "source": "src-tauri/src/lib.rs",
-      "sha256": "17cb9d773a91a8d1d325e8b6f5e570e4e43a4a30d8dc1fb35df00d8ed2a0865a",
-      "bytes": 1015,
-      "lines": 27,
-      "note": "Source Snapshot 2026-10-18/src-tauri - src - lib.rs.md"
+      "sha256": "ffb6581fecc763829de13ddd07c4452cf3bb769ae0e094785fa4e34b782b6a36",
+      "bytes": 1572,
+      "lines": 42,
+      "note": "Source Snapshot 2026-10-19/src-tauri - src - lib.rs.md"
     },
     {
       "source": "src-tauri/src/main.rs",
       "sha256": "c7a31644d3747aff1f5b468c7e73b92162e67239e3f907ec562cf784e35a812e",
       "bytes": 108,
       "lines": 2,
-      "note": "Source Snapshot 2026-10-18/src-tauri - src - main.rs.md"
+      "note": "Source Snapshot 2026-10-19/src-tauri - src - main.rs.md"
     },
     {
       "source": "src-tauri/tauri.conf.json",
-      "sha256": "e443ee841365c26c3babd5853765eb34ed303a9e0542c1ec1ab69e68c7982623",
-      "bytes": 1185,
-      "lines": 51,
-      "note": "Source Snapshot 2026-10-18/src-tauri - tauri.conf.json.md"
+      "sha256": "eda7374da030eb0e64014045b8ab418f7a595170ca03cad3bc7112594d887847",
+      "bytes": 1342,
+      "lines": 58,
+      "note": "Source Snapshot 2026-10-19/src-tauri - tauri.conf.json.md"
     },
     {
       "source": "src/App.tsx",
-      "sha256": "a4a5c48a508536cb49df800c78608c17479fd1c189344665e93bc461993f6295",
-      "bytes": 20344,
-      "lines": 134,
-      "note": "Source Snapshot 2026-10-18/src - App.tsx.md"
+      "sha256": "1e4b981ea7c470a2fa1bc1260b5720562eb0138276e5d779b4544d2d93544c30",
+      "bytes": 24033,
+      "lines": 148,
+      "note": "Source Snapshot 2026-10-19/src - App.tsx.md"
+    },
+    {
+      "source": "src/CashBookPage.tsx",
+      "sha256": "5519961e9889e2edd2aaaadf87e88243279b126327112a44092a6dcedc03b116",
+      "bytes": 10518,
+      "lines": 37,
+      "note": "Source Snapshot 2026-10-19/src - CashBookPage.tsx.md"
+    },
+    {
+      "source": "src/DeleteCustomer.tsx",
+      "sha256": "c5b4467fb97cc5b8b9ac6efc97ea20174ed2d6f7d1f52cca4fc6ed0a02ec16c1",
+      "bytes": 1996,
+      "lines": 15,
+      "note": "Source Snapshot 2026-10-19/src - DeleteCustomer.tsx.md"
     },
     {
       "source": "src/ImportCustomer.tsx",
       "sha256": "0a372d7bb821151da09f67da275a9a74002d97eec00def15d2899ec51487559b",
       "bytes": 8311,
       "lines": 52,
-      "note": "Source Snapshot 2026-10-18/src - ImportCustomer.tsx.md"
+      "note": "Source Snapshot 2026-10-19/src - ImportCustomer.tsx.md"
     },
     {
       "source": "src/ProfilePage.tsx",
       "sha256": "6879f89e90f616cab67b026fe23a558381da419340919f2a9f673028dfe7f2fe",
       "bytes": 4272,
       "lines": 36,
-      "note": "Source Snapshot 2026-10-18/src - ProfilePage.tsx.md"
+      "note": "Source Snapshot 2026-10-19/src - ProfilePage.tsx.md"
+    },
+    {
+      "source": "src/SupplierPage.tsx",
+      "sha256": "4e0ae8d5528389ad6ef2a59717b1d99a56004a404dba7d0cfb3fe56374321800",
+      "bytes": 13513,
+      "lines": 48,
+      "note": "Source Snapshot 2026-10-19/src - SupplierPage.tsx.md"
+    },
+    {
+      "source": "src/cash.test.ts",
+      "sha256": "7f2ae562312df1922a99b26d14fdf0f1b3d81415c1c4c3b5a708b16565533ce1",
+      "bytes": 9118,
+      "lines": 34,
+      "note": "Source Snapshot 2026-10-19/src - cash.test.ts.md"
+    },
+    {
+      "source": "src/cash.ts",
+      "sha256": "1d8377a01238047921fea03f3add3c35e42fc491e9250c087cab91e490ecf3ab",
+      "bytes": 5485,
+      "lines": 43,
+      "note": "Source Snapshot 2026-10-19/src - cash.ts.md"
     },
     {
       "source": "src/database.test.ts",
-      "sha256": "522b0434e72edf77a74c4a41befbaae6f8473a7bb9c5297c5b53ee8fe526df4e",
-      "bytes": 5481,
-      "lines": 75,
-      "note": "Source Snapshot 2026-10-18/src - database.test.ts.md"
+      "sha256": "de7010b7d62c1e3c638ba64383244936d45886fa0ba1f7629b5c9e31ca61083a",
+      "bytes": 8028,
+      "lines": 109,
+      "note": "Source Snapshot 2026-10-19/src - database.test.ts.md"
     },
     {
       "source": "src/domain.test.ts",
-      "sha256": "883112f8661203e7a68aad1c43537c366c78523f7dd24c4b6f74ef5bc8e92a2c",
-      "bytes": 5309,
-      "lines": 76,
-      "note": "Source Snapshot 2026-10-18/src - domain.test.ts.md"
+      "sha256": "94573622920a272af76fdd40630c9e40c34058110959774779036d0226bdf798",
+      "bytes": 5671,
+      "lines": 82,
+      "note": "Source Snapshot 2026-10-19/src - domain.test.ts.md"
     },
     {
       "source": "src/domain.ts",
-      "sha256": "9e90bbc29200adf5a3562eb87024ffb7721e237647dc59e5caff8b9183c2cefc",
-      "bytes": 7358,
-      "lines": 112,
-      "note": "Source Snapshot 2026-10-18/src - domain.ts.md"
+      "sha256": "533ca96b1acab582d3387aedca2f4bfa48a77f82b421e29e2158892ef378558a",
+      "bytes": 13321,
+      "lines": 178,
+      "note": "Source Snapshot 2026-10-19/src - domain.ts.md"
     },
     {
       "source": "src/forms.tsx",
-      "sha256": "88f8f0123bacace261ccf79664ae2b02fcf54fab8e191fbf180502d27bc33c9d",
-      "bytes": 9757,
-      "lines": 88,
-      "note": "Source Snapshot 2026-10-18/src - forms.tsx.md"
+      "sha256": "5e38c5e3f5bb359df287ee7a12e3a6884004a87da74ef51caadf4b0aed069dda",
+      "bytes": 11184,
+      "lines": 90,
+      "note": "Source Snapshot 2026-10-19/src - forms.tsx.md"
     },
     {
       "source": "src/import-ledger.test.ts",
       "sha256": "d408baa34d183449fa226e8dbcf427694fae3df91dc828768c8be58cc68309b8",
       "bytes": 4947,
       "lines": 39,
-      "note": "Source Snapshot 2026-10-18/src - import-ledger.test.ts.md"
+      "note": "Source Snapshot 2026-10-19/src - import-ledger.test.ts.md"
     },
     {
       "source": "src/import-ledger.ts",
       "sha256": "3e19e1c450594d21c497c1c92120749a1c200e42c906fdee99f8dfd81ff075ff",
       "bytes": 9736,
       "lines": 127,
-      "note": "Source Snapshot 2026-10-18/src - import-ledger.ts.md"
+      "note": "Source Snapshot 2026-10-19/src - import-ledger.ts.md"
     },
     {
       "source": "src/main.tsx",
       "sha256": "86393317a594c30b4d8d0b1e3d6974f1195cf5a2d1c64972ed5911151e6812fb",
       "bytes": 225,
       "lines": 5,
-      "note": "Source Snapshot 2026-10-18/src - main.tsx.md"
+      "note": "Source Snapshot 2026-10-19/src - main.tsx.md"
     },
     {
       "source": "src/pdf.test.ts",
       "sha256": "e15222cdb1ba48c1b7704d6dfeb799c8e555c0ca4f6a250094382ed7b18c3ecc",
       "bytes": 1967,
       "lines": 32,
-      "note": "Source Snapshot 2026-10-18/src - pdf.test.ts.md"
+      "note": "Source Snapshot 2026-10-19/src - pdf.test.ts.md"
     },
     {
       "source": "src/pdf.ts",
-      "sha256": "4965956d2f335b6a924c60d573472622f3a8a1ff831d99017a1bb66eb36ca913",
-      "bytes": 4639,
+      "sha256": "8770065047fb590108e1eaf6318057accb90d916080004c3c621c4e33eebe17d",
+      "bytes": 5321,
       "lines": 59,
-      "note": "Source Snapshot 2026-10-18/src - pdf.ts.md"
+      "note": "Source Snapshot 2026-10-19/src - pdf.ts.md"
     },
     {
       "source": "src/profile.test.ts",
       "sha256": "7f610ac098ebc330bb3ea03605f5937c778e4a1889d46f71b7dc64041e633f08",
       "bytes": 1028,
       "lines": 17,
-      "note": "Source Snapshot 2026-10-18/src - profile.test.ts.md"
+      "note": "Source Snapshot 2026-10-19/src - profile.test.ts.md"
     },
     {
       "source": "src/profile.ts",
       "sha256": "c316f239e32d31bace552254c55fd6dc239a903966223386563819d330f944bb",
       "bytes": 1776,
       "lines": 33,
-      "note": "Source Snapshot 2026-10-18/src - profile.ts.md"
+      "note": "Source Snapshot 2026-10-19/src - profile.ts.md"
     },
     {
       "source": "src/sample.ts",
       "sha256": "3bea936ec62e7bfe9ee2b0f8d3bfd942bfd3068004c082952c57a9285cecf21c",
       "bytes": 1649,
       "lines": 25,
-      "note": "Source Snapshot 2026-10-18/src - sample.ts.md"
+      "note": "Source Snapshot 2026-10-19/src - sample.ts.md"
     },
     {
       "source": "src/storage.ts",
-      "sha256": "1c636c747fb18bbdcded18affaee6f7c0546b9b7a9093ca61a520b9850868e3b",
-      "bytes": 6795,
-      "lines": 104,
-      "note": "Source Snapshot 2026-10-18/src - storage.ts.md"
+      "sha256": "7f260b9690444aeba5db8598f908c67af8f598cd0527ec2594196a5f207c8168",
+      "bytes": 15151,
+      "lines": 184,
+      "note": "Source Snapshot 2026-10-19/src - storage.ts.md"
     },
     {
       "source": "src/styles.css",
-      "sha256": "1c400483ca55498fadb68939be1a3825f0bc97c9335a0d3983c31c278e5cf09f",
-      "bytes": 25066,
-      "lines": 98,
-      "note": "Source Snapshot 2026-10-18/src - styles.css.md"
+      "sha256": "18d6b700b63e7144817d2baac23b0f8e463e6b6ca585a6585fc39bec79507454",
+      "bytes": 27552,
+      "lines": 135,
+      "note": "Source Snapshot 2026-10-19/src - styles.css.md"
+    },
+    {
+      "source": "src/supplier-forms.tsx",
+      "sha256": "db6de3636ce1d7b4efb7ea7c9af78a8873bcf42d44770d0f4d7a105222ef0d0f",
+      "bytes": 11245,
+      "lines": 32,
+      "note": "Source Snapshot 2026-10-19/src - supplier-forms.tsx.md"
+    },
+    {
+      "source": "src/suppliers.test.ts",
+      "sha256": "48d27d932ea6a613d6d1c7120b531465545eec3ef2a4abab44d3939299686013",
+      "bytes": 8288,
+      "lines": 28,
+      "note": "Source Snapshot 2026-10-19/src - suppliers.test.ts.md"
     },
     {
       "source": "tsconfig.json",
       "sha256": "f55c101738bafa210b3c5f4c1e5bd9cae60b5b2d1c1f5b0d5334d4fb6b9d035e",
       "bytes": 453,
       "lines": 26,
-      "note": "Source Snapshot 2026-10-18/tsconfig.json.md"
+      "note": "Source Snapshot 2026-10-19/tsconfig.json.md"
     },
     {
       "source": "vite.config.ts",
       "sha256": "efbb958bcc3f1f7307346b29595a35fcac1f36a23c7ffad3f8ccdc888b54efd8",
       "bytes": 354,
       "lines": 9,
-      "note": "Source Snapshot 2026-10-18/vite.config.ts.md"
+      "note": "Source Snapshot 2026-10-19/vite.config.ts.md"
     },
     {
       "source": "vitest.config.ts",
       "sha256": "ee17157b192e07deaee880f58d07d0f7aa2144ae409afb0f9a6e0e462264de35",
       "bytes": 142,
       "lines": 2,
-      "note": "Source Snapshot 2026-10-18/vitest.config.ts.md"
+      "note": "Source Snapshot 2026-10-19/vitest.config.ts.md"
     }
   ],
   "output_files": [
     {
       "path": "Shop Ledger Documentation/00 Start Here.md",
-      "sha256": "ef2eb3e8cd15615cd5def2b1c65f408acab98e08f454b0693039422240374724"
+      "sha256": "321818569e3e5ef16ba444e0608ab4f47f1788dd2718c1b871b6d2f3f4b36319"
     },
     {
       "path": "Shop Ledger Documentation/01 Requirements and Decisions.md",
-      "sha256": "9e43657a91f3a70318afbae3b8a3d06954f044bb7d3ebba3623547150b4124e8"
+      "sha256": "e26c10593111a0a5255fb4e273b932bb25cf4069125598418776ed37d20a5a80"
     },
     {
       "path": "Shop Ledger Documentation/02 Architecture and Data Flow.md",
-      "sha256": "3b17c4f85f4667c0e98b83071440e8a2835144f1fcca452ff99ede8720f33848"
+      "sha256": "00a68dabbdae07ea1636f33fe60e0f4049cb534a7b89ececc3c8e5562207329f"
     },
     {
       "path": "Shop Ledger Documentation/03 Code Map and API.md",
-      "sha256": "56cace0b2f5b7991efd4137fb3635b895fd2bc32bf68bb6da3ab29a64ae43746"
+      "sha256": "b96fab8d483466009b8cff87528fac93a662b97d89161193ae04a37e827457bb"
     },
     {
       "path": "Shop Ledger Documentation/04 Database and Migrations.md",
-      "sha256": "a1ed1c6c5792fa74a36847ad04be31381309704c815726c227e2d26b8c2f83a6"
+      "sha256": "5d4c1eaa183f5fd37b12228506798cfd3c4f8848e0ae13edb7904c968ba75e44"
     },
     {
       "path": "Shop Ledger Documentation/05 Accounting and Validation.md",
-      "sha256": "b1b16abd459482dfed844282c3ca3ef23ae8f58d48d19bac20f0d38f38ec5bae"
+      "sha256": "32f63e6e5629d153a4552186558c3655dcb59608858a3e16535dfa9f562fd592"
     },
     {
       "path": "Shop Ledger Documentation/06 Interface Profile and Suggestions.md",
-      "sha256": "cad119166a51d474a8cf74dd85df87a3d52152adb888a8ad994178087edd399b"
+      "sha256": "61d9f2243061c599d2cb1566eb42074f6883b5a3d94ca721b3c63151ba30547c"
     },
     {
       "path": "Shop Ledger Documentation/07 Statements and Backups.md",
-      "sha256": "437c8d06414217efa81576d92f8f8c5faaa0062e5ecd8024d220162cb4024125"
+      "sha256": "e788f3f25dc2d35c6c8dbd81cd7e80e58b69cde24f387810b293713744d8ec82"
     },
     {
       "path": "Shop Ledger Documentation/08 Setup Build and Troubleshooting.md",
-      "sha256": "4bca46cf013c36b9b88849b4c16353e2fae5951368e46318cc162e587c296bb7"
+      "sha256": "d104afa6b2085fc5d8274abc5e7fc2a1bb98cf6e300f1f2872c1ff3af428abad"
     },
     {
       "path": "Shop Ledger Documentation/09 Tests and Verification.md",
-      "sha256": "39c7bbbb6482f415ed5c822ce1162d5cb3def22145f15368c2d38c992c516cb1"
+      "sha256": "a5ce93ca2f9d14407ef0a4b1970256b2c54ab12fe8e6760f52eb86ef9929c362"
     },
     {
       "path": "Shop Ledger Documentation/10 Editing Playbook and Roadmap.md",
-      "sha256": "d6e240b11a76c1fbc5b0a0e1673b962dd95832b76548184d23dd712f0698ca4b"
+      "sha256": "d6c04e44cdcce8b3feb5c1472e6b6d0886523485447f2ef292dd38f71f06318e"
     },
     {
       "path": "Shop Ledger Documentation/11 History and Handoff.md",
-      "sha256": "bc9402a3b3681227af0483da8018b04474fa623e9cab3148b79ee614c9825a7f"
+      "sha256": "e94e4f9b8149b0f71c8790de3a9ab56795977197bd082cd318ecbe791f83fad9"
     },
     {
       "path": "Shop Ledger Documentation/12 Dependencies and Source Manifest.md",
-      "sha256": "ad5ff3fd7b5a0d465fcb05c3262f74ff12d07685d2be2ebc0a9721f9a94ca203"
+      "sha256": "64cdf54e40a0fad9997ebe32b599d3eddceda4f85d9d6169bf66a9db217d02db"
     },
     {
       "path": "Shop Ledger Documentation/13 Excel and CSV Import.md",
-      "sha256": "de413bbbb78cca3c28a7dfcb50a13fa870ab784fa9197ca70272b713db632b9e"
+      "sha256": "92834578a1a68e84f0ca06a7b0fc3cbbd48660e06c049c9f3983005321ec5fea"
+    },
+    {
+      "path": "Shop Ledger Documentation/14 Windows Installer and Updates.md",
+      "sha256": "839c6422afdeda8f8df7d45e043f25eb0c5dbf230381f9f25ea4eaf458d3ebfa"
+    },
+    {
+      "path": "Shop Ledger Documentation/15 Customer Archive Restore and Delete.md",
+      "sha256": "9a98ccc284672b6cea5871f534a3118b0c8760ed2f12894a56c3ad459590ced6"
+    },
+    {
+      "path": "Shop Ledger Documentation/16 Purchase and Supplier Ledger.md",
+      "sha256": "f2619bdd79b3004b9489ca5c4de2ef4a7c826759c46d60b4d0765c79e6a8a601"
+    },
+    {
+      "path": "Shop Ledger Documentation/17 Daily Cash Book and Expenses.md",
+      "sha256": "3f082c6925a766917dab326068c5a9556eda1486d7961dba0b572794e86b2a47"
     },
     {
       "path": "Shop Ledger Documentation/Source Snapshot 2026-10-18/assets - icon.svg.md",
@@ -528,8 +614,216 @@
       "sha256": "f0e1b2f3aca34b1d3c46400b6a89dc7576b4a80a1616f8474206af1603cbfd65"
     },
     {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/assets - icon.svg.md",
+      "sha256": "2d11b784e889ae36a655df08ac1588b0a231fc8c53bf490957fd9c1c3586305e"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - gitignore.md",
+      "sha256": "c0a2c5db656ee22552e696aea8e59172bec135123ad180e2954ce76c4da1208e"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - generic-check.cjs.md",
+      "sha256": "a97440eb13aec45ab034d19973af74c3e6af734bca377f9c871b323e72df48ca"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - native-check.cjs.md",
+      "sha256": "e40815a792fb44d4eae51175225c66ce346ce384ba564ef4d9d383c0137109d0"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - native-profile-check.cjs.md",
+      "sha256": "e063464776a7a2dabff85675a1a612a91a15701628e411499c515a9b07b87588"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - ui-check.cjs.md",
+      "sha256": "fbb97b405129d7028f07f4b5339629ac2e222356671123db5c36a60076ce4b18"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/index.html.md",
+      "sha256": "518719762b9199d39f80969fcdd71996962a3b26c77d78865ad891281ca6a0a5"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/package-lock.json.md",
+      "sha256": "0dae5ef286967d40c3e334a439a114d476b6b5d072710f699d5281cf333932ab"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/package.json.md",
+      "sha256": "1b848a354f3b4896e0956b12ba387c07b58198bdd31aed9ca26600c2cc2b1a23"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/README - markdown.md",
+      "sha256": "c6d9cd13ce5a8897d78b531ef224d7233a7c09c9c1670c544f8766665c2401a0"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/REQUIREMENTS - markdown.md",
+      "sha256": "b5880cdd8db45ede592ad6ae4424ea3831ddf645b6ceb2d6405537bf3b7b016f"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/scripts - export-obsidian.py.md",
+      "sha256": "da7e995207cf039fe410147a80eba97831176081d4263a1f5706f88dc96fd56a"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - App.tsx.md",
+      "sha256": "5c76b39cb7964b7f47ddfb0f6232ed66ff6ecd51672283df44480233ad232ffd"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - cash.test.ts.md",
+      "sha256": "e04cb4dfc4a02f8eb741987bfa5de45f16f4f7f42f9b5f1363378f099e970cf5"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - cash.ts.md",
+      "sha256": "7f71b48d97ac10847ce9cbb266e1ce6cc02dd6d170bb7f776c770136b11f761b"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - CashBookPage.tsx.md",
+      "sha256": "9834e23ffdc224aeff804837ba9aa54f27851230cf4a2a003cf31be0b2585262"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - database.test.ts.md",
+      "sha256": "1ccf9ce32997cc5b7e2c24766f6bffe8a3333420f4b06466f630d0303ede98ec"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - DeleteCustomer.tsx.md",
+      "sha256": "a92924044d4cb96d72480cb56b3a395a4017f453b790109bda30d47041c5133b"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - domain.test.ts.md",
+      "sha256": "f6aa5c450d78fe69a8c0700a4797d0038aed29270b5209f071b4937bc8cc37fb"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - domain.ts.md",
+      "sha256": "4dbc629c7488d7f8a1cac8f7dbe6cda822518fe505cc362bacec288443a99d77"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - forms.tsx.md",
+      "sha256": "c5134bb477222507e9ba58d315b7bd7a703b3f42c5755598dfa790a2ea0161f9"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - import-ledger.test.ts.md",
+      "sha256": "411486cf3aaca07122278b30a05fbc667a6f7c25a157a9b3dac0d0a4821684a5"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - import-ledger.ts.md",
+      "sha256": "3029a2af655f289adecd11d45e1e2811e342c981d535aa764334552dc738f28c"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - ImportCustomer.tsx.md",
+      "sha256": "1b05e1fe0d8b2ad8daeefce6ee059fa37cb673ccf4e4429f1906391c65095eee"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - main.tsx.md",
+      "sha256": "1b2962950fc1adb0bfef0d31f25aa5e637d9431b71896d4576404717564d6c91"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - pdf.test.ts.md",
+      "sha256": "fde8743871addbafe771f8269889c8967203c395722da8dc719c11e9932b730d"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - pdf.ts.md",
+      "sha256": "0f7beae4d790f1ab0ed7ec0005683d1caf4876b81e5661461d55f70da16ac904"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - profile.test.ts.md",
+      "sha256": "90bdf697ac038aec92c3f24c60041100ce6f51907fadd8c0b24a31a49e4dac16"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - profile.ts.md",
+      "sha256": "14f995702ff8400af482130dcbc139237a121cf72a52b4e1d676608f280b30b5"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - ProfilePage.tsx.md",
+      "sha256": "230e46cea1271f53ac23bc5b3c27aef27b880258d89d2a5c145c41203d6f26e7"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - sample.ts.md",
+      "sha256": "e84b2dd8fd2eeea968fe34ceb8511c73e0d1cdc7e8ce6e9e62133d113bdbf386"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - storage.ts.md",
+      "sha256": "af26a4af4e98851ccb4f49108eeb9289220cc7035ad85cdcd9988f4e47322bd9"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - styles.css.md",
+      "sha256": "cbf8586b87fe96af9d3758f57c9bc37a0dbc72c3b5339896fbe4de1ce79917bb"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - supplier-forms.tsx.md",
+      "sha256": "cfb477b34d266feac8c4a3ea7e47e4bf1c0f009c30b39a7956450976c4ed0f4e"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - SupplierPage.tsx.md",
+      "sha256": "85d0ac5c24e26294580f930cb8a2a241e6e33fb70968d8be0001da74b32acc2d"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src - suppliers.test.ts.md",
+      "sha256": "70dd0ed43139b8f78a411899dd58c500fedaa0f77b22fa4b6cb775935aa8ebad"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - build.rs.md",
+      "sha256": "8eac8094c10ee63c6ec6b373e2ffa618efb81541186005bbb3738142ee4857a1"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - capabilities - default.json.md",
+      "sha256": "dda91b91e9e5c8eb4b3952ae56bfbe9085a3104b49fb3331525ab235e46ea4f5"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - Cargo.lock.md",
+      "sha256": "b7d60f34207b5f9e03b772a67940619379a6c19f65c68511fecdf4b83cc1dcf3"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - Cargo.toml.md",
+      "sha256": "1e9c66ae741bf71bb6762a7f256cbfd69892380fe05b54bbe13c825ac0fb1269"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 001_initial.sql.md",
+      "sha256": "0b89080f9b21ec36fa2463aea8a4b95a8478c0e37a8fdc26b4aea6c2d0e8d6a7"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 002_shop_profile.sql.md",
+      "sha256": "e54fce5f99b046a955998bacd677307c946025959d2cd9d1cfc3845552a9ba0d"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 003_customer_import.sql.md",
+      "sha256": "07bf727997575a2e09c3a8962b20002e8ed5187221cb37832cda4276533080f4"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 004_customer_archive.sql.md",
+      "sha256": "e0ba6f40cc6d762b5782fbcc53091bf801b9e9a131a8c3bce257936344c7dbab"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 005_suppliers.sql.md",
+      "sha256": "97aa188aea47c4297b17d74c8fd3cb81942074d6eae378fab93d921088ea7ea1"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 006_cash_book.sql.md",
+      "sha256": "bb32fc54f0c786d1466d6ea224fbd35f1e56a03bf0ed6dcc791915a9f2a58b3e"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - src - lib.rs.md",
+      "sha256": "541e6486b118a8805005ce6640ee6213e2a180dfbd80bb8ae0aed832e529bf89"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - src - main.rs.md",
+      "sha256": "92eb43da5b81e4063c79208c8667c5bf7a0751f456831d5d6f3c7095ec901fe0"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - tauri.conf.json.md",
+      "sha256": "622f150d501f79c04f0ddba872d38ebe21dbb70ffb3028ae4921a1d5c0a10396"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/tsconfig.json.md",
+      "sha256": "b1999e8deb9c452865e0c8151b5d5b907354219eb8bb9d5db7a481395918372d"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/vite.config.ts.md",
+      "sha256": "61d67658c21b6f382e53e2cb0d56acebfe1aab03139afdba5031d3108f5b171b"
+    },
+    {
+      "path": "Shop Ledger Documentation/Source Snapshot 2026-10-19/vitest.config.ts.md",
+      "sha256": "9370249e028eff2e6ec7259551e6dc2545e5ad3eb104843f3d68c8b3264b7fac"
+    },
+    {
       "path": "Project Documentation.md",
-      "sha256": "8063f225fd5507788acba6c7cdbae3a0dc56cf7deb6816e255e13298704e1f53"
+      "sha256": "dd06058a1c9c5b94200478938efbbcb75b400a59601867609f8a356838374f8f"
     }
   ]
 }

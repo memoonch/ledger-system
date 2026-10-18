@@ -1,0 +1,42 @@
+{
+  "product": "Shop Ledger",
+  "version": "0.1.1",
+  "architecture": "x64",
+  "checked_at": "2026-10-19T00:03:18.092260+05:00",
+  "windows_version": "10.0.19045",
+  "installer": {
+    "file": "Shop Ledger_0.1.1_x64-setup.exe",
+    "bytes": 220772748,
+    "sha256": "dbd222ad78669e76692f565b682ba7366466b614ab2cc321d2163ac1e496f4ea",
+    "signature": "NotSigned",
+    "offline_webview2_payload_embedded": true,
+    "customer_database_bundled": false
+  },
+  "installation": {
+    "previous_version": "0.1.0",
+    "upgraded_version": "0.1.1",
+    "initial_setup_exit_code": 0,
+    "upgrade_setup_exit_code": 0,
+    "installed_executable_version": "0.1.1",
+    "same_install_location": true,
+    "installed_launch_before_and_after": true,
+    "existing_customer_count": 2,
+    "existing_transaction_count": 15,
+    "all_party_transaction_profile_values_identical": true,
+    "sqlite_integrity": "ok",
+    "safety_backup_created": true
+  },
+  "downgrade_guard": {
+    "blocked": true,
+    "exitCode": 2,
+    "installedFileUnchanged": true,
+    "simulatedInstalledVersion": "0.1.2",
+    "attemptedVersion": "0.1.1"
+  },
+  "limits": [
+    "Tested on this Windows computer with WebView2 already installed; runtime bootstrap on a clean machine is not tested.",
+    "Unsigned installer; Windows may display an unknown publisher or SmartScreen warning.",
+    "Manual installer updates; no network updater service.",
+    "Future schema migrations require their own upgrade validation."
+  ]
+}

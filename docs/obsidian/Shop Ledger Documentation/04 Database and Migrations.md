@@ -2,7 +2,7 @@
 title: "Database and migrations"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-18"
+updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
@@ -69,7 +69,7 @@ erDiagram
 | Column | Meaning / constraints |
 |---|---|
 | id | Non-null text primary key |
-| party_id | Customer reference; deletion restricted |
+| party_id | Customer reference; restricted FK with migration-4 atomic customer/ledger deletion trigger |
 | date | ISO date text; SQL length 10, frontend calendar validation |
 | description | Trimmed nonempty, 1–240 characters |
 | brand / vehicle_number / bill_number | Non-null strings, default empty |
@@ -131,3 +131,16 @@ No migration should silently change financial meaning or discard customer record
 Running balances are not persisted. Full-store reads and per-customer in-memory calculations are the current implementation; very large datasets may need SQL aggregation/pagination. Per-field integer limits exist, but aggregate safe-integer limits and concurrency across multiple application instances are not separately enforced.
 
 Raw external SQL edits can bypass frontend calendar/text validation. The normal UI and backup path perform validation.
+
+
+## Migration 4 — customer archive and deletion
+
+Adds archived 0/1 (default active), updates restore to preserve archive flags with legacy default 0, and adds a BEFORE DELETE trigger to remove the selected customer’s transactions atomically. See [[15 Customer Archive Restore and Delete]].
+
+## Migration 5 — suppliers
+
+Adds independent suppliers, supplier_transactions and supplier_bill_requests tables, date/deletion triggers, atomic grouped bill saves and combined snapshot restore. Existing customer tables and migrations 1–4 are preserved. See [[16 Purchase and Supplier Ledger]].
+
+## Daily cash book update
+
+Migration 6 adds customer payment methods, cash tables, atomic source projections and cash snapshot restore. Earlier migrations remain unchanged. See [[17 Daily Cash Book and Expenses]].

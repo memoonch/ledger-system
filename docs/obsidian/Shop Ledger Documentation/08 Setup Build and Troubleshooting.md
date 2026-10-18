@@ -2,7 +2,7 @@
 title: "Setup, build and troubleshooting"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-18"
+updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
@@ -89,7 +89,7 @@ The internal executable/package name remains for compatibility. Visible product/
 npm.cmd run tauri build
 ```
 
-Configuration targets NSIS and requests an offline WebView2 installer. The first packaging run may download runtime/bundler tools. Installer output and installation on a separate shop computer have not yet been validated.
+Configuration targets NSIS and requests an offline WebView2 installer. The first packaging run may download runtime/bundler tools. The 0.1.1 installer and same-computer upgrade validation are documented in [[14 Windows Installer and Updates]]. Installation on a separate clean shop computer is still a separate check.
 
 ## Issues encountered and how they were handled
 

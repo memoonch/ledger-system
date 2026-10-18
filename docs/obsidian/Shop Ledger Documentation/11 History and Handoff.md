@@ -2,7 +2,7 @@
 title: "Development history and handoff"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-18"
+updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
@@ -61,7 +61,7 @@ The new documentation contains architecture, requirements, function/file map, sc
 
 ## Ready-to-use future handoff
 
-> Continue the Shop Ledger Windows desktop project at C:/Users/FROST/Documents/GitHub/ledger-system. Read REQUIREMENTS.md, README.md and this documentation, then inspect current code before editing. It uses React/TypeScript/Vite/Tailwind, Tauri 2 and local SQLite. Customers only; dated opening balances; DR means customer owes, CR means advance/payment; whole-rupee UI; quantity supports thousandths. Keep existing app identifier/database/storage keys so data remains available. Migration versions 1, 2 and 3 already exist; add new numbered migrations instead of rewriting shipped SQL. Browser preview data is separate from native SQLite. Keep screen/PDF/print/backups consistent. The last verified implementation had 39 passing tests and native offline/profile persistence checks; do not describe those as new checks unless rerun. Inventory, invoices, multi-user access, audit history and WhatsApp are not implemented. The owner expects incremental changes and may revise scope. Follow their latest instructions, preserve data, document the change and refresh these notes.
+> Continue the Shop Ledger Windows desktop project at C:/Users/FROST/Documents/GitHub/ledger-system. Read REQUIREMENTS.md, README.md and this documentation, then inspect current code before editing. It uses React/TypeScript/Vite/Tailwind, Tauri 2 and local SQLite. Customer and supplier ledgers; dated opening balances; DR means customer owes, CR means advance/payment; whole-rupee UI; quantity supports thousandths. Keep existing app identifier/database/storage keys so data remains available. Migration versions 1–6 already exist; add new numbered migrations instead of rewriting shipped SQL. Browser preview data is separate from native SQLite. Keep screen/PDF/print/backups consistent. The last verified implementation had 67 passing tests and native offline/profile persistence checks; do not describe those as new checks unless rerun. Inventory, sales invoices, multi-user access, audit history and WhatsApp are not implemented. The owner expects incremental changes and may revise scope. Follow their latest instructions, preserve data, document the change and refresh these notes.
 
 ## What is not ongoing automatically
 
@@ -71,3 +71,19 @@ No recurring automation, background documentation watcher, cloud backup, automat
 ## Excel / CSV import
 
 Implemented Add Customer import with preview, editable mapping and opening balance detection; migration 3 atomically inserts a new customer and their transactions without replacing existing records. See [[13 Excel and CSV Import]].
+
+## Windows release 0.1.1
+
+Created the optimized x64 NSIS installer with offline WebView2; tested installing 0.1.0 and updating to 0.1.1 on the development Windows computer. See [[14 Windows Installer and Updates]] and the release validation report for exact checks and limits. Preserve the database identifier and customer data across future releases.
+
+## Release 0.1.2 — customer archive, restore and permanent deletion
+
+The owner approved both Archive and Permanent Delete. Implemented active/archived/all filtering, reversible archive with retained balances and a backup-first exact-name permanent-delete flow. Migration 4 preserves existing data and removes only the targeted ledger atomically. See [[15 Customer Archive Restore and Delete]].
+
+## Release 0.1.3 — purchase and supplier ledgers
+
+Owner approved Supplier Khata with the same brand, vehicle, bill, quantity, rate, debit, credit and balance columns as customer ledgers. Implemented a separate supplier section with contact/opening balance, grouped multi-line purchases/returns, payments and references, statements and management. Added migration 5 and backup version 3 with legacy preservation. Customer accounting remains unchanged. See [[16 Purchase and Supplier Ledger]].
+
+## Release 0.1.4 — Daily Cash Book / Roznamcha
+
+Owner requested cash-in/out, expenses and expected-versus-counted closing. Implemented explicit customer payment methods without guessing old cash receipts, supplier cash projections, dated drawer setup, expenses/manual movements, voiding and stale closing detection. Added migration 6 and backup version 4. See [[17 Daily Cash Book and Expenses]].

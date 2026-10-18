@@ -73,3 +73,37 @@ it('atomically imports a new customer without replacing existing customers and r
  expect(()=>insert.run(JSON.stringify({party:added,transactions:[entry]}))).toThrow();
  db.close();
 });
+
+it('upgrades existing customers to active, preserves archive in backups, and restores legacy backups as active',()=>{
+ const db=database();
+ const restore=db.prepare('INSERT INTO restore_requests(payload) VALUES (?)');
+ restore.run(JSON.stringify({parties:[party],transactions:[tx]}));
+ db.exec(readFileSync(new URL('../src-tauri/migrations/004_customer_archive.sql',import.meta.url),'utf8'));
+ expect(db.prepare('SELECT archived FROM parties WHERE id=?').get(party.id)?.archived).toBe(0);
+ db.prepare('UPDATE parties SET archived=1 WHERE id=?').run(party.id);
+ expect(db.prepare('SELECT COUNT(*) AS n FROM ledger_transactions').get()?.n).toBe(1);
+ const archived=db.prepare('SELECT * FROM parties').get();
+ restore.run(JSON.stringify({parties:[archived],transactions:[tx]}));
+ expect(db.prepare('SELECT archived FROM parties').get()?.archived).toBe(1);
+ restore.run(JSON.stringify({parties:[party],transactions:[tx]}));
+ expect(db.prepare('SELECT archived FROM parties').get()?.archived).toBe(0);
+ expect(()=>db.exec('UPDATE parties SET archived=2')).toThrow();db.close();
+});
+it('permanently deletes only the chosen customer and their transactions in one statement',()=>{
+ const db=database();db.exec(readFileSync(new URL('../src-tauri/migrations/004_customer_archive.sql',import.meta.url),'utf8'));
+ db.prepare('INSERT INTO restore_requests(payload) VALUES (?)').run(JSON.stringify({parties:[party,{...party,id:'b',archived:1}],transactions:[tx,{...tx,id:'t2',party_id:'b'}]}));
+ db.prepare('DELETE FROM parties WHERE id=?').run(party.id);
+ expect(db.prepare('SELECT id,archived FROM parties').all()).toEqual([{id:'b',archived:1}]);
+ expect(db.prepare('SELECT id,party_id FROM ledger_transactions').all()).toEqual([{id:'t2',party_id:'b'}]);
+ expect(db.prepare('SELECT COUNT(*) AS n FROM shop_profile').get()?.n).toBe(1);
+ db.close();
+});
+it('rolls back child transaction removal if parent deletion fails',()=>{
+ const db=database();db.exec(readFileSync(new URL('../src-tauri/migrations/004_customer_archive.sql',import.meta.url),'utf8'));
+ db.prepare('INSERT INTO restore_requests(payload) VALUES (?)').run(JSON.stringify({parties:[party],transactions:[tx]}));
+ db.exec("CREATE TRIGGER test_delete_failure AFTER DELETE ON parties BEGIN SELECT RAISE(ABORT,'test failure'); END;");
+ expect(()=>db.prepare('DELETE FROM parties WHERE id=?').run(party.id)).toThrow();
+ expect(db.prepare('SELECT COUNT(*) AS n FROM parties').get()?.n).toBe(1);
+ expect(db.prepare('SELECT COUNT(*) AS n FROM ledger_transactions').get()?.n).toBe(1);
+ db.close();
+});

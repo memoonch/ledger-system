@@ -1,0 +1,58 @@
+{
+  "product": "Shop Ledger",
+  "version": "0.1.4",
+  "checked_at": "2026-10-19T01:12:17.940361+05:00",
+  "installer": {
+    "file": "Shop Ledger_0.1.4_x64-setup.exe",
+    "bytes": 220784388,
+    "sha256": "77291ad0dce7b2c72225c3fd07ee06bb7ce23d4db941ab70cdcd8fb0f6179557",
+    "signature": "NotSigned",
+    "offline_webview2_included": true
+  },
+  "upgrade": {
+    "from": "0.1.3",
+    "to": "0.1.4",
+    "exit_code": 0,
+    "migration_6_applied": true,
+    "existing_record_counts": {
+      "parties": 1,
+      "ledger_transactions": 15,
+      "shop_profile": 1,
+      "suppliers": 0,
+      "supplier_transactions": 0
+    },
+    "all_existing_customer_supplier_and_profile_values_identical": true,
+    "sqlite_integrity": "ok",
+    "safety_database_copy_created": true
+  },
+  "native_cash_checks": {
+    "passed": true,
+    "version": "0.1.4",
+    "customer_cash_projection": true,
+    "expense_saved": true,
+    "closing_saved": true,
+    "reload_persistence": true,
+    "temporary_test_records_removed": true,
+    "original_drawer_setup_and_cash_history_restored": true
+  },
+  "verification": {
+    "automated_tests_passed": 67,
+    "test_files": 7,
+    "browser_cash_workflow_passed": true,
+    "customer_cash_receipts_and_supplier_cash_payments_linked": true,
+    "noncash_excluded": true,
+    "shortage_matching_count_stale_closing_and_void_tested": true,
+    "next_day_carry_forward_tested": true,
+    "backup_version": 4,
+    "cash_snapshot_atomic_restore_tested": true,
+    "historical_unspecified_customer_credits_not_assumed_cash": true,
+    "a4_sample_pages": 1
+  },
+  "limits": [
+    "One physical shop drawer; no multi-cashier or bank reconciliation.",
+    "Closing counts are editable reconciliation snapshots, not locked accounting periods.",
+    "Differences require investigation; no automatic shortage/excess cash adjustment.",
+    "Customer and supplier account deletion intentionally preserves cash snapshots.",
+    "Unsigned installer; clean-machine WebView2 bootstrap and concurrent multi-instance editing are not tested."
+  ]
+}

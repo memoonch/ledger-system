@@ -1,0 +1,52 @@
+{
+  "product": "Shop Ledger",
+  "version": "0.1.2",
+  "checked_at": "2026-10-19T00:15:39.682617+05:00",
+  "installer": {
+    "file": "Shop Ledger_0.1.2_x64-setup.exe",
+    "bytes": 220775558,
+    "sha256": "fcc864495230f5e7478f078a393bf62bbbf30a457574690f335e60cad515bd53",
+    "signature": "NotSigned",
+    "offline_webview2_included": true
+  },
+  "upgrade": {
+    "from": "0.1.1",
+    "to": "0.1.2",
+    "setup_exit_code": 0,
+    "native_launch_passed": true,
+    "migration_4_applied": true,
+    "existing_customers_remain_active": true,
+    "existing_customer_count": 2,
+    "existing_transaction_count": 15,
+    "prior_party_fields_transactions_and_profile_identical": true,
+    "sqlite_integrity": "ok",
+    "safety_backup_created": true,
+    "real_customers_archived_or_deleted_during_test": false
+  },
+  "verification": {
+    "automated_tests_passed": 43,
+    "test_files": 5,
+    "sqlite_tests": [
+      "archive migration preserves data and defaults to active",
+      "archive flags survive backup restore; legacy backups default active",
+      "single-customer deletion leaves other customers and profile intact",
+      "failed parent deletion rolls back child removals"
+    ],
+    "isolated_browser_tests": [
+      "archive/restore and reload persistence",
+      "archived balances retained in shop totals",
+      "archive status retained after editing",
+      "archived customer included in backup",
+      "exact-name deletion confirmation",
+      "cancelled confirmation retains records",
+      "failed safety-backup save retains records",
+      "successful deletion preserves other customers and profile"
+    ]
+  },
+  "limits": [
+    "Tested on the existing Windows computer; clean-machine WebView2 bootstrap not retested.",
+    "Unsigned Windows installer.",
+    "Concurrent editing by multiple app instances is not covered.",
+    "Backup restoration replaces the current store; no merge of later changes."
+  ]
+}

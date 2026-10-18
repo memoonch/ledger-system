@@ -2,7 +2,7 @@
 title: "Requirements and decisions"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-18"
+updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
@@ -72,6 +72,6 @@ Logo upload; tax/registration number; bank/payment details; invoice numbering pr
 
 ## Still to review
 
-Actual shop-printer output, final installer packaging, UI feedback from daily use, and detailed inventory/billing requirements.
+Actual shop-printer output, clean-machine installer testing, UI feedback from daily use, and detailed inventory/billing requirements.
 
 Future changes are expected. Confirm changed business rules with the owner, preserve existing records, update `REQUIREMENTS.md`, and record the decision here.

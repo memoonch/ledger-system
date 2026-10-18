@@ -95,3 +95,15 @@ No encryption, audit log, multi-instance concurrency, performance-at-scale or in
 ## Excel / CSV import update
 
 The latest automated run passed **39 tests across five files**, including 11 importer tests and atomic SQLite import/rollback. Browser import checks passed. See [[13 Excel and CSV Import]]. Earlier 27-test results above describe the previous implementation.
+
+## Customer management update
+
+Latest run: **43 tests passed** across five files. Added archive backup validation, migration/default compatibility, isolated deletion and rollback tests. Browser customer-management checks passed using sample data. See [[15 Customer Archive Restore and Delete]].
+
+## Supplier ledger update
+
+Latest suite: **56 passing tests in six files**, including 13 supplier tests. Browser supplier workflow and PDF/A4 checks passed. See [[16 Purchase and Supplier Ledger]] for scope and the native release report for installation checks.
+
+## Daily cash book update
+
+Latest suite: **67 passing tests in seven files**. Browser cash workflow, reconciliation and sample A4 print passed. See [[17 Daily Cash Book and Expenses]].

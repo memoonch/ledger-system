@@ -103,3 +103,11 @@ A JSON backup is a data export, not a compiled app or database-schema backup. Ke
 
 The documentation/source snapshots deliberately exclude real database files and QA backup payloads.
 
+
+## Supplier / version-3 update
+
+Statements now have a supplier mode with payable/advance colors, units and payment references. New full backups use version 3 and include suppliers and supplierTransactions arrays. Versions 1/2 remain readable and preserve current suppliers when supplier sections are absent. Earlier version-2 notes describe the previous customer-only format. See [[16 Purchase and Supplier Ledger]].
+
+## Daily cash book update
+
+Backups now use version 4 and include drawer settings, cash movements and closing counts. Versions 1–3 preserve current cash when no cash section is supplied. See [[17 Daily Cash Book and Expenses]].

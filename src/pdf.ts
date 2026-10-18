@@ -1,8 +1,8 @@
 import { jsPDF } from 'jspdf';
 import { autoTable } from 'jspdf-autotable';
-import { balanceText, dateText, ledger, money, type Party, type LedgerTransaction } from './domain';
+import { balanceText, dateText, ledger, money, type Party, type LedgerTransaction, type SupplierTransaction, type Supplier } from './domain';
 import { defaultProfile, type ShopProfile } from './profile';
-export function statementPdf(party: Party, transactions: LedgerTransaction[], from: string, to: string, profile: ShopProfile = defaultProfile) {
+export function statementPdf(party: Party, transactions: LedgerTransaction[], from: string, to: string, profile: ShopProfile = defaultProfile, supplier = false) {
   const statement = ledger(party, transactions, from, to);
   const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
   doc.setFont('helvetica', 'bold'); doc.setFontSize(20); doc.setTextColor(22, 77, 63);
@@ -15,16 +15,16 @@ export function statementPdf(party: Party, transactions: LedgerTransaction[], fr
   y += 7;
   doc.setTextColor(35); doc.setFontSize(13); const nameLines = doc.splitTextToSize(party.name, 160); doc.text(nameLines, 12, y);
   doc.setFontSize(9);
-  const details = [party.phone, party.address].filter(Boolean).join(' | ');
+  const details = [supplier ? (party as Party & Partial<Supplier>).contact_person : '', party.phone, party.address].filter(Boolean).join(' | ');
   const detailsY = y + nameLines.length * 5 + 1; const detailLines = doc.splitTextToSize(details, 170); doc.text(detailLines, 12, detailsY);
   doc.text(`Period: ${from ? dateText(from) : 'Beginning'} to ${to ? dateText(to) : 'Latest entry'}`, 285, y, { align: 'right' });
-  doc.text('All amounts in PKR | DR: customer owes | CR: customer advance', 285, y + 7, { align: 'right' });
+  doc.text(supplier ? 'Supplier ledger | CR: you owe supplier | DR: your advance | PKR' : 'All amounts in PKR | DR: customer owes | CR: customer advance', 285, y + 7, { align: 'right' });
   const body: string[][] = [];
   if (from) body.push([dateText(from), 'Balance brought forward', '', '', '', '', '', '', '', balanceText(statement.broughtForward)]);
   if (statement.openingInPeriod) body.push([dateText(party.opening_date), 'Opening balance', '', '', '', '', '', '', '', balanceText(party.opening_paisa)]);
   for (const tx of statement.rows) body.push([
-    dateText(tx.date), tx.description, tx.brand, tx.vehicle_number, tx.bill_number,
-    tx.quantity_milli ? (tx.quantity_milli / 1000).toLocaleString('en-PK', { maximumFractionDigits: 3 }) : '-',
+    dateText(tx.date), supplier ? [tx.description,(tx as LedgerTransaction & Partial<SupplierTransaction>).payment_method,(tx as LedgerTransaction & Partial<SupplierTransaction>).reference].filter(Boolean).join(' | ') : tx.description, tx.brand, tx.vehicle_number, tx.bill_number,
+    tx.quantity_milli ? (tx.quantity_milli / 1000).toLocaleString('en-PK', { maximumFractionDigits: 3 }) + (supplier ? ' ' + ((tx as LedgerTransaction & Partial<SupplierTransaction>).unit || '') : '') : '-',
     tx.rate_paisa ? money(tx.rate_paisa) : '-', tx.debit_paisa ? money(tx.debit_paisa) : '-',
     tx.credit_paisa ? money(tx.credit_paisa) : '-', balanceText(tx.balance),
   ]);
@@ -41,17 +41,17 @@ export function statementPdf(party: Party, transactions: LedgerTransaction[], fr
       if (data.section === 'head') return;
       const text = data.cell.text.join(' ');
       if (data.column.index === 9) {
-        if (text.endsWith(' DR')) data.cell.styles.textColor = [185, 57, 57];
-        else if (text.endsWith(' CR')) data.cell.styles.textColor = [32, 128, 78];
-      } else if (data.column.index === 7 && text !== '-' && text !== '' && text !== '0') data.cell.styles.textColor = [185, 57, 57];
-      else if (data.column.index === 8 && text !== '-' && text !== '' && text !== '0') data.cell.styles.textColor = [32, 128, 78];
+        if (text.endsWith(supplier ? ' CR' : ' DR')) data.cell.styles.textColor = [185, 57, 57];
+        else if (text.endsWith(supplier ? ' DR' : ' CR')) data.cell.styles.textColor = [32, 128, 78];
+      } else if (data.column.index === 7 && text !== '-' && text !== '' && text !== '0') data.cell.styles.textColor = supplier ? [32,128,78] : [185, 57, 57];
+      else if (data.column.index === 8 && text !== '-' && text !== '' && text !== '0') data.cell.styles.textColor = supplier ? [185,57,57] : [32, 128, 78];
     },
   });
   const count = doc.getNumberOfPages();
   for (let page = 1; page <= count; page++) {
     doc.setPage(page); doc.setFontSize(8); doc.setTextColor(110);
     if (profile.statement_note) doc.text(doc.splitTextToSize(profile.statement_note, 270), 12, 194);
-    doc.text(profile.name + ' | Customer ledger', 12, 205);
+    doc.text(profile.name + (supplier ? ' | Supplier ledger' : ' | Customer ledger'), 12, 205);
     doc.text(`Page ${page} of ${count}`, 285, 205, { align: 'right' });
   }
   return doc;

@@ -74,3 +74,9 @@ describe('whole rupee entry and account sides', () => {
     expect(balanceClass(100)).toBe('debit-text'); expect(balanceClass(-100)).toBe('credit-text'); expect(balanceClass(0)).toBe('neutral-text');
   });
 });
+
+it('accepts legacy and archived customer backups but rejects invalid archive status',()=>{
+ expect(validateStore({parties:[party],transactions:[]})).toBeTruthy();
+ expect(validateStore({parties:[{...party,archived:1}],transactions:[]})).toBeTruthy();
+ expect(()=>validateStore({parties:[{...party,archived:2}],transactions:[]})).toThrow('archive status');
+});

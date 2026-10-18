@@ -1,0 +1,75 @@
+---
+title: "Source: src/SupplierPage.tsx"
+type: "Reference"
+project: "Shop Ledger"
+updated: "2026-10-19"
+generated_by: "shop-ledger-docs"
+source_path: "src/SupplierPage.tsx"
+sha256: "4e0ae8d5528389ad6ef2a59717b1d99a56004a404dba7d0cfb3fe56374321800"
+tags: [shop-ledger, development]
+---
+
+# Source snapshot: src/SupplierPage.tsx
+
+- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/SupplierPage.tsx`.
+- SHA-256 of original file bytes: `4e0ae8d5528389ad6ef2a59717b1d99a56004a404dba7d0cfb3fe56374321800`.
+- Original bytes: 13513; source lines: 48.
+- This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
+
+## Exported symbols
+
+`SupplierPage`.
+
+## Complete source
+
+```tsx
+import { useEffect, useMemo, useState } from 'react';
+import { Plus, Pencil, Download, Printer } from 'lucide-react';
+import { balanceText, dateText, ledger, money, supplierBalanceClass, supplierBalanceLabel, today, type Store, type Supplier, type SupplierTransaction } from './domain';
+import { loadStore, saveSupplier, saveSupplierEntries, setSupplierArchived, deleteSupplier, saveFile, desktop } from './storage';
+import { SupplierForm, SupplierBillForm, SupplierPaymentForm } from './supplier-forms';
+import DeleteCustomer from './DeleteCustomer';
+import { defaultProfile } from './profile';
+type Dialog={type:'account';supplier?:Supplier}|{type:'bill';kind:'purchase'|'return';group?:string}|{type:'payment';entry?:SupplierTransaction}|{type:'delete';supplier:Supplier};
+export default function SupplierPage({store,refresh,backup}:{store:Store;refresh:()=>Promise<void>;backup:(data:Store,name:string)=>Promise<boolean>}) {
+ const suppliers=store.suppliers??[],transactions=store.supplierTransactions??[],profile=store.profile??defaultProfile;
+ const [selected,setSelected]=useState(''),[view,setView]=useState('active'),[search,setSearch]=useState(''),[dialog,setDialog]=useState<Dialog|null>(null);
+ const [from,setFrom]=useState(''),[to,setTo]=useState(''),[period,setPeriod]=useState('all'),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false);
+ const summaries=useMemo(()=>suppliers.map(s=>({supplier:s,balance:ledger(s,transactions).closing})).sort((a,b)=>a.supplier.name.localeCompare(b.supplier.name)),[store]);
+ const visible=summaries.filter(({supplier:s})=>view==='all'||(view==='archived'?s.archived===1:s.archived!==1));
+ useEffect(()=>{if(!visible.some(x=>x.supplier.id===selected))setSelected(visible[0]?.supplier.id??'');},[store,view,selected]);
+ useEffect(()=>{if(!notice)return;const timer=setTimeout(()=>setNotice(''),5000);return()=>clearTimeout(timer);},[notice]);
+ const supplier=suppliers.find(s=>s.id===selected),filtered=visible.filter(x=>(x.supplier.name+' '+x.supplier.contact_person+' '+x.supplier.phone).toLowerCase().includes(search.toLowerCase()));
+ let statement:ReturnType<typeof ledger>|undefined,rangeError='';if(supplier)try{statement=ledger(supplier,transactions,from,to);}catch(e){rangeError=(e as Error).message;}
+ const owed=summaries.reduce((n,x)=>n+Math.max(0,-x.balance),0),advances=summaries.reduce((n,x)=>n+Math.max(0,x.balance),0);
+ function range(value:string){setPeriod(value);if(value==='all'){setFrom('');setTo('');return;}if(value==='custom')return;const now=new Date(),offset=value==='last'?-1:0;const format=(d:Date)=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;setFrom(format(new Date(now.getFullYear(),now.getMonth()+offset,1)));setTo(format(new Date(now.getFullYear(),now.getMonth()+offset+1,0)));}
+ async function perform(action:()=>Promise<void>){setBusy(true);setError('');try{await action();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
+ async function saveEntries(group:string,rows:SupplierTransaction[]){if(!supplier)return;await saveSupplierEntries(supplier.id,group,rows);await refresh();setNotice('Supplier ledger saved. Balance updated.');}
+ async function pdf(){if(!supplier||!statement)return;const {statementPdf}=await import('./pdf');const doc=statementPdf(supplier,transactions,from,to,profile,true);if(await saveFile(supplier.name.replace(/[^a-z0-9]+/gi,'-')+'-supplier-ledger-'+today()+'.pdf',new Uint8Array(doc.output('arraybuffer')),'pdf'))setNotice('Supplier statement exported.');}
+ function edit(tx:SupplierTransaction){setDialog(tx.entry_type==='payment'?{type:'payment',entry:tx}:{type:'bill',kind:tx.entry_type,group:tx.group_id});}
+ return <>
+ <div className="page-heading no-print"><div><div className="eyebrow">PURCHASES & SUPPLIER KHATA</div><h1>Supplier ledgers</h1><p>Purchase bills, payments and the amounts you owe.</p></div><button className="button primary" onClick={()=>setDialog({type:'account'})}><Plus size={18}/>Add supplier</button></div>
+ {!desktop&&<div className="preview-banner no-print">Browser preview · Supplier records here are separate from the Windows app.</div>}{error&&<p className="error no-print" role="alert">{error}</p>}
+ <section className="stats-grid no-print" aria-label="Supplier balances"><div className="stat-card"><div><p>Total payable to suppliers</p><strong className="debit-text">Rs {money(owed)}</strong><span>Includes archived suppliers · CR</span></div></div><div className="stat-card"><div><p>Advances paid to suppliers</p><strong className="credit-text">Rs {money(advances)}</strong><span>Your money held by suppliers · DR</span></div></div><div className="stat-card"><div><p>Suppliers</p><strong>{suppliers.length}</strong><span>{transactions.length} recorded material / payment entries</span></div></div></section>
+ <section className="ledger-workspace"><aside className="customer-panel no-print"><div className="customer-panel-head"><h2>Suppliers <span>{suppliers.length}</span></h2></div><label className="search-box"><input aria-label="Search suppliers" placeholder="Search supplier or contact…" value={search} onChange={e=>setSearch(e.target.value)}/></label><select className="customer-status-filter" aria-label="Supplier status" value={view} onChange={e=>setView(e.target.value)}><option value="active">Active suppliers</option><option value="archived">Archived suppliers</option><option value="all">All suppliers</option></select><div className="customer-list">{filtered.map(({supplier:s,balance})=><button key={s.id} className={'customer-item '+(s.id===selected?'active':'')} onClick={()=>setSelected(s.id)}><span className="avatar">{s.name.slice(0,2).toUpperCase()}</span><span className="customer-copy"><strong>{s.name}{s.archived===1?' · Archived':''}</strong><small className={supplierBalanceClass(balance)}>Rs {balanceText(balance)}</small></span></button>)}{!filtered.length&&<p className="list-empty">No suppliers in this list.</p>}</div></aside>
+ {supplier?<article className="ledger-panel">{supplier.archived===1&&<div className="archived-banner no-print">Archived supplier — full ledger retained.</div>}<header className="ledger-heading"><div className="print-shop"><h1>{profile.name}</h1><p>{profile.tagline}</p><p>{[profile.owner,profile.phone,profile.email,profile.address].filter(Boolean).join(' · ')}</p><p>Supplier account statement · All amounts in PKR</p></div><div className="ledger-title"><span className="eyebrow">SUPPLIER ACCOUNT</span><h2>{supplier.name}<button className="icon-button no-print" aria-label="Edit supplier" onClick={()=>setDialog({type:'account',supplier})}><Pencil size={14}/></button></h2><p>{[supplier.contact_person,supplier.phone,supplier.address].filter(Boolean).join(' · ')}</p></div><div className="ledger-actions no-print"><button className="button secondary compact" disabled={busy||!!rangeError} onClick={()=>void perform(pdf)}><Download size={15}/>PDF</button><button className="button secondary compact" disabled={!!rangeError} onClick={()=>window.print()}><Printer size={15}/>Print A4</button></div></header>
+ <div className="ledger-toolbar no-print"><div className="date-filters"><select aria-label="Statement period" value={period} onChange={e=>range(e.target.value)}><option value="all">All time</option><option value="this">This month</option><option value="last">Last month</option><option value="custom">Custom dates</option></select><label>From<input aria-label="From date" type="date" value={from} onChange={e=>{setFrom(e.target.value);setPeriod('custom');}}/></label><label>To<input aria-label="To date" type="date" value={to} onChange={e=>{setTo(e.target.value);setPeriod('custom');}}/></label></div></div>
+ <div className="supplier-actions no-print"><button className="button primary compact" onClick={()=>setDialog({type:'bill',kind:'purchase'})}>Add purchase bill</button><button className="button secondary compact" onClick={()=>setDialog({type:'payment'})}>Add payment</button><button className="button secondary compact" onClick={()=>setDialog({type:'bill',kind:'return'})}>Add supplier return</button></div>
+ {rangeError&&<p className="error" role="alert">{rangeError}</p>}{statement&&<>
+ <div className="statement-meta"><span>{from||to?`${from?dateText(from):'Beginning'} — ${to?dateText(to):'Latest entry'}`:'Complete supplier account history'}</span><span>{statement.rows.length} entries</span></div>
+ <div className="table-scroll"><table className="ledger-table"><thead><tr><th>Date</th><th>Description</th><th>Brand</th><th>Vehicle no.</th><th>Bill no.</th><th className="numeric">Quantity</th><th className="numeric">Rate</th><th className="numeric">Debit (DR)</th><th className="numeric">Credit (CR)</th><th className="numeric">Balance</th><th className="no-print">Edit</th></tr></thead><tbody>
+ {from&&<tr className="opening-row"><td>{dateText(from)}</td><td colSpan={8}>Balance brought forward</td><td className={'numeric '+supplierBalanceClass(statement.broughtForward)}>{balanceText(statement.broughtForward)}</td><td className="no-print"/></tr>}{statement.openingInPeriod&&<tr className="opening-row"><td>{dateText(supplier.opening_date)}</td><td colSpan={8}>Opening balance</td><td className={'numeric '+supplierBalanceClass(supplier.opening_paisa)}>{balanceText(supplier.opening_paisa)}</td><td className="no-print"/></tr>}
+ {statement.rows.map(row=>{const tx=row as SupplierTransaction&{balance:number};return <tr key={tx.id}><td>{dateText(tx.date)}</td><td className="description-cell">{tx.description}{tx.payment_method&&<small className="supplier-payment-details">{tx.payment_method}{tx.reference?' · '+tx.reference:''}</small>}</td><td>{tx.brand||'—'}</td><td>{tx.vehicle_number||'—'}</td><td>{tx.bill_number||'—'}</td><td className="numeric">{tx.quantity_milli?(tx.quantity_milli/1000).toLocaleString('en-PK',{maximumFractionDigits:3})+' '+tx.unit:'—'}</td><td className="numeric">{tx.rate_paisa?money(tx.rate_paisa):'—'}</td><td className="numeric credit-text">{tx.debit_paisa?money(tx.debit_paisa):'—'}</td><td className="numeric debit-text">{tx.credit_paisa?money(tx.credit_paisa):'—'}</td><td className={'numeric balance-cell '+supplierBalanceClass(tx.balance)}>{balanceText(tx.balance)}</td><td className="no-print"><button className="row-edit" aria-label={'Edit '+tx.entry_type+' '+tx.bill_number} onClick={()=>edit(tx)}><Pencil size={13}/></button></td></tr>;})}
+ {!statement.rows.length&&<tr><td colSpan={11} className="empty-ledger">No supplier transactions in this period.</td></tr>}</tbody><tfoot><tr><td colSpan={7}>Period totals / Closing balance</td><td className="numeric credit-text">{money(statement.debit)}</td><td className="numeric debit-text">{money(statement.credit)}</td><td className={'numeric '+supplierBalanceClass(statement.closing)}>{balanceText(statement.closing)}</td><td className="no-print"/></tr></tfoot></table></div><footer className="ledger-footer">CR: you owe supplier · DR: your advance with supplier. Purchases increase credit; payments / returns increase debit.</footer><p className="statement-note">{profile.statement_note}</p><div className="closing-strip"><div><span className="eyebrow">CLOSING BALANCE</span><p>{supplierBalanceLabel(statement.closing)}</p></div><strong className={supplierBalanceClass(statement.closing)}><small>Rs</small> {balanceText(statement.closing)}</strong></div>
+ </>}
+ </article>:<div className="welcome"><h2>Your supplier Khata</h2><p>Add a manufacturer or wholesaler with a dated opening balance.</p><button className="button primary" onClick={()=>setDialog({type:'account'})}>Add your first supplier</button></div>}
+ </section>
+ {notice&&<div className="toast no-print" role="status">{notice}</div>}
+ {dialog?.type==='account'&&<SupplierForm supplier={dialog.supplier} close={()=>setDialog(null)} save={async s=>{await saveSupplier(s);setView(s.archived===1?'archived':'active');await refresh();setSelected(s.id);setNotice('Supplier saved.');}} archive={async()=>{const s=dialog.supplier!;await setSupplierArchived(s.id,s.archived!==1);if(s.archived===1)setView('active');await refresh();setNotice(s.archived===1?'Supplier restored.':'Supplier archived. Ledger retained.');}} remove={()=>dialog.supplier&&setDialog({type:'delete',supplier:dialog.supplier})}/>}
+ {dialog?.type==='bill'&&supplier&&<SupplierBillForm supplier={supplier} entries={dialog.group?transactions.filter(t=>t.group_id===dialog.group):[]} kind={dialog.kind} profile={profile} allEntries={transactions} close={()=>setDialog(null)} save={saveEntries}/>}
+ {dialog?.type==='payment'&&supplier&&<SupplierPaymentForm supplier={supplier} entry={dialog.entry} close={()=>setDialog(null)} save={saveEntries}/>}
+ {dialog?.type==='delete'&&<DeleteCustomer supplier party={dialog.supplier} count={transactions.filter(t=>t.party_id===dialog.supplier.id).length} balance={ledger(dialog.supplier,transactions).closing} close={()=>setDialog(null)} remove={async()=>{const current=await loadStore();const target=(current.suppliers??[]).find(s=>s.id===dialog.supplier.id);if(!target||target.name!==dialog.supplier.name)throw new Error('Supplier details changed. Reopen the account.');if(!await backup(current,'shop-before-supplier-delete-'+new Date().toISOString().replace(/[:.]/g,'-')+'.json'))return false;await deleteSupplier(target.id,target.name);await refresh();setNotice('Supplier and ledger deleted. Safety backup saved.');return true;}}/>}
+ </>;
+}
+```

@@ -41,7 +41,7 @@ This first version does not implement inventory, generated invoices, WhatsApp in
 - Browser checks cover adding/editing a material, reopening persisted records, CR opening balances, filtering, PDF and A4 print output, JSON backup/restore, invalid ranges, and smaller viewports.
 - Browser preview and native database are intentionally separate. Do not enter production records in preview storage.
 
-Native verification: the Windows executable successfully started, initialized its SQLite migration, saved a customer and material entry, retained them after reload, and reloaded bundled assets with network access disabled. Temporary native test records were removed afterward. Physical printer output and Windows installer packaging still need checking after the first UI review.
+Native verification: the Windows executable successfully started, initialized its SQLite migration, saved a customer and material entry, retained them after reload, and reloaded bundled assets with network access disabled. Temporary native test records were removed afterward. Physical printer output still needs checking. Windows installer and upgrade validation is recorded in docs/release-validation-0.1.1.json.
 
 ## Shop profile and reusable options
 Click the top-left shop name/icon to edit the shop name, tagline, owner/contact person, phone, email, address and statement footer. Branding is shared by the sidebar, PDFs and A4 printouts. Set reusable descriptions, brands and vehicle numbers one per line; transaction fields also suggest previously saved values across all customers and always allow free typing. Bill numbers are suggested from saved entries.
@@ -53,3 +53,19 @@ Profile data is included in version 2 backups. Legacy version 1 backups remain s
 ## Import an old customer ledger
 
 Choose Add Customer > Import Excel / CSV instead. Supports `.xlsx` and UTF-8 `.csv`, one customer per import, with worksheet/header/column mapping, dated opening balance detection, row validation and confirmation before saving. Existing customers are preserved; import creates a new customer. PDFs and old `.xls` are not import inputs. See `docs/obsidian-guides/13 Excel and CSV Import.md` for details.
+
+## Windows setup and updates
+
+Release 0.1.1 is packaged as an x64 NSIS installer with offline WebView2 included. See [installation and update instructions](docs/WINDOWS-INSTALL.md). The application identifier and database location remain stable across upgrades.
+
+## Archive and delete customers
+
+In Edit Customer, Archive keeps the ledger and hides the account from the active list. Use the Active / Archived / All filter and Restore Customer to bring it back. Shop totals include archived balances. Permanent Delete requires the exact customer name and a successful safety backup first, then atomically removes that customer and their ledger. The feature ships in version 0.1.2 with migration 4; legacy backups remain supported.
+
+## Supplier Khata (0.1.3)
+
+Supplier ledgers is a separate section with dated opening balances, multi-line purchase bills, brands/vehicles/invoice numbers, quantities/units/rates, cash/cheque/bank payments, material returns, date filters, PDF/A4 statements and archive/delete. Purchases are credit (amount owed, red); payments/returns are debit (advance, green). Backups are version 3 and cover both ledgers; old customer-only backups preserve current suppliers. Purchases do not update inventory yet. See `docs/obsidian-guides/16 Purchase and Supplier Ledger.md`.
+
+## Roznamcha / daily cash book (0.1.4)
+
+Daily Cash Book tracks explicitly marked customer cash receipts/refunds and supplier cash payments, shop expenses and other counter movements. Start with a dated drawer opening balance, then save end-of-day physical counts with shortage/excess and stale-closing detection. Cheque/bank/material entries do not affect physical cash. Old customer credits remain unclassified. Backup format 4 includes cash; older backups preserve current cash history. See `docs/obsidian-guides/17 Daily Cash Book and Expenses.md`.

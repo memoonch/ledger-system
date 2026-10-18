@@ -1,6 +1,6 @@
 [package]
 name = "alfazal-ledger"
-version = "0.1.0"
+version = "0.1.4"
 description = "Offline customer ledgers for local shops"
 authors = ["Shop Ledger"]
 edition = "2021"

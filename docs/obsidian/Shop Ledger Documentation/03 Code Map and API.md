@@ -2,7 +2,7 @@
 title: "Code map and API"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-18"
+updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---

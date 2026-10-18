@@ -1,0 +1,50 @@
+{
+  "product": "Shop Ledger",
+  "version": "0.1.3",
+  "checked_at": "2026-10-19T00:52:18.030530+05:00",
+  "installer": {
+    "file": "Shop Ledger_0.1.3_x64-setup.exe",
+    "bytes": 220777931,
+    "sha256": "9e36e1184d982ed127eaf4b0062210bf0d83728edf1a6d73116502ff4c60ca80",
+    "signature": "NotSigned",
+    "offline_webview2_included": true
+  },
+  "upgrade": {
+    "from": "0.1.2",
+    "to": "0.1.3",
+    "setup_exit_code": 0,
+    "native_version": "0.1.3",
+    "migration_5_applied": true,
+    "customer_count_preserved": 1,
+    "customer_transaction_count_preserved": 15,
+    "all_existing_customer_and_profile_values_identical": true,
+    "sqlite_integrity": "ok",
+    "safety_database_copy_created": true
+  },
+  "native_supplier_verification": {
+    "passed": true,
+    "version": "0.1.3",
+    "native_supplier_account_saved": true,
+    "multi_line_bill_saved": true,
+    "cheque_payment_saved": true,
+    "sqlite_reload_persistence": true,
+    "temporary_test_supplier_removed": true,
+    "original_supplier_records_preserved": true
+  },
+  "verification": {
+    "automated_tests_passed": 56,
+    "test_files": 6,
+    "browser_supplier_workflow_passed": true,
+    "supplier_pdf_visually_checked": true,
+    "a4_landscape_sample_print_pages": 1,
+    "combined_backup_restore_atomicity_tested": true,
+    "legacy_customer_backups_preserve_suppliers": true
+  },
+  "limits": [
+    "Purchases do not update inventory yet.",
+    "Payments apply to supplier account totals; no invoice settlement allocation.",
+    "No cheque clearance/bounce workflow, tax/discount engine or supplier spreadsheet import.",
+    "Existing Windows machine tested; clean-machine WebView2 bootstrap is unverified.",
+    "Unsigned installer; multiple simultaneous app instances are not covered."
+  ]
+}

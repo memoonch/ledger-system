@@ -1,6 +1,6 @@
 # Shop Ledger — start here
 
-This is the development and usage reference for **Shop Ledger**, originally started for Alfazal Building Materials and later made generic for other shops. It records the implemented application, the owner's decisions, and the source code as of **2026-10-18, Asia/Karachi**.
+This is the development and usage reference for **Shop Ledger**, originally started for Alfazal Building Materials and later made generic for other shops. It records the implemented application, the owner's decisions, and the source code as of **2026-10-19, Asia/Karachi**.
 
 ## Where the project lives
 
@@ -15,6 +15,10 @@ This is the development and usage reference for **Shop Ledger**, originally star
 
 | Need | Read |
 |---|---|
+| Daily drawer cash, expenses and closing | [[17 Daily Cash Book and Expenses]] |
+| Purchase bills and supplier Khata | [[16 Purchase and Supplier Ledger]] |
+| Archive, restore or delete a customer | [[15 Customer Archive Restore and Delete]] |
+| Install and update the Windows app | [[14 Windows Installer and Updates]] |
 | Import old Excel/CSV customer ledgers | [[13 Excel and CSV Import]] |
 | What the owner approved and what is still pending | [[01 Requirements and Decisions]] |
 | How React, Tauri and SQLite work together | [[02 Architecture and Data Flow]] |
@@ -44,7 +48,7 @@ npm.cmd run tauri build -- --debug --no-bundle
 
 The browser preview is `http://127.0.0.1:1420/`. It uses **separate browser storage**. Daily shop use is the Windows application with SQLite.
 
-The current review executable is `C:/Users/FROST/Documents/GitHub/ledger-system/src-tauri/target/debug/alfazal-ledger.exe`. It is a debug/review build; a final NSIS installer has not been packaged and validated.
+The installed desktop application is `C:/Users/FROST/AppData/Local/Shop Ledger/alfazal-ledger.exe`. Release 0.1.2 includes customer archive/restore/delete. Installer and upgrade checks are documented in [[14 Windows Installer and Updates]] and [[15 Customer Archive Restore and Delete]].
 
 ## Current implementation status
 
@@ -62,3 +66,11 @@ This is a snapshot, **not an automatic background sync or monitoring task**. Eng
 
 
 Excel/CSV import is implemented through Add Customer. See [[13 Excel and CSV Import]] for rules, limitations and latest checks.
+
+Release 0.1.2 adds Archive/Restore and backup-protected Permanent Delete; see [[15 Customer Archive Restore and Delete]].
+
+Release 0.1.3 adds separate supplier accounts/ledger, multi-line purchase bills, payments and returns. Current backup format is version 3 and includes both ledgers. See [[16 Purchase and Supplier Ledger]].
+
+## Daily cash book update
+
+Release 0.1.4 adds the physical Daily Cash Book, expenses, drawer setup and closing count. Current backup format is version 4. See [[17 Daily Cash Book and Expenses]].
