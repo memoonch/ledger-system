@@ -58,3 +58,18 @@ it('restores the shop profile atomically and preserves it for legacy snapshots',
   expect(JSON.parse(db.prepare('SELECT data FROM shop_profile').get()?.data as string).name).toBe('Generic Hardware');
   db.close();
 });
+
+it('atomically imports a new customer without replacing existing customers and rolls back invalid batches',()=>{
+ const db=database();db.exec(readFileSync(new URL('../src-tauri/migrations/003_customer_import.sql',import.meta.url),'utf8'));
+ db.prepare('INSERT INTO restore_requests(payload) VALUES (?)').run(JSON.stringify({parties:[party],transactions:[tx]}));
+ const insert=db.prepare('INSERT INTO import_requests(payload) VALUES (?)');
+ const added={...party,id:'new',name:'Imported'};const entry={...tx,id:'new-tx',party_id:'new'};
+ insert.run(JSON.stringify({party:added,transactions:[entry]}));
+ expect(db.prepare('SELECT COUNT(*) AS n FROM parties').get()?.n).toBe(2);
+ expect(db.prepare('SELECT COUNT(*) AS n FROM ledger_transactions').get()?.n).toBe(2);
+ expect(db.prepare('SELECT COUNT(*) AS n FROM import_requests').get()?.n).toBe(0);
+ expect(()=>insert.run(JSON.stringify({party:{...added,id:'bad'},transactions:[{...entry,id:'bad-tx',party_id:'bad',date:'2020-01-01'}]}))).toThrow();
+ expect(db.prepare('SELECT COUNT(*) AS n FROM parties').get()?.n).toBe(2);
+ expect(()=>insert.run(JSON.stringify({party:added,transactions:[entry]}))).toThrow();
+ db.close();
+});

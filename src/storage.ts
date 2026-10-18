@@ -79,3 +79,26 @@ export async function saveProfile(profile: ShopProfile) {
   if (!desktop) { const data = browserRead(); data.profile = profile; localStorage.setItem(KEY, JSON.stringify(data)); return; }
   await (await db()).execute('UPDATE shop_profile SET data=$1 WHERE id=1', [JSON.stringify(profile)]);
 }
+
+export async function readSpreadsheet(): Promise<{name:string;bytes:Uint8Array}|null> {
+ if(desktop) {
+  const [{open},{readFile,stat}] = await Promise.all([import('@tauri-apps/plugin-dialog'),import('@tauri-apps/plugin-fs')]);
+  const path=await open({multiple:false,filters:[{name:'Excel / CSV',extensions:['xlsx','csv']}]});
+  if(!path)return null;
+  if((await stat(path)).size>10*1024*1024)throw new Error('Choose a file smaller than 10 MB.');
+  return {name:path.split(/[\\/]/).pop()!,bytes:await readFile(path)};
+ }
+ return new Promise((resolve,reject)=>{
+  const input=document.createElement('input');input.type='file';input.accept='.xlsx,.csv';
+  input.oncancel=()=>resolve(null);
+  input.onchange=async()=>{try{const file=input.files?.[0];if(!file){resolve(null);return;}if(file.size>10*1024*1024)throw new Error('Choose a file smaller than 10 MB.');resolve({name:file.name,bytes:new Uint8Array(await file.arrayBuffer())});}catch(e){reject(e);}};
+  input.click();
+ });
+}
+export async function importCustomer(party:Party, transactions:LedgerTransaction[]) {
+ const {validateImport}=await import('./import-ledger');validateImport(party,transactions);
+ const current=await loadStore();
+ validateStore({...current,parties:[...current.parties,party],transactions:[...current.transactions,...transactions]});
+ if(!desktop){localStorage.setItem(KEY,JSON.stringify({...current,parties:[...current.parties,party],transactions:[...current.transactions,...transactions]}));return;}
+ await (await db()).execute('INSERT INTO import_requests(payload) VALUES ($1)',[JSON.stringify({party,transactions})]);
+}

@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowDownLeft, ArrowUpRight, BookOpen, Building2, CheckCircle2, ChevronRight, Download, FileText, FolderOpen, HardDrive, Landmark, LoaderCircle, Pencil, Plus, Printer, Search, ShieldCheck, Upload, Users, X } from 'lucide-react';
 import { balanceClass, balanceText, dateText, ledger, money, today, validDate, validateStore, type LedgerTransaction, type Party, type Store } from './domain';
-import { desktop, loadStore, readBackup, restoreStore, saveFile, saveParty, saveTransaction, saveProfile } from './storage';
+import { desktop, loadStore, readBackup, restoreStore, saveFile, saveParty, saveTransaction, saveProfile, importCustomer } from './storage';
 import { Modal, PartyForm, TransactionForm } from './forms';
 import { sampleStore } from './sample';
+import ImportCustomer from './ImportCustomer';
 import ProfilePage from './ProfilePage';
 import { defaultProfile } from './profile';
 
-type Dialog = { type: 'party'; party?: Party } | { type: 'transaction'; transaction?: LedgerTransaction } | { type: 'restore'; store: Store };
+type Dialog = { type: 'import' } | { type: 'party'; party?: Party } | { type: 'transaction'; transaction?: LedgerTransaction } | { type: 'restore'; store: Store };
 export default function App() {
   const [store, setStore] = useState<Store>({ parties: [], transactions: [] });
   const [loading, setLoading] = useState(true), [busy, setBusy] = useState(false);
@@ -121,7 +122,8 @@ export default function App() {
     </div>
     {notice && <div className="toast no-print" role="status"><CheckCircle2 size={18}/>{notice}</div>}
     {busy && <div className="busy-indicator no-print" role="status"><LoaderCircle className="spin" size={16}/>Working…</div>}
-    {dialog?.type === 'party' && <PartyForm party={dialog.party} close={() => setDialog(null)} save={async p => { await saveParty(p, store); await refresh(p.id); setNotice('Customer saved.'); }}/>}
+    {dialog?.type === 'party' && <PartyForm importExcel={() => setDialog({type: 'import'})} party={dialog.party} close={() => setDialog(null)} save={async p => { await saveParty(p, store); await refresh(p.id); setNotice('Customer saved.'); }}/>}
+    {dialog?.type === 'import' && <ImportCustomer existingNames={store.parties.map(p=>p.name)} close={() => setDialog(null)} save={async (p,txs) => { await importCustomer(p,txs); await refresh(p.id); setRange('all'); setNotice(`Customer imported with ${txs.length} transactions.`); }}/> }
     {dialog?.type === 'transaction' && party && <TransactionForm party={party} profile={profile} transactions={store.transactions} transaction={dialog.transaction} close={() => setDialog(null)} save={async tx => { await saveTransaction(tx, party); await refresh(); setNotice('Transaction saved. Balances updated.'); }}/>}
     {dialog?.type === 'restore' && <Modal title="Restore a backup" subtitle="Replace the records in this app with the selected backup." close={() => setDialog(null)} busy={busy}><div className="restore-content"><FolderOpen size={32}/><p>This backup contains <strong>{dialog.store.parties.length} customers</strong> and <strong>{dialog.store.transactions.length} transactions</strong>.</p><p>First, save a safety backup of your current records. Cancelling that save leaves your records unchanged.</p><p className="form-note">All current records will be replaced. This cannot be undone without your safety backup.</p></div><div className="modal-foot"><button className="button secondary" disabled={busy} onClick={() => setDialog(null)}>Cancel</button><button className="button primary" disabled={busy} onClick={() => void perform(async () => { if (!await backup(store, 'shop-before-restore-' + new Date().toISOString().replace(/[:.]/g, '-') + '.json')) return; await restoreStore(dialog.store); await refresh(); setDialog(null); setRange('all'); setNotice('Backup restored successfully.'); })}>Save safety backup & restore</button></div></Modal>}
   </div>;

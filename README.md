@@ -49,3 +49,7 @@ Click the top-left shop name/icon to edit the shop name, tagline, owner/contact 
 Currency inputs and displays use whole rupees. Quantities still support three decimal places, and quantity × rate rounds once to the nearest rupee. Storage remains integer paisa for compatibility; migration 2 does not rewrite historical transactions. A DR balance is red; a CR balance is green; a settled account is neutral.
 
 Profile data is included in version 2 backups. Legacy version 1 backups remain supported and preserve the current shop profile when they do not contain one. Internal database filenames and the application identifier remain unchanged so existing customer records stay available.
+
+## Import an old customer ledger
+
+Choose Add Customer > Import Excel / CSV instead. Supports `.xlsx` and UTF-8 `.csv`, one customer per import, with worksheet/header/column mapping, dated opening balance detection, row validation and confirmation before saving. Existing customers are preserved; import creates a new customer. PDFs and old `.xls` are not import inputs. See `docs/obsidian-guides/13 Excel and CSV Import.md` for details.

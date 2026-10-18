@@ -11,7 +11,7 @@ export function Modal({ title, subtitle, children, close, busy = false }: { titl
     {children}
   </dialog>;
 }
-export function PartyForm({ party, close, save }: { party?: Party; close: () => void; save: (party: Party) => Promise<void> }) {
+export function PartyForm({ party, close, save, importExcel }: { importExcel?: () => void; party?: Party; close: () => void; save: (party: Party) => Promise<void> }) {
   const [error, setError] = useState(''), [busy, setBusy] = useState(false);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError('');
@@ -26,6 +26,7 @@ export function PartyForm({ party, close, save }: { party?: Party; close: () => 
     } catch (e) { setError(String(e instanceof Error ? e.message : e)); } finally { setBusy(false); }
   }
   return <Modal title={party ? 'Edit customer' : 'Add a customer'} subtitle="Start with their details and existing Khata balance." close={close} busy={busy}>
+    {!party && importExcel && <div style={{padding: '0 24px 16px'}}><button type="button" className="button secondary" onClick={importExcel}>Import Excel / CSV instead</button></div>}
     <form onSubmit={submit}><div className="form-grid">
       <label className="full">Customer / contractor name<input autoFocus name="name" required maxLength={120} placeholder="e.g. Muhammad Aslam" defaultValue={party?.name}/></label>
       <label>Phone number<input name="phone" maxLength={50} placeholder="03xx xxxxxxx" defaultValue={party?.phone}/></label>
