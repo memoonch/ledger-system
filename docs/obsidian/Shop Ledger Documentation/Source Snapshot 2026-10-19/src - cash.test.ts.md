@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "src/cash.test.ts"
-sha256: "7f2ae562312df1922a99b26d14fdf0f1b3d81415c1c4c3b5a708b16565533ce1"
+sha256: "1eb8e5dc3ed9023707f8f730567245d577f5246958d1952519392af03e7d54fd"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: src/cash.test.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/cash.test.ts`.
-- SHA-256 of original file bytes: `7f2ae562312df1922a99b26d14fdf0f1b3d81415c1c4c3b5a708b16565533ce1`.
-- Original bytes: 9118; source lines: 34.
+- SHA-256 of original file bytes: `1eb8e5dc3ed9023707f8f730567245d577f5246958d1952519392af03e7d54fd`.
+- Original bytes: 9150; source lines: 34.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Complete source
@@ -34,7 +34,7 @@ describe('daily cash book',()=>{
  it('detects stale closing after a backdated correction but not a future movement',()=>{const data={settings:{opening_date:'2026-01-01',opening_paisa:0},movements:[linkedCash(tx,'customer','C')!],closings:[]};const day=cashDay(data,'2026-01-03');const closed={...data,closings:[{date:'2026-01-03',expected_paisa:day.expected,counted_paisa:90000,signature:day.signature,note:'Short 100',closed_at:'2026-01-03T20:00:00Z'}]};expect(cashDay(closed,'2026-01-03').stale).toBe(false);expect(cashDay({...closed,movements:[...closed.movements,manual]},'2026-01-03').stale).toBe(true);expect(cashDay({...closed,movements:[...closed.movements,{...manual,date:'2026-01-04'}]},'2026-01-03').stale).toBe(false);});
  it('synchronizes edits without duplicates and voids a reclassified noncash payment',()=>{let data=syncCash(emptyCash(),[tx],[tx.id],'customer','C');data=syncCash(data,[{...tx,credit_paisa:150000}],[tx.id],'customer','C');expect(data.movements).toHaveLength(1);expect(data.movements[0].in_paisa).toBe(150000);data=syncCash(data,[{...tx,payment_method:'Bank transfer'}],[tx.id],'customer','C');expect(data.movements[0].voided).toBe(1);});
  it('rejects invalid amounts and duplicate movements; requires drawer setup',()=>{expect(()=>validateCash({settings:null,movements:[{...manual,in_paisa:1}],closings:[]})).toThrow();expect(()=>validateCash({settings:null,movements:[manual,manual],closings:[]})).toThrow();expect(()=>cashDay(emptyCash(),'2026-01-02')).toThrow('opening balance');});
- it('writes full backup v4 and accepts older customer/supplier backups',()=>{const data={parties:[],transactions:[],cash:emptyCash()};const backup=backupData(data);expect(backup.version).toBe(4);expect(decodeBackup(JSON.stringify(backup)).cash).toEqual(emptyCash());expect(decodeBackup(JSON.stringify({format:'shop-ledger',version:3,data:{parties:[],transactions:[],suppliers:[],supplierTransactions:[]}})).cash).toBeUndefined();expect(()=>decodeBackup(JSON.stringify({format:'shop-ledger',version:4,data:{parties:[],transactions:[],suppliers:[],supplierTransactions:[]}}))).toThrow('cash book');});
+ it('writes full backup v4 and accepts older customer/supplier backups',()=>{const data={parties:[],transactions:[],cash:emptyCash()};const backup=backupData(data);expect(backup.version).toBe(5);expect(decodeBackup(JSON.stringify(backup)).cash).toEqual(emptyCash());expect(decodeBackup(JSON.stringify({format:'shop-ledger',version:3,data:{parties:[],transactions:[],suppliers:[],supplierTransactions:[]}})).cash).toBeUndefined();expect(()=>decodeBackup(JSON.stringify({format:'shop-ledger',version:4,data:{parties:[],transactions:[],suppliers:[],supplierTransactions:[]}}))).toThrow('cash book');});
 });
 describe('cash SQLite projections and restore',()=>{
  it('initializes cash schema without assuming old customer credits are cash',()=>{const db=database();expect(db.prepare('SELECT data FROM cash_settings').get()?.data).toBe('null');expect(db.prepare('SELECT count(*) AS n FROM cash_movements').get()?.n).toBe(0);db.close();});

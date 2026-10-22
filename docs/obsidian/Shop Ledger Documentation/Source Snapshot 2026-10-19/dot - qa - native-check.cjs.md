@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: .qa/native-check.cjs
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/.qa/native-check.cjs`.
 - SHA-256 of original file bytes: `64c0ba553708a8ae580e2e882efdd0012674e616163bd7b2b5b8237160f36d7d`.
 - Original bytes: 3807; source lines: 52.

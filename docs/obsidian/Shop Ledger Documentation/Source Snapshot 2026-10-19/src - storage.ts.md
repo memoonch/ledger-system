@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "src/storage.ts"
-sha256: "7f260b9690444aeba5db8598f908c67af8f598cd0527ec2594196a5f207c8168"
+sha256: "8d7f0737087df3261bb40932816da26abc13701a9fd223aed24b3f5f835d61e4"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: src/storage.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/storage.ts`.
-- SHA-256 of original file bytes: `7f260b9690444aeba5db8598f908c67af8f598cd0527ec2594196a5f207c8168`.
-- Original bytes: 15151; source lines: 184.
+- SHA-256 of original file bytes: `8d7f0737087df3261bb40932816da26abc13701a9fd223aed24b3f5f835d61e4`.
+- Original bytes: 15297; source lines: 184.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Exported symbols
@@ -60,8 +60,8 @@ export async function saveParty(party: Party, current: Store) {
     localStorage.setItem(KEY, JSON.stringify(data)); return;
   }
   await (await db()).execute(
-    'INSERT INTO parties (id,name,phone,address,opening_date,opening_paisa) VALUES ($1,$2,$3,$4,$5,$6) ON CONFLICT(id) DO UPDATE SET name=excluded.name,phone=excluded.phone,address=excluded.address,opening_date=excluded.opening_date,opening_paisa=excluded.opening_paisa',
-    [party.id,party.name,party.phone,party.address,party.opening_date,party.opening_paisa]);
+    'INSERT INTO parties (id,name,phone,address,opening_date,opening_paisa,opening_due_date) VALUES ($1,$2,$3,$4,$5,$6,$7) ON CONFLICT(id) DO UPDATE SET name=excluded.name,phone=excluded.phone,address=excluded.address,opening_date=excluded.opening_date,opening_paisa=excluded.opening_paisa,opening_due_date=excluded.opening_due_date',
+    [party.id,party.name,party.phone,party.address,party.opening_date,party.opening_paisa,party.opening_due_date??'']);
 }
 export async function saveTransaction(tx: LedgerTransaction, party: Party) {
   validateTransaction(tx, party);
@@ -72,8 +72,8 @@ export async function saveTransaction(tx: LedgerTransaction, party: Party) {
     localStorage.setItem(KEY, JSON.stringify(data)); return;
   }
   await (await db()).execute(
-    'INSERT INTO ledger_transactions (id,party_id,date,description,brand,vehicle_number,bill_number,quantity_milli,rate_paisa,debit_paisa,credit_paisa,created_at,payment_method) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) ON CONFLICT(id) DO UPDATE SET date=excluded.date,description=excluded.description,brand=excluded.brand,vehicle_number=excluded.vehicle_number,bill_number=excluded.bill_number,quantity_milli=excluded.quantity_milli,rate_paisa=excluded.rate_paisa,debit_paisa=excluded.debit_paisa,credit_paisa=excluded.credit_paisa,payment_method=excluded.payment_method',
-    [tx.id,tx.party_id,tx.date,tx.description,tx.brand,tx.vehicle_number,tx.bill_number,tx.quantity_milli,tx.rate_paisa,tx.debit_paisa,tx.credit_paisa,tx.created_at,tx.payment_method??'']);
+    'INSERT INTO ledger_transactions (id,party_id,date,description,brand,vehicle_number,bill_number,quantity_milli,rate_paisa,debit_paisa,credit_paisa,created_at,payment_method,due_date) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) ON CONFLICT(id) DO UPDATE SET date=excluded.date,description=excluded.description,brand=excluded.brand,vehicle_number=excluded.vehicle_number,bill_number=excluded.bill_number,quantity_milli=excluded.quantity_milli,rate_paisa=excluded.rate_paisa,debit_paisa=excluded.debit_paisa,credit_paisa=excluded.credit_paisa,payment_method=excluded.payment_method,due_date=excluded.due_date',
+    [tx.id,tx.party_id,tx.date,tx.description,tx.brand,tx.vehicle_number,tx.bill_number,tx.quantity_milli,tx.rate_paisa,tx.debit_paisa,tx.credit_paisa,tx.created_at,tx.payment_method??'',tx.due_date??'']);
 }
 export async function restoreStore(value: unknown) {
   const validated = validateStore(value);

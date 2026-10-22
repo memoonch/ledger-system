@@ -2,7 +2,7 @@
 title: "Code map and API"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-19"
+updated: "2026-10-20"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
@@ -86,3 +86,9 @@ See [[12 Dependencies and Source Manifest]] for the complete file-by-file source
 `package.json` defines commands and dependency ranges; `package-lock.json` locks npm versions. `Cargo.toml`/`Cargo.lock` define Rust dependencies. `vite.config.ts` fixes port 1420 and ignores Rust/QA folders in the watcher. `vitest.config.ts` discovers only `src/**/*.test.ts`. `tauri.conf.json` defines native title/window/CSP/bundling. `capabilities/default.json` defines plugin permissions.
 
 Generated artifacts such as `dist/`, `target/`, `node_modules/` and Tauri schemas are not source-edit targets.
+
+
+
+## 0.1.5 — Advanced search and collections (2026-10-19)
+
+Topbar Ctrl+K search, archived-account jumps, outstanding customer dues with FIFO aging and optional actual due dates. Migration 7 adds blank-default due-date fields; backups are now v5 with v1–v4 compatibility. See [[Alfazal Ledgher System/Shop Ledger Documentation/18 Advanced Search and Outstanding Dues]] for behavior, source map and verification.

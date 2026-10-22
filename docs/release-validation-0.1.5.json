@@ -1,0 +1,67 @@
+{
+  "product": "Shop Ledger",
+  "version": "0.1.5",
+  "checked_at": "2026-10-19T01:30:16.385044+05:00",
+  "installer": {
+    "file": "Shop Ledger_0.1.5_x64-setup.exe",
+    "bytes": 220788848,
+    "sha256": "4ec84afef9007fe0d23ab403c10bd8e1e60a8ca2c4e8a364c1ea0443ad98db23",
+    "signature": "NotSigned",
+    "offline_webview2_included": true
+  },
+  "upgrade": {
+    "from": "0.1.4",
+    "to": "0.1.5",
+    "exit_code": 0,
+    "migration_7_applied": true,
+    "existing_record_counts": {
+      "parties": 1,
+      "ledger_transactions": 15,
+      "shop_profile": 1,
+      "suppliers": 0,
+      "supplier_transactions": 0,
+      "cash_settings": 1,
+      "cash_movements": 0,
+      "cash_closings": 0
+    },
+    "all_existing_customer_supplier_profile_and_cash_values_identical": true,
+    "sqlite_integrity": "ok",
+    "safety_database_copy_created": true
+  },
+  "native_search_checks": {
+    "passed": true,
+    "version": "0.1.5",
+    "native_due_dates_saved": true,
+    "reload_persistence": true,
+    "global_search_jump": true,
+    "dues_dashboard": true
+  },
+  "automated_tests": {
+    "files": 8,
+    "passed": 77,
+    "failed": 0
+  },
+  "browser_checks": [
+    "Ctrl+K search and Escape",
+    "archived customer bill jump and highlighted row",
+    "archived supplier vehicle jump",
+    "highest balance and actual due-date sorting",
+    "recorded overdue filter",
+    "as-of ledger navigation",
+    "due-date form save",
+    "unsaved-dialog shortcut guard",
+    "A4 print export",
+    "cash-book full regression and v5 backup reload"
+  ],
+  "documentation": {
+    "notes": 118,
+    "current_source_snapshots": 57,
+    "unresolved_links": 0
+  },
+  "limits": [
+    "FIFO aging estimates how payments reduce oldest charges; no invoice settlement allocation.",
+    "Existing due dates remain blank; only explicitly dated remaining charges count overdue.",
+    "Search shows the first 50 matches and the total; no fuzzy typo matching.",
+    "Installer is unsigned."
+  ]
+}

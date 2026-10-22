@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "src/forms.tsx"
-sha256: "5e38c5e3f5bb359df287ee7a12e3a6884004a87da74ef51caadf4b0aed069dda"
+sha256: "89177164164ab659b4f6243c9c282754c1bc33a2e9f097e104dcacfd766553dc"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: src/forms.tsx
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/forms.tsx`.
-- SHA-256 of original file bytes: `5e38c5e3f5bb359df287ee7a12e3a6884004a87da74ef51caadf4b0aed069dda`.
-- Original bytes: 11184; source lines: 90.
+- SHA-256 of original file bytes: `89177164164ab659b4f6243c9c282754c1bc33a2e9f097e104dcacfd766553dc`.
+- Original bytes: 11899; source lines: 92.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Exported symbols
@@ -45,7 +45,7 @@ export function PartyForm({ party, close, save, importExcel, archive, remove }: 
     try {
       setBusy(true);
       await save({
-        archived: party?.archived ?? 0, id: party?.id ?? crypto.randomUUID(), name: String(data.get('name')).trim(), phone: String(data.get('phone')).trim(), address: String(data.get('address')).trim(),
+        opening_due_date:String(data.get('opening_due_date')??''), archived: party?.archived ?? 0, id: party?.id ?? crypto.randomUUID(), name: String(data.get('name')).trim(), phone: String(data.get('phone')).trim(), address: String(data.get('address')).trim(),
         opening_date: String(data.get('opening_date')), opening_paisa: wholeRupees(String(data.get('opening'))) * (data.get('side') === 'CR' ? -1 : 1),
       });
       close();
@@ -61,6 +61,7 @@ export function PartyForm({ party, close, save, importExcel, archive, remove }: 
       <label className="full">Address<input name="address" maxLength={300} placeholder="Site or customer address" defaultValue={party?.address}/></label>
       <label>Opening balance (PKR)<input name="opening" required inputMode="numeric" defaultValue={String(Math.round(Math.abs(party?.opening_paisa ?? 0) / 100))}/></label>
       <label>Balance type<select name="side" defaultValue={(party?.opening_paisa ?? 0) < 0 ? 'CR' : 'DR'}><option value="DR">DR — Customer owes us</option><option value="CR">CR — Customer advance</option></select></label>
+      <label className="full">Opening balance due date (optional)<input name="opening_due_date" type="date" min="1900-01-01" max="9999-12-31" defaultValue={party?.opening_due_date}/><small>For a debit opening balance only. Leave blank if no due date was agreed.</small></label>
     </div><p className="form-note">Use zero if there is no previous balance. Transactions start on or after this date.</p>
     {error && <p className="error" role="alert">{error}</p>}
     <div className="modal-foot"><button type="button" className="button secondary" onClick={close} disabled={busy}>Cancel</button><button className="button primary" disabled={busy}><Check size={16}/>{busy ? 'Saving…' : 'Save customer'}</button></div></form>
@@ -84,7 +85,7 @@ export function TransactionForm({ party, transaction, profile, transactions, clo
       if (computed <= 0) throw new Error('Enter an amount greater than zero.');
       setBusy(true);
       await save({
-        payment_method:paymentMethod, id: transaction?.id ?? crypto.randomUUID(), party_id: party.id,
+        due_date:side==='DR'&&!paymentMethod?String(data.get('due_date')??''):'', payment_method:paymentMethod, id: transaction?.id ?? crypto.randomUUID(), party_id: party.id,
         date: String(data.get('date')), description: String(data.get('description')).trim(), brand: String(data.get('brand')).trim(),
         vehicle_number: String(data.get('vehicle')).trim(), bill_number: String(data.get('bill')).trim(),
         quantity_milli: method === 'material' ? decimal(quantity, 3) : 0, rate_paisa: method === 'material' ? wholeRupees(rate) : 0,
@@ -105,6 +106,7 @@ export function TransactionForm({ party, transaction, profile, transactions, clo
         <label className="full">Payment method<select aria-label="Customer payment method" value={paymentMethod} onChange={e=>{setPaymentMethod(e.target.value as typeof paymentMethod);if(e.target.value)setMethod('amount');}}><option value="">Not a payment / unspecified</option><option>Cash</option><option>Cheque</option><option>Bank transfer</option></select><small>Choose Cash only for money received or refunded at the counter. Material returns are not cash receipts.</small></label><label className="full">Amount calculation<select value={method} onChange={e => {setMethod(e.target.value);if(e.target.value==='material')setPaymentMethod('');}}><option value="material">Quantity × rate</option><option value="amount">Enter amount directly</option></select></label>
         {method === 'material' ? <><label>Quantity<input required inputMode="decimal" placeholder="0.000" value={quantity} onChange={e => setQuantity(e.target.value)}/></label><label>Rate per unit (PKR)<input required inputMode="numeric" placeholder="0" value={rate} onChange={e => setRate(e.target.value)}/></label></> : <label className="full">Amount (PKR)<input required inputMode="numeric" placeholder="0" value={amount} onChange={e => setAmount(e.target.value)}/></label>}
       </div>
+      {side==='DR'&&!paymentMethod&&<div className="form-grid"><label className="full">Payment due date (optional)<input name="due_date" type="date" min={party.opening_date} max="9999-12-31" defaultValue={transaction?.due_date}/><small>Leave blank if no payment date was agreed.</small></label></div>}
       <div className="calculation"><span>{side === 'DR' ? 'Debit to customer' : 'Credit to customer'}<small>{method === 'material' ? 'Quantity × rate, rounded to the nearest rupee' : 'Payment, carriage, or other amount'}</small></span><strong className={side === 'DR' ? 'debit-text' : 'credit-text'}>Rs {money(computed)} {side}</strong></div>
       {transaction && <p className="form-note">Saving recalculates all subsequent balances, including statements.</p>}
       {error && <p className="error" role="alert">{error}</p>}

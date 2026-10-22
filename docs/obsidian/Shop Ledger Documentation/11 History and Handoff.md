@@ -2,7 +2,7 @@
 title: "Development history and handoff"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-19"
+updated: "2026-10-20"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
@@ -87,3 +87,23 @@ Owner approved Supplier Khata with the same brand, vehicle, bill, quantity, rate
 ## Release 0.1.4 — Daily Cash Book / Roznamcha
 
 Owner requested cash-in/out, expenses and expected-versus-counted closing. Implemented explicit customer payment methods without guessing old cash receipts, supplier cash projections, dated drawer setup, expenses/manual movements, voiding and stale closing detection. Added migration 6 and backup version 4. See [[17 Daily Cash Book and Expenses]].
+
+
+## 0.1.5 — Advanced search and collections (2026-10-19)
+
+Topbar Ctrl+K search, archived-account jumps, outstanding customer dues with FIFO aging and optional actual due dates. Migration 7 adds blank-default due-date fields; backups are now v5 with v1–v4 compatibility. See [[Alfazal Ledgher System/Shop Ledger Documentation/18 Advanced Search and Outstanding Dues]] for behavior, source map and verification.
+
+
+## 0.1.6 — Separate new-computer installer (2026-10-19)
+
+New green/gold ledger icon for app/installer/uninstaller and a dedicated data-free distribution folder. Existing installed data is untouched. See [[Alfazal Ledgher System/Shop Ledger Documentation/19 New Computer Installer and App Icon]].
+
+
+## 0.1.7 — Center numeric PDF columns (2026-10-20)
+
+Customer and supplier PDF exports center Quantity, Rate, Debit, Credit and Balance, including headers, opening/brought-forward balances and numeric totals. Date, Description, Brand, Vehicle no. and Bill no. retain their existing alignment. Only `src/pdf.ts` table alignment changes; data and schema remain unchanged. Both rendered A4 sample exports were visually checked.
+
+
+## 0.1.8 — PDF closing summary (2026-10-20)
+
+Replaces the final ledger totals row with a compact bottom-right themed summary box, spanning the Debit/Credit/Balance columns with one outer border: Total Debit, Total Credit and Current Balance with Debit, Credit or Settled. Totals remain for the selected period; balance includes opening/brought-forward activity. Customer/supplier colors preserve their existing meaning. The summary stays together on one page, moving to a new page when necessary; page numbering includes that page. Ledger numeric columns remain centered. Customer/supplier sample PDFs visually checked; existing long-ledger test verifies the summary is not split.

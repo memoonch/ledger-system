@@ -107,3 +107,8 @@ Latest suite: **56 passing tests in six files**, including 13 supplier tests. Br
 ## Daily cash book update
 
 Latest suite: **67 passing tests in seven files**. Browser cash workflow, reconciliation and sample A4 print passed. See [[17 Daily Cash Book and Expenses]].
+
+
+## 0.1.5 — Advanced search and collections (2026-10-19)
+
+Topbar Ctrl+K search, archived-account jumps, outstanding customer dues with FIFO aging and optional actual due dates. Migration 7 adds blank-default due-date fields; backups are now v5 with v1–v4 compatibility. See [[Alfazal Ledgher System/Shop Ledger Documentation/18 Advanced Search and Outstanding Dues]] for behavior, source map and verification.

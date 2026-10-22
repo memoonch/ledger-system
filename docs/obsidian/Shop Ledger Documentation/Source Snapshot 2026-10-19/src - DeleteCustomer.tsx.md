@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src/DeleteCustomer.tsx
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/DeleteCustomer.tsx`.
 - SHA-256 of original file bytes: `c5b4467fb97cc5b8b9ac6efc97ea20174ed2d6f7d1f52cca4fc6ed0a02ec16c1`.
 - Original bytes: 1996; source lines: 15.

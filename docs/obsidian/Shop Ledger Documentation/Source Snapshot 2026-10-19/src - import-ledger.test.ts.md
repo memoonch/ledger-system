@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src/import-ledger.test.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/import-ledger.test.ts`.
 - SHA-256 of original file bytes: `d408baa34d183449fa226e8dbcf427694fae3df91dc828768c8be58cc68309b8`.
 - Original bytes: 4947; source lines: 39.

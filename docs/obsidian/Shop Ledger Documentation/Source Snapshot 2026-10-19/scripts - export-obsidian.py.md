@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "scripts/export-obsidian.py"
-sha256: "032828b47a3a8fe3ae7ac23f0dbfc4702626b96c020b4da6e7dbe8f204852e2c"
+sha256: "51f4f8509b830cdbfcbf55e6bc13292f6dd62ccf3f7e873d7bd9c56f6208a680"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: scripts/export-obsidian.py
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/scripts/export-obsidian.py`.
-- SHA-256 of original file bytes: `032828b47a3a8fe3ae7ac23f0dbfc4702626b96c020b4da6e7dbe8f204852e2c`.
-- Original bytes: 13034; source lines: 218.
+- SHA-256 of original file bytes: `51f4f8509b830cdbfcbf55e6bc13292f6dd62ccf3f7e873d7bd9c56f6208a680`.
+- Original bytes: 13287; source lines: 218.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Complete source
@@ -82,7 +82,7 @@ def source_files() -> list[Path]:
         "index.html", "tsconfig.json", "vite.config.ts", "vitest.config.ts",
         "src-tauri/Cargo.toml", "src-tauri/Cargo.lock", "src-tauri/build.rs",
         "src-tauri/tauri.conf.json", "src-tauri/capabilities/default.json",
-        "assets/icon.svg", "scripts/export-obsidian.py",
+        "assets/icon.svg", "scripts/export-obsidian.py", "scripts/package-new-computer.py",
     ]
     files = [ROOT / name for name in names if (ROOT / name).is_file()]
     files += [p for p in (ROOT / "src").rglob("*") if p.is_file() and p.suffix in {".ts", ".tsx", ".css"}]

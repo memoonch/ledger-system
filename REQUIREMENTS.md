@@ -56,3 +56,8 @@ Separate supplier accounts, contact details, dated openings, purchases with mult
 ## Daily cash book and expenses
 
 Track physical customer cash receipts/refunds, supplier cash payments and petty-cash expenses. Exclude cheque/bank/material movements. Configure dated opening drawer cash; compare expected closing with actual count, show shortage/excess and flag prior closings affected by edits. Preserve cash history across account deletion and include it in backups.
+
+
+## Advanced search and collections (0.1.5)
+
+Use topbar search or Ctrl+K to find customer/supplier accounts, bill and vehicle numbers, descriptions and active cash entries across archived and active records. Outstanding dues shows positive customer balances with as-of/status/age/minimum/overdue filters, highest-balance or oldest-date sorting, ledger jumps and A4 printing. Optional opening/charge due dates support actual overdue amounts; FIFO aging is an estimate, not invoice allocation. SQLite migration 7 and backup v5 preserve existing records and accept older backups.

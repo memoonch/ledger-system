@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src/pdf.test.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/pdf.test.ts`.
 - SHA-256 of original file bytes: `e15222cdb1ba48c1b7704d6dfeb799c8e555c0ca4f6a250094382ed7b18c3ecc`.
 - Original bytes: 1967; source lines: 32.

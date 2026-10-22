@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: vitest.config.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/vitest.config.ts`.
 - SHA-256 of original file bytes: `ee17157b192e07deaee880f58d07d0f7aa2144ae409afb0f9a6e0e462264de35`.
 - Original bytes: 142; source lines: 2.

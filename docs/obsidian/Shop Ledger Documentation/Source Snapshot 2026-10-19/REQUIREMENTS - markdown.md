@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "REQUIREMENTS.md"
-sha256: "41dc55da11ad4c6b5682c8c3c6e7ec9536f4696746cdda316b0d341ccf6db95a"
+sha256: "863af9fef52dc460bcd8f05452a6ae8794c3909f8c8f0b24867ab05957ad393f"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: REQUIREMENTS.md
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/REQUIREMENTS.md`.
-- SHA-256 of original file bytes: `41dc55da11ad4c6b5682c8c3c6e7ec9536f4696746cdda316b0d341ccf6db95a`.
-- Original bytes: 3948; source lines: 58.
+- SHA-256 of original file bytes: `863af9fef52dc460bcd8f05452a6ae8794c3909f8c8f0b24867ab05957ad393f`.
+- Original bytes: 4531; source lines: 63.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Complete source
@@ -78,4 +78,9 @@ Separate supplier accounts, contact details, dated openings, purchases with mult
 ## Daily cash book and expenses
 
 Track physical customer cash receipts/refunds, supplier cash payments and petty-cash expenses. Exclude cheque/bank/material movements. Configure dated opening drawer cash; compare expected closing with actual count, show shortage/excess and flag prior closings affected by edits. Preserve cash history across account deletion and include it in backups.
+
+
+## Advanced search and collections (0.1.5)
+
+Use topbar search or Ctrl+K to find customer/supplier accounts, bill and vehicle numbers, descriptions and active cash entries across archived and active records. Outstanding dues shows positive customer balances with as-of/status/age/minimum/overdue filters, highest-balance or oldest-date sorting, ledger jumps and A4 printing. Optional opening/charge due dates support actual overdue amounts; FIFO aging is an estimate, not invoice allocation. SQLite migration 7 and backup v5 preserve existing records and accept older backups.
 ```

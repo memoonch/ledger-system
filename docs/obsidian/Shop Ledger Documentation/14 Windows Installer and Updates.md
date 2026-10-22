@@ -2,7 +2,7 @@
 title: "Windows installer and updates"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-19"
+updated: "2026-10-20"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
@@ -48,3 +48,13 @@ Adds migration 5, supplier ledgers and backup version 3. Native purchase/payment
 ## Daily cash book update
 
 Release 0.1.4 adds migration 6 and the cash book. See [[17 Daily Cash Book and Expenses]] and docs/release-validation-0.1.4.json for completed native checks.
+
+
+## 0.1.5 — Advanced search and collections (2026-10-19)
+
+Topbar Ctrl+K search, archived-account jumps, outstanding customer dues with FIFO aging and optional actual due dates. Migration 7 adds blank-default due-date fields; backups are now v5 with v1–v4 compatibility. See [[Alfazal Ledgher System/Shop Ledger Documentation/18 Advanced Search and Outstanding Dues]] for behavior, source map and verification.
+
+
+## 0.1.6 — Separate new-computer installer (2026-10-19)
+
+New green/gold ledger icon for app/installer/uninstaller and a dedicated data-free distribution folder. Existing installed data is untouched. See [[Alfazal Ledgher System/Shop Ledger Documentation/19 New Computer Installer and App Icon]].

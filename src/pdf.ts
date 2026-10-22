@@ -31,13 +31,14 @@ export function statementPdf(party: Party, transactions: LedgerTransaction[], fr
   autoTable(doc, {
     startY: Math.max(y + 16, detailsY + detailLines.length * 4 + 6), margin: { left: 12, right: 12, bottom: 23, top: 15 },
     head: [['Date', 'Description', 'Brand', 'Vehicle no.', 'Bill no.', 'Quantity', 'Rate', 'Debit (DR)', 'Credit (CR)', 'Balance']],
-    body, foot: [[{ content: 'Period totals / Closing balance', colSpan: 7, styles: { halign: 'left' } }, money(statement.debit), money(statement.credit), balanceText(statement.closing)]],
-    showFoot: 'lastPage', footStyles: { fillColor: [231, 240, 234], textColor: [45, 52, 48], fontStyle: 'bold', halign: 'right' },
+    body,
     theme: 'grid', styles: { fontSize: 8, cellPadding: 2.5, lineColor: [222, 228, 224], textColor: [45, 52, 48], overflow: 'linebreak' },
     headStyles: { fillColor: [22, 77, 63], textColor: 255, fontStyle: 'bold' },
     alternateRowStyles: { fillColor: [247, 249, 247] },
-    columnStyles: { 0: { cellWidth: 24 }, 1: { cellWidth: 45 }, 5: { halign: 'right' }, 6: { halign: 'right' }, 7: { halign: 'right' }, 8: { halign: 'right' }, 9: { halign: 'right', cellWidth: 32 } },
+    columnStyles: { 0: { cellWidth: 24 }, 1: { cellWidth: 45 }, 5: { halign: 'center' }, 6: { halign: 'center' }, 7: { halign: 'center' }, 8: { halign: 'center' }, 9: { halign: 'center', cellWidth: 32 } },
     didParseCell: data => {
+      // Apply to headers, entries, opening balances and numeric totals alike.
+      if (data.column.index >= 5) data.cell.styles.halign = 'center';
       if (data.section === 'head') return;
       const text = data.cell.text.join(' ');
       if (data.column.index === 9) {
@@ -45,6 +46,28 @@ export function statementPdf(party: Party, transactions: LedgerTransaction[], fr
         else if (text.endsWith(supplier ? ' DR' : ' CR')) data.cell.styles.textColor = [32, 128, 78];
       } else if (data.column.index === 7 && text !== '-' && text !== '' && text !== '0') data.cell.styles.textColor = supplier ? [32,128,78] : [185, 57, 57];
       else if (data.column.index === 8 && text !== '-' && text !== '' && text !== '0') data.cell.styles.textColor = supplier ? [185,57,57] : [32, 128, 78];
+    },
+  });
+  const table = (doc as jsPDF & { lastAutoTable: { finalY: number; head: { cells: Record<number, { x: number }> }[] } }).lastAutoTable;
+  const summaryLeft = table.head[0].cells[7].x, summaryWidth = 285 - summaryLeft;
+  const red: [number, number, number] = [185, 57, 57], green: [number, number, number] = [32, 128, 78];
+  const balanceColor = statement.closing === 0 ? [45, 52, 48] as [number, number, number] : (supplier ? statement.closing < 0 : statement.closing > 0) ? red : green;
+  autoTable(doc, {
+    startY: table.finalY + 4, margin: { left: summaryLeft, right: 12, top: 15, bottom: 23 },
+    pageBreak: 'avoid', theme: 'plain', tableWidth: summaryWidth, tableLineColor: [22, 77, 63], tableLineWidth: 0.3,
+    styles: { font: 'helvetica', fontSize: 9, cellPadding: 2.2, minCellHeight: 8, textColor: [45, 52, 48], lineWidth: 0, valign: 'middle' },
+    columnStyles: { 0: { cellWidth: summaryWidth * 0.40, fontStyle: 'bold' }, 1: { cellWidth: summaryWidth * 0.07, halign: 'center', cellPadding: 0 }, 2: { cellWidth: summaryWidth * 0.34, halign: 'right' }, 3: { cellWidth: summaryWidth * 0.19, halign: 'center', cellPadding: 1 } },
+    body: [
+      ['Total Debit', 'Rs', money(statement.debit), ''],
+      ['Total Credit', 'Rs', money(statement.credit), ''],
+      ['Current Balance', 'Rs', money(Math.abs(statement.closing)), statement.closing > 0 ? 'Debit' : statement.closing < 0 ? 'Credit' : 'Settled'],
+    ],
+    didParseCell: data => {
+      if (data.row.index === 2) {
+        data.cell.styles.fillColor = [231, 240, 234]; data.cell.styles.fontStyle = 'bold';
+        data.cell.styles.fontSize = data.column.index === 3 ? 9 : 10; data.cell.styles.minCellHeight = 13;
+        data.cell.styles.textColor = data.column.index === 0 ? [22, 77, 63] : balanceColor;
+      } else if (data.column.index > 0) data.cell.styles.textColor = data.row.index === 0 ? (supplier ? green : red) : (supplier ? red : green);
     },
   });
   const count = doc.getNumberOfPages();

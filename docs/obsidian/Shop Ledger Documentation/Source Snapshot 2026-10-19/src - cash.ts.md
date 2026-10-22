@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src/cash.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/cash.ts`.
 - SHA-256 of original file bytes: `1d8377a01238047921fea03f3add3c35e42fc491e9250c087cab91e490ecf3ab`.
 - Original bytes: 5485; source lines: 43.

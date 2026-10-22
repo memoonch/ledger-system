@@ -5,15 +5,15 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "package.json"
-sha256: "5570eae70a515fdd2d691852610a9527d14de05319a00e9bb304685366e1949f"
+sha256: "515d23fc5ea350ab7309453c7434b43b5f4c33fd50af4a611be450ebd0e5ea66"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: package.json
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/package.json`.
-- SHA-256 of original file bytes: `5570eae70a515fdd2d691852610a9527d14de05319a00e9bb304685366e1949f`.
+- SHA-256 of original file bytes: `515d23fc5ea350ab7309453c7434b43b5f4c33fd50af4a611be450ebd0e5ea66`.
 - Original bytes: 1067; source lines: 42.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
@@ -23,7 +23,7 @@ tags: [shop-ledger, development]
 {
   "name": "alfazal-ledger",
   "private": true,
-  "version": "0.1.4",
+  "version": "0.1.6",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",

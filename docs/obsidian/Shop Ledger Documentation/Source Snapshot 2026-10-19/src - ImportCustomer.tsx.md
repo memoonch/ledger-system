@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src/ImportCustomer.tsx
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/ImportCustomer.tsx`.
 - SHA-256 of original file bytes: `0a372d7bb821151da09f67da275a9a74002d97eec00def15d2899ec51487559b`.
 - Original bytes: 8311; source lines: 52.

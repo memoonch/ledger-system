@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src/suppliers.test.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/suppliers.test.ts`.
 - SHA-256 of original file bytes: `48d27d932ea6a613d6d1c7120b531465545eec3ef2a4abab44d3939299686013`.
 - Original bytes: 8288; source lines: 28.

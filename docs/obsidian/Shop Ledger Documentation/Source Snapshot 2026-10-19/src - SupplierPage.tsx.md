@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "src/SupplierPage.tsx"
-sha256: "4e0ae8d5528389ad6ef2a59717b1d99a56004a404dba7d0cfb3fe56374321800"
+sha256: "8d386c2d2d7f679fc4b977fbe825dfc1ad392e384498cf1af15cde41bc2e4015"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: src/SupplierPage.tsx
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/SupplierPage.tsx`.
-- SHA-256 of original file bytes: `4e0ae8d5528389ad6ef2a59717b1d99a56004a404dba7d0cfb3fe56374321800`.
-- Original bytes: 13513; source lines: 48.
+- SHA-256 of original file bytes: `8d386c2d2d7f679fc4b977fbe825dfc1ad392e384498cf1af15cde41bc2e4015`.
+- Original bytes: 13987; source lines: 50.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Exported symbols
@@ -30,12 +30,14 @@ import { balanceText, dateText, ledger, money, supplierBalanceClass, supplierBal
 import { loadStore, saveSupplier, saveSupplierEntries, setSupplierArchived, deleteSupplier, saveFile, desktop } from './storage';
 import { SupplierForm, SupplierBillForm, SupplierPaymentForm } from './supplier-forms';
 import DeleteCustomer from './DeleteCustomer';
+import {type JumpTarget} from './discovery';
 import { defaultProfile } from './profile';
 type Dialog={type:'account';supplier?:Supplier}|{type:'bill';kind:'purchase'|'return';group?:string}|{type:'payment';entry?:SupplierTransaction}|{type:'delete';supplier:Supplier};
-export default function SupplierPage({store,refresh,backup}:{store:Store;refresh:()=>Promise<void>;backup:(data:Store,name:string)=>Promise<boolean>}) {
+export default function SupplierPage({store,refresh,backup,jump}:{jump?:JumpTarget;store:Store;refresh:()=>Promise<void>;backup:(data:Store,name:string)=>Promise<boolean>}) {
+ useEffect(()=>{if(jump?.entryId){const frame=requestAnimationFrame(()=>document.getElementById('supplier-entry-'+jump.entryId)?.scrollIntoView({block:'center'}));return()=>cancelAnimationFrame(frame);}},[jump]);
  const suppliers=store.suppliers??[],transactions=store.supplierTransactions??[],profile=store.profile??defaultProfile;
- const [selected,setSelected]=useState(''),[view,setView]=useState('active'),[search,setSearch]=useState(''),[dialog,setDialog]=useState<Dialog|null>(null);
- const [from,setFrom]=useState(''),[to,setTo]=useState(''),[period,setPeriod]=useState('all'),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false);
+ const [selected,setSelected]=useState(jump?.accountId??''),[view,setView]=useState(jump?'all':'active'),[search,setSearch]=useState(''),[dialog,setDialog]=useState<Dialog|null>(null);
+ const [from,setFrom]=useState(jump?.entryId?jump.date??'':''),[to,setTo]=useState(jump?.entryId?jump.date??'':''),[period,setPeriod]=useState(jump?.entryId?'custom':'all'),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false);
  const summaries=useMemo(()=>suppliers.map(s=>({supplier:s,balance:ledger(s,transactions).closing})).sort((a,b)=>a.supplier.name.localeCompare(b.supplier.name)),[store]);
  const visible=summaries.filter(({supplier:s})=>view==='all'||(view==='archived'?s.archived===1:s.archived!==1));
  useEffect(()=>{if(!visible.some(x=>x.supplier.id===selected))setSelected(visible[0]?.supplier.id??'');},[store,view,selected]);
@@ -60,7 +62,7 @@ export default function SupplierPage({store,refresh,backup}:{store:Store;refresh
  <div className="statement-meta"><span>{from||to?`${from?dateText(from):'Beginning'} — ${to?dateText(to):'Latest entry'}`:'Complete supplier account history'}</span><span>{statement.rows.length} entries</span></div>
  <div className="table-scroll"><table className="ledger-table"><thead><tr><th>Date</th><th>Description</th><th>Brand</th><th>Vehicle no.</th><th>Bill no.</th><th className="numeric">Quantity</th><th className="numeric">Rate</th><th className="numeric">Debit (DR)</th><th className="numeric">Credit (CR)</th><th className="numeric">Balance</th><th className="no-print">Edit</th></tr></thead><tbody>
  {from&&<tr className="opening-row"><td>{dateText(from)}</td><td colSpan={8}>Balance brought forward</td><td className={'numeric '+supplierBalanceClass(statement.broughtForward)}>{balanceText(statement.broughtForward)}</td><td className="no-print"/></tr>}{statement.openingInPeriod&&<tr className="opening-row"><td>{dateText(supplier.opening_date)}</td><td colSpan={8}>Opening balance</td><td className={'numeric '+supplierBalanceClass(supplier.opening_paisa)}>{balanceText(supplier.opening_paisa)}</td><td className="no-print"/></tr>}
- {statement.rows.map(row=>{const tx=row as SupplierTransaction&{balance:number};return <tr key={tx.id}><td>{dateText(tx.date)}</td><td className="description-cell">{tx.description}{tx.payment_method&&<small className="supplier-payment-details">{tx.payment_method}{tx.reference?' · '+tx.reference:''}</small>}</td><td>{tx.brand||'—'}</td><td>{tx.vehicle_number||'—'}</td><td>{tx.bill_number||'—'}</td><td className="numeric">{tx.quantity_milli?(tx.quantity_milli/1000).toLocaleString('en-PK',{maximumFractionDigits:3})+' '+tx.unit:'—'}</td><td className="numeric">{tx.rate_paisa?money(tx.rate_paisa):'—'}</td><td className="numeric credit-text">{tx.debit_paisa?money(tx.debit_paisa):'—'}</td><td className="numeric debit-text">{tx.credit_paisa?money(tx.credit_paisa):'—'}</td><td className={'numeric balance-cell '+supplierBalanceClass(tx.balance)}>{balanceText(tx.balance)}</td><td className="no-print"><button className="row-edit" aria-label={'Edit '+tx.entry_type+' '+tx.bill_number} onClick={()=>edit(tx)}><Pencil size={13}/></button></td></tr>;})}
+ {statement.rows.map(row=>{const tx=row as SupplierTransaction&{balance:number};return <tr key={tx.id} id={'supplier-entry-'+tx.id} className={jump?.entryId===tx.id?'search-highlight':''}><td>{dateText(tx.date)}</td><td className="description-cell">{tx.description}{tx.payment_method&&<small className="supplier-payment-details">{tx.payment_method}{tx.reference?' · '+tx.reference:''}</small>}</td><td>{tx.brand||'—'}</td><td>{tx.vehicle_number||'—'}</td><td>{tx.bill_number||'—'}</td><td className="numeric">{tx.quantity_milli?(tx.quantity_milli/1000).toLocaleString('en-PK',{maximumFractionDigits:3})+' '+tx.unit:'—'}</td><td className="numeric">{tx.rate_paisa?money(tx.rate_paisa):'—'}</td><td className="numeric credit-text">{tx.debit_paisa?money(tx.debit_paisa):'—'}</td><td className="numeric debit-text">{tx.credit_paisa?money(tx.credit_paisa):'—'}</td><td className={'numeric balance-cell '+supplierBalanceClass(tx.balance)}>{balanceText(tx.balance)}</td><td className="no-print"><button className="row-edit" aria-label={'Edit '+tx.entry_type+' '+tx.bill_number} onClick={()=>edit(tx)}><Pencil size={13}/></button></td></tr>;})}
  {!statement.rows.length&&<tr><td colSpan={11} className="empty-ledger">No supplier transactions in this period.</td></tr>}</tbody><tfoot><tr><td colSpan={7}>Period totals / Closing balance</td><td className="numeric credit-text">{money(statement.debit)}</td><td className="numeric debit-text">{money(statement.credit)}</td><td className={'numeric '+supplierBalanceClass(statement.closing)}>{balanceText(statement.closing)}</td><td className="no-print"/></tr></tfoot></table></div><footer className="ledger-footer">CR: you owe supplier · DR: your advance with supplier. Purchases increase credit; payments / returns increase debit.</footer><p className="statement-note">{profile.statement_note}</p><div className="closing-strip"><div><span className="eyebrow">CLOSING BALANCE</span><p>{supplierBalanceLabel(statement.closing)}</p></div><strong className={supplierBalanceClass(statement.closing)}><small>Rs</small> {balanceText(statement.closing)}</strong></div>
  </>}
  </article>:<div className="welcome"><h2>Your supplier Khata</h2><p>Add a manufacturer or wholesaler with a dated opening balance.</p><button className="button primary" onClick={()=>setDialog({type:'account'})}>Add your first supplier</button></div>}

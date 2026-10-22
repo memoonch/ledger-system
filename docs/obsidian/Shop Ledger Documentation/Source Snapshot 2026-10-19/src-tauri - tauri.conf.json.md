@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "src-tauri/tauri.conf.json"
-sha256: "eda7374da030eb0e64014045b8ab418f7a595170ca03cad3bc7112594d887847"
+sha256: "8793b6dacacde86771bc9b42ca25bcb1a1c4780e00362a2162be7b29d8aebb8a"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: src-tauri/tauri.conf.json
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src-tauri/tauri.conf.json`.
-- SHA-256 of original file bytes: `eda7374da030eb0e64014045b8ab418f7a595170ca03cad3bc7112594d887847`.
-- Original bytes: 1342; source lines: 58.
+- SHA-256 of original file bytes: `8793b6dacacde86771bc9b42ca25bcb1a1c4780e00362a2162be7b29d8aebb8a`.
+- Original bytes: 1432; source lines: 60.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Complete source
@@ -23,7 +23,7 @@ tags: [shop-ledger, development]
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Shop Ledger",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "identifier": "com.alfazal.ledger",
   "build": {
     "beforeDevCommand": "npm run dev",
@@ -66,7 +66,9 @@ tags: [shop-ledger, development]
         "installMode": "currentUser",
         "languages": [
           "English"
-        ]
+        ],
+        "installerIcon": "icons/icon.ico",
+        "uninstallerIcon": "icons/icon.ico"
       }
     }
   },

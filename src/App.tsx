@@ -9,6 +9,9 @@ import DeleteCustomer from './DeleteCustomer';
 import CashBookPage from './CashBookPage';
 import SupplierPage from './SupplierPage';
 import ProfilePage from './ProfilePage';
+import GlobalSearch from './GlobalSearch';
+import DuesPage from './DuesPage';
+import {buildSearchIndex,type SearchHit,type JumpTarget} from './discovery';
 import { defaultProfile } from './profile';
 
 type Dialog = { type: 'delete'; party: Party } | { type: 'import' } | { type: 'party'; party?: Party } | { type: 'transaction'; transaction?: LedgerTransaction } | { type: 'restore'; store: Store };
@@ -21,7 +24,14 @@ export default function App() {
   const [dialog, setDialog] = useState<Dialog | null>(null);
   const [error, setError] = useState(''), [notice, setNotice] = useState('');
   const [customerView, setCustomerView] = useState('active');
-  const [page, setPage] = useState<'ledger' | 'profile' | 'suppliers' | 'cash'>('ledger');
+  const [page, setPage] = useState<'ledger' | 'profile' | 'suppliers' | 'cash' | 'dues'>('ledger');
+  const [globalOpen,setGlobalOpen]=useState(false),[highlight,setHighlight]=useState('');
+  const [supplierJump,setSupplierJump]=useState<JumpTarget>(),[cashJump,setCashJump]=useState<JumpTarget>();
+  const searchIndex=useMemo(()=>buildSearchIndex(store),[store]);
+  useEffect(()=>{function key(e:KeyboardEvent){if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();if(storageReady&&!loading&&!busy&&!document.querySelector('dialog[open]'))setGlobalOpen(true);}}window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[storageReady,loading,busy]);
+  useEffect(()=>{if(highlight&&page==='ledger'){const frame=requestAnimationFrame(()=>document.getElementById('customer-entry-'+highlight)?.scrollIntoView({block:'center',behavior:'smooth'}));return()=>cancelAnimationFrame(frame);}},[highlight,page,selected,from,to]);
+  function openCustomer(id:string,date='',entry='',asOf='') {setCustomerView('all');setSearch('');setSelected(id);setFrom(date);setTo(date||asOf);setPeriod(date||asOf?'custom':'all');setHighlight(entry);setPage('ledger');}
+  function jump(hit:SearchHit){setGlobalOpen(false);const target={accountId:hit.accountId,entryId:hit.entryId,date:hit.date,nonce:Date.now()};if(hit.kind==='customer'||hit.kind==='customer-entry')openCustomer(hit.accountId,hit.entryId?hit.date:'',hit.entryId);else if(hit.kind==='supplier'||hit.kind==='supplier-entry'){setSupplierJump(target);setPage('suppliers');}else {setCashJump(target);setPage('cash');}}
   const profile = store.profile ?? defaultProfile;
   useEffect(() => { document.title = profile.name + ' | Shop Ledger'; }, [profile.name]);
   const party = store.parties.find(p => p.id === selected);
@@ -74,12 +84,14 @@ export default function App() {
     if (await saveFile(filename, new Uint8Array(doc.output('arraybuffer')), 'pdf')) setNotice('PDF statement exported.');
   }
   return <div className="app-shell">
+    {globalOpen&&<GlobalSearch index={searchIndex} close={()=>setGlobalOpen(false)} jump={jump}/>}
     <aside className="sidebar no-print">
       <button className="brand" aria-label="Open shop profile" title="Edit shop profile" onClick={() => setPage('profile')} disabled={loading || !storageReady}><span className="brand-mark"><Building2 size={25}/></span><span>{profile.name}<small>{profile.tagline}</small></span></button>
       <div className="sidebar-label">WORKSPACE</div>
       <button className={'nav-item ' + (page === 'ledger' ? 'nav-active' : '')} onClick={() => setPage('ledger')}><BookOpen size={18}/><span>Customer ledgers</span><ChevronRight size={15}/></button>
       <button className={'nav-item ' + (page === 'suppliers' ? 'nav-active' : '')} onClick={() => setPage('suppliers')}><Landmark size={18}/><span>Supplier ledgers</span><ChevronRight size={15}/></button>
       <button className={'nav-item ' + (page === 'cash' ? 'nav-active' : '')} onClick={() => setPage('cash')}><HardDrive size={18}/><span>Daily cash book</span><ChevronRight size={15}/></button>
+      <button className={'nav-item '+(page==='dues'?'nav-active':'')} onClick={()=>setPage('dues')}><Users size={18}/><span>Outstanding dues</span><ChevronRight size={15}/></button>
       <div className="sidebar-context"><Landmark size={19}/><p>Your shop.<br/>Your records.<br/><strong>Always with you.</strong></p></div>
       <div className="sidebar-bottom">
         <div className="sidebar-label">YOUR DATA</div>
@@ -89,10 +101,10 @@ export default function App() {
       </div>
     </aside>
     <div className="main-shell">
-      <header className="topbar no-print"><div>Workspace <ChevronRight size={13}/><strong>{page === 'profile' ? 'Shop profile' : page === 'suppliers' ? 'Supplier ledgers' : page === 'cash' ? 'Daily cash book' : 'Customer ledgers'}</strong></div><span><span className="status-dot"/>{desktop ? 'Offline ready' : 'Preview mode'}<span className="topbar-divider"/>PKR</span></header>
+      <header className="topbar no-print"><div>Workspace <ChevronRight size={13}/><strong>{page === 'dues' ? 'Outstanding dues' : page === 'profile' ? 'Shop profile' : page === 'suppliers' ? 'Supplier ledgers' : page === 'cash' ? 'Daily cash book' : 'Customer ledgers'}</strong></div><button className="global-search-trigger" disabled={loading||!storageReady||busy} onClick={()=>setGlobalOpen(true)}><Search size={16}/><span>Search records…</span><kbd>Ctrl K</kbd></button><span><span className="status-dot"/>{desktop ? 'Offline ready' : 'Preview mode'}<span className="topbar-divider"/>PKR</span></header>
       <main>
         {error && (page === 'suppliers' || page === 'cash') && <p className="error no-print" role="alert">{error}</p>}
-        {page === 'profile' ? <ProfilePage key={JSON.stringify(profile)} profile={profile} back={() => setPage('ledger')} save={async next => { await saveProfile(next); await refresh(); setNotice('Shop profile saved.'); }}/> : page === 'cash' ? loading || !storageReady ? <p>Opening cash book…</p> : <CashBookPage store={store} refresh={refresh}/> : page === 'suppliers' ? loading || !storageReady ? <p>Opening supplier ledgers…</p> : <SupplierPage store={store} refresh={refresh} backup={backup}/> : <>
+        {page === 'dues' ? loading||!storageReady?<p>Opening outstanding dues…</p>:<DuesPage store={store} open={(row,date)=>openCustomer(row.party.id,'','',date)}/> : page === 'profile' ? <ProfilePage key={JSON.stringify(profile)} profile={profile} back={() => setPage('ledger')} save={async next => { await saveProfile(next); await refresh(); setNotice('Shop profile saved.'); }}/> : page === 'cash' ? loading || !storageReady ? <p>Opening cash book…</p> : <CashBookPage key={cashJump?.nonce} jump={cashJump} store={store} refresh={refresh}/> : page === 'suppliers' ? loading || !storageReady ? <p>Opening supplier ledgers…</p> : <SupplierPage key={supplierJump?.nonce} jump={supplierJump} store={store} refresh={refresh} backup={backup}/> : <>
         <div className="page-heading no-print"><div><div className="eyebrow">THE SHOP'S KHATA</div><h1>Customer ledgers</h1><p>A clear record of every delivery, payment, and balance.</p></div><button className="button primary" disabled={loading || busy || !storageReady} onClick={() => setDialog({ type: 'party' })}><Plus size={18}/>Add customer</button></div>
 
         {!desktop && <div className="preview-banner no-print"><HardDrive size={17}/><span><strong>Browser preview.</strong> Records here are separate from the desktop app's SQLite database.</span>{!store.parties.length && !loading && storageReady && <button disabled={busy} onClick={() => void perform(async () => { await restoreStore(sampleStore()); await refresh('demo-1'); setNotice('Sample customers loaded for preview.'); })}>Try sample data <ChevronRight size={14}/></button>}</div>}
@@ -116,7 +128,7 @@ export default function App() {
               {from && <tr className="opening-row"><td>{dateText(from)}</td><td colSpan={8}><span>Balance brought forward</span></td><td className={'numeric balance-cell ' + balanceClass(statement.broughtForward)}>{balanceText(statement.broughtForward)}</td><td className="no-print"/></tr>}
               {statement.openingInPeriod && <tr className="opening-row"><td>{dateText(party.opening_date)}</td><td colSpan={8}><span>Opening balance</span></td><td className={'numeric balance-cell ' + balanceClass(party.opening_paisa)}>{balanceText(party.opening_paisa)}</td><td className="no-print"><button className="row-edit" aria-label="Edit opening balance" onClick={() => setDialog({ type: 'party', party })}><Pencil size={13}/></button></td></tr>}
 
-              {statement.rows.map(tx => <tr key={tx.id}><td className="date-cell">{dateText(tx.date)}</td><td className="description-cell">{tx.description}</td><td>{tx.brand || '—'}</td><td>{tx.vehicle_number || '—'}</td><td>{tx.bill_number || '—'}</td><td className="numeric">{tx.quantity_milli ? (tx.quantity_milli/1000).toLocaleString('en-PK', { maximumFractionDigits: 3 }) : '—'}</td><td className="numeric">{tx.rate_paisa ? money(tx.rate_paisa) : '—'}</td><td className="numeric debit-text">{tx.debit_paisa ? money(tx.debit_paisa) : '—'}</td><td className="numeric credit-text">{tx.credit_paisa ? money(tx.credit_paisa) : '—'}</td><td className={'numeric balance-cell ' + balanceClass(tx.balance)}>{balanceText(tx.balance)}</td><td className="no-print"><button className="row-edit" aria-label={'Edit ' + tx.description + ' on ' + tx.date} onClick={() => setDialog({ type: 'transaction', transaction: tx })}><Pencil size={13}/></button></td></tr>)}
+              {statement.rows.map(tx => <tr key={tx.id} id={'customer-entry-'+tx.id} className={highlight===tx.id?'search-highlight':''}><td className="date-cell">{dateText(tx.date)}</td><td className="description-cell">{tx.description}</td><td>{tx.brand || '—'}</td><td>{tx.vehicle_number || '—'}</td><td>{tx.bill_number || '—'}</td><td className="numeric">{tx.quantity_milli ? (tx.quantity_milli/1000).toLocaleString('en-PK', { maximumFractionDigits: 3 }) : '—'}</td><td className="numeric">{tx.rate_paisa ? money(tx.rate_paisa) : '—'}</td><td className="numeric debit-text">{tx.debit_paisa ? money(tx.debit_paisa) : '—'}</td><td className="numeric credit-text">{tx.credit_paisa ? money(tx.credit_paisa) : '—'}</td><td className={'numeric balance-cell ' + balanceClass(tx.balance)}>{balanceText(tx.balance)}</td><td className="no-print"><button className="row-edit" aria-label={'Edit ' + tx.description + ' on ' + tx.date} onClick={() => setDialog({ type: 'transaction', transaction: tx })}><Pencil size={13}/></button></td></tr>)}
               {!statement.rows.length && <tr><td colSpan={11} className="empty-ledger"><FileText size={27}/><strong>{store.transactions.some(t => t.party_id === party.id) ? 'No transactions in this period' : 'A fresh page in your Khata'}</strong><span>{store.transactions.some(t => t.party_id === party.id) ? 'Choose different dates to see more records.' : 'Record a delivery, payment, or charge to get started.'}</span></td></tr>}
             </tbody><tfoot><tr><td colSpan={7}>Period totals / Closing balance</td><td className="numeric debit-text">{money(statement.debit)}</td><td className="numeric credit-text">{money(statement.credit)}</td><td className={'numeric balance-cell ' + balanceClass(statement.closing)}>{balanceText(statement.closing)}</td><td className="no-print"/></tr></tfoot></table></div>
             <footer className="ledger-footer"><div><span className="legend-dot debit"/>DR: customer owes the shop<span className="legend-dot credit"/>CR: customer advance</div><span>Opening balance is separate from period totals.</span></footer>

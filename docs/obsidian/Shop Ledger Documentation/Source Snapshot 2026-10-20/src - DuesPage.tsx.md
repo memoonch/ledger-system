@@ -1,0 +1,35 @@
+---
+title: "Source: src/DuesPage.tsx"
+type: "Reference"
+project: "Shop Ledger"
+updated: "2026-10-20"
+generated_by: "shop-ledger-docs"
+source_path: "src/DuesPage.tsx"
+sha256: "c19499a6411672521c408e4c097a670356b8d603c9d103feef72d3e72653aef5"
+tags: [shop-ledger, development]
+---
+
+# Source snapshot: src/DuesPage.tsx
+
+- Captured: 2026-10-20T23:30:14+05:00 (Asia/Karachi).
+- Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/DuesPage.tsx`.
+- SHA-256 of original file bytes: `c19499a6411672521c408e4c097a670356b8d603c9d103feef72d3e72653aef5`.
+- Original bytes: 5076; source lines: 8.
+- This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
+
+## Exported symbols
+
+`DuesPage`.
+
+## Complete source
+
+```tsx
+import {useMemo,useState} from 'react';
+import {dateText,money,today,wholeRupees,type Store} from './domain';
+import {outstandingDues,sortDues,type DueRow} from './discovery';
+export default function DuesPage({store,open}:{store:Store;open:(row:DueRow,date:string)=>void}){
+ const [date,setDate]=useState(today()),[sort,setSort]=useState<'balance'|'due'|'age'>('balance'),[status,setStatus]=useState('all'),[age,setAge]=useState('0'),[overdue,setOverdue]=useState(false),[minimum,setMinimum]=useState('0'),[query,setQuery]=useState('');
+ const data=useMemo(()=>{try{const min=wholeRupees(minimum||'0');const rows=outstandingDues(store,date).filter(r=>(status==='all'||(status==='archived'?r.party.archived===1:r.party.archived!==1))&&r.ageDays>=Number(age)&&(!overdue||r.overdue>0)&&r.balance>=min&&(r.party.name+' '+r.party.phone).toLowerCase().includes(query.toLowerCase()));return {rows:sortDues(rows,sort),error:''};}catch(e){return {rows:[] as DueRow[],error:(e as Error).message};}},[store,date,sort,status,age,overdue,minimum,query]);
+ return <><div className="page-heading no-print"><div><div className="eyebrow">CUSTOMER COLLECTIONS</div><h1>Outstanding dues</h1><p>Prioritize customers who owe the shop.</p></div><button className="button secondary" onClick={()=>window.print()}>Print A4</button></div><p className="form-note no-print">Aging applies payments and returns to the oldest charges first as an estimate. Recorded due dates are optional; an undated balance is not labelled overdue. Archived debts remain included.</p><div className="dues-filters no-print"><label>As of date<input aria-label="Dues as of date" type="date" value={date} onChange={e=>setDate(e.target.value)}/></label><label>Sort by<select aria-label="Sort by" value={sort} onChange={e=>setSort(e.target.value as typeof sort)}><option value="balance">Highest balance first</option><option value="due">Oldest recorded due date</option><option value="age">Oldest outstanding charge</option></select></label><label>Customer status<select aria-label="Customer status" value={status} onChange={e=>setStatus(e.target.value)}><option value="all">All customers</option><option value="active">Active only</option><option value="archived">Archived only</option></select></label><label>Age<select aria-label="Age" value={age} onChange={e=>setAge(e.target.value)}><option value="0">Any age</option><option value="30">30+ days</option><option value="60">60+ days</option><option value="90">90+ days</option></select></label><label>Minimum balance (PKR)<input inputMode="numeric" value={minimum} onChange={e=>setMinimum(e.target.value)}/></label><label>Find customer<input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Name or phone"/></label><label className="dues-check"><input type="checkbox" checked={overdue} onChange={e=>setOverdue(e.target.checked)}/>Recorded overdue only</label></div>{data.error&&<p className="error" role="alert">{data.error}</p>}<div className="print-shop"><h1>{store.profile?.name??'Shop Name'}</h1><p>Customer outstanding dues · {date} · PKR</p></div><section className="stats-grid"><div className="stat-card"><div><p>Shown customer balances</p><strong className="debit-text">Rs {money(data.rows.reduce((n,r)=>n+r.balance,0))}</strong></div></div><div className="stat-card"><div><p>Customers shown</p><strong>{data.rows.length}</strong></div></div><div className="stat-card"><div><p>Recorded overdue amount</p><strong className="debit-text">Rs {money(data.rows.reduce((n,r)=>n+r.overdue,0))}</strong></div></div></section><article className="ledger-panel dues-panel"><div className="statement-meta">Balances as of {date} · Amounts in PKR</div><div className="table-scroll"><table className="ledger-table"><thead><tr><th>Customer</th><th>Phone</th><th className="numeric">Balance (DR)</th><th>Oldest unpaid charge</th><th>Age</th><th>Earliest recorded due</th><th className="numeric">Overdue amount</th><th className="no-print">Open</th></tr></thead><tbody>{data.rows.map(row=><tr key={row.party.id}><td>{row.party.name}{row.party.archived===1&&<small className="supplier-payment-details">Archived</small>}</td><td>{row.party.phone||'—'}</td><td className="numeric debit-text">{money(row.balance)}</td><td>{dateText(row.oldestCharge)}</td><td>{row.ageDays} days</td><td>{row.oldestDue?dateText(row.oldestDue):'Not set'}{row.daysOverdue>0&&<small className="supplier-payment-details">{row.daysOverdue} days overdue</small>}</td><td className="numeric debit-text">{row.overdue?money(row.overdue):'—'}</td><td className="no-print"><button className="button secondary compact" aria-label={'Open ledger for '+row.party.name} onClick={()=>open(row,date)}>Open ledger</button></td></tr>)}{!data.rows.length&&!data.error&&<tr><td colSpan={8} className="empty-ledger">No outstanding customer balances match these filters.</td></tr>}</tbody></table></div></article><p className="form-note">Credits and advances are excluded. Due-date sorting lists undated accounts afterward. FIFO aging is a collections aid, not an invoice settlement record.</p></>;
+}
+```

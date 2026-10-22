@@ -60,7 +60,7 @@ def source_files() -> list[Path]:
         "index.html", "tsconfig.json", "vite.config.ts", "vitest.config.ts",
         "src-tauri/Cargo.toml", "src-tauri/Cargo.lock", "src-tauri/build.rs",
         "src-tauri/tauri.conf.json", "src-tauri/capabilities/default.json",
-        "assets/icon.svg", "scripts/export-obsidian.py",
+        "assets/icon.svg", "scripts/export-obsidian.py", "scripts/package-new-computer.py",
     ]
     files = [ROOT / name for name in names if (ROOT / name).is_file()]
     files += [p for p in (ROOT / "src").rglob("*") if p.is_file() and p.suffix in {".ts", ".tsx", ".css"}]

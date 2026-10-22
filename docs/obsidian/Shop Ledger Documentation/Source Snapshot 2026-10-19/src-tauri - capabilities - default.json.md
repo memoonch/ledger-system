@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src-tauri/capabilities/default.json
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src-tauri/capabilities/default.json`.
 - SHA-256 of original file bytes: `d96c2e21b8f36f234eb095c47f70f8567e0a5bc39c586275268b0ac49d30d3c9`.
 - Original bytes: 465; source lines: 19.

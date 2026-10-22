@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "src/styles.css"
-sha256: "18d6b700b63e7144817d2baac23b0f8e463e6b6ca585a6585fc39bec79507454"
+sha256: "b763418b159e8715ca32b1607e550584d92c619dd9c67f0994eef8afcbabe163"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: src/styles.css
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/styles.css`.
-- SHA-256 of original file bytes: `18d6b700b63e7144817d2baac23b0f8e463e6b6ca585a6585fc39bec79507454`.
-- Original bytes: 27552; source lines: 135.
+- SHA-256 of original file bytes: `b763418b159e8715ca32b1607e550584d92c619dd9c67f0994eef8afcbabe163`.
+- Original bytes: 29551; source lines: 137.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Complete source
@@ -155,4 +155,6 @@ textarea { border:1px solid #dfe5e2; border-radius:6px; min-height:80px; padding
 .cash-actions label { display:flex; align-items:center; gap:10px; }
 .cash-actions input { padding:9px 10px; background:white; border:1px solid #dfe5e2; border-radius:6px; }
 .cash-book-panel { background:white; border:1px solid #dfe5e2; border-radius:10px; overflow:hidden; margin-bottom:16px; }
+
+.global-search-trigger{display:flex;align-items:center;gap:10px;border:1px solid #dce2e6;background:#fff;color:#687680;border-radius:8px;padding:9px 12px;min-width:240px;cursor:pointer;margin-left:auto;margin-right:24px}.global-search-trigger kbd{margin-left:auto;font:11px inherit;border:1px solid #dde3e6;border-radius:4px;padding:2px 5px}.global-search-panel{padding:20px 26px}.global-search-panel label,.dues-filters label{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:600;color:#53636b}.global-search-panel input,.global-search-panel select,.dues-filters input,.dues-filters select{padding:10px;border:1px solid #d9e1e4;border-radius:7px;background:#fff;color:#243b44;min-width:0}.global-search-panel>label{margin-bottom:12px}.global-search-results{max-height:45vh;overflow-y:auto}.global-result{width:100%;display:flex;flex-direction:column;gap:6px;text-align:left;padding:13px;border:1px solid transparent;background:#fff;border-radius:7px;cursor:pointer}.global-result span{font-size:12px;color:#667780;line-height:1.5}.global-result.is-active,.global-result:focus{background:#edf6f4;border-color:#8dc6b9}.ledger-table tr.search-highlight td{background:#fff3cf}.dues-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;background:#fff;padding:20px;border:1px solid #e0e6e8;border-radius:10px;margin-bottom:20px}.dues-filters .dues-check{flex-direction:row;align-items:center}.dues-panel{background:white;border:1px solid #e0e6e8;border-radius:10px;overflow:hidden}.sidebar-context{margin-top:20px}@media(max-width:1100px){.global-search-trigger{min-width:170px;margin-right:10px}.global-search-trigger kbd{display:none}}@media(max-width:800px){.topbar>div{display:none}.dues-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}@media print{.dues-panel{border:0}.search-highlight td{background:transparent!important}}
 ```

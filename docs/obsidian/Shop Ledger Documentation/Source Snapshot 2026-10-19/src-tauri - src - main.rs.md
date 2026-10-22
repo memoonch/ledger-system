@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src-tauri/src/main.rs
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src-tauri/src/main.rs`.
 - SHA-256 of original file bytes: `c7a31644d3747aff1f5b468c7e73b92162e67239e3f907ec562cf784e35a812e`.
 - Original bytes: 108; source lines: 2.

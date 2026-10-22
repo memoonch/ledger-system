@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "src-tauri/src/lib.rs"
-sha256: "ffb6581fecc763829de13ddd07c4452cf3bb769ae0e094785fa4e34b782b6a36"
+sha256: "92df3f878664b74879797b7bc4672c23d9e1eb829b22cc19fbbe1019b42f1e1c"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: src-tauri/src/lib.rs
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src-tauri/src/lib.rs`.
-- SHA-256 of original file bytes: `ffb6581fecc763829de13ddd07c4452cf3bb769ae0e094785fa4e34b782b6a36`.
-- Original bytes: 1572; source lines: 42.
+- SHA-256 of original file bytes: `92df3f878664b74879797b7bc4672c23d9e1eb829b22cc19fbbe1019b42f1e1c`.
+- Original bytes: 1763; source lines: 47.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Complete source
@@ -53,6 +53,11 @@ pub fn run() {
         version: 6,
         description: "daily_cash_book",
         sql: include_str!("../migrations/006_cash_book.sql"),
+        kind: MigrationKind::Up,
+    }, Migration {
+        version: 7,
+        description: "customer_due_dates",
+        sql: include_str!("../migrations/007_customer_due_dates.sql"),
         kind: MigrationKind::Up,
     }];
     tauri::Builder::default()

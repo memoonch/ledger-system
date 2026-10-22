@@ -69,3 +69,13 @@ Supplier ledgers is a separate section with dated opening balances, multi-line p
 ## Roznamcha / daily cash book (0.1.4)
 
 Daily Cash Book tracks explicitly marked customer cash receipts/refunds and supplier cash payments, shop expenses and other counter movements. Start with a dated drawer opening balance, then save end-of-day physical counts with shortage/excess and stale-closing detection. Cheque/bank/material entries do not affect physical cash. Old customer credits remain unclassified. Backup format 4 includes cash; older backups preserve current cash history. See `docs/obsidian-guides/17 Daily Cash Book and Expenses.md`.
+
+
+## Advanced search and collections (0.1.5)
+
+Use topbar search or Ctrl+K to find customer/supplier accounts, bill and vehicle numbers, descriptions and active cash entries across archived and active records. Outstanding dues shows positive customer balances with as-of/status/age/minimum/overdue filters, highest-balance or oldest-date sorting, ledger jumps and A4 printing. Optional opening/charge due dates support actual overdue amounts; FIFO aging is an estimate, not invoice allocation. SQLite migration 7 and backup v5 preserve existing records and accept older backups.
+
+
+## Installer for another computer (0.1.6)
+
+The separate `releases/Shop Ledger 0.1.6 - New Computer/` folder contains the offline Windows installer, new icon, instructions and checksum. No live database or backups are bundled. A new computer starts empty with a generic profile; an existing installation keeps its records. `scripts/package-new-computer.py` validates fresh SQLite initialization, NSIS payloads and embedded icon resources before copying the distribution.

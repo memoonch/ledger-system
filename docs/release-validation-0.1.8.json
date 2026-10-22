@@ -1,0 +1,94 @@
+{
+  "version": "0.1.8",
+  "distribution_folder": "releases\\Shop Ledger 0.1.8 - New Computer",
+  "installer": "Shop Ledger_0.1.8_x64-setup.exe",
+  "sha256": "fbc017b822f698b5e0aa72a5e302e0735aa617a069676ffdd02006a9a24bafdb",
+  "bytes": 220802161,
+  "fresh_database_rows": {
+    "parties": 0,
+    "ledger_transactions": 0,
+    "suppliers": 0,
+    "supplier_transactions": 0,
+    "cash_movements": 0,
+    "cash_closings": 0,
+    "restore_requests": 0,
+    "supplier_bill_requests": 0
+  },
+  "profile_generic": true,
+  "cash_not_initialized": true,
+  "bundle_extra_resources": false,
+  "nsis_payload_directives": [
+    "File \"/oname=$TEMP\\MicrosoftEdgeWebview2Setup.exe\" \"${WEBVIEW2BOOTSTRAPPERPATH}\"",
+    "File \"/oname=$TEMP\\MicrosoftEdgeWebView2RuntimeInstaller.exe\" \"${WEBVIEW2INSTALLERPATH}\"",
+    "File \"${MAINBINARYSRCPATH}\""
+  ],
+  "embedded_icons": {
+    "installer": {
+      "matching_icon_images": 6,
+      "verified": true
+    },
+    "application": {
+      "matching_icon_images": 6,
+      "verified": true
+    }
+  },
+  "distribution_files": [
+    "READ ME FIRST.txt",
+    "SHA256.txt",
+    "Shop Ledger Icon.png",
+    "Shop Ledger_0.1.8_x64-setup.exe"
+  ],
+  "shop_data_included": false,
+  "existing_installation_modified": true,
+  "tests_passed": 77,
+  "fresh_database_integrity": "ok",
+  "validation_note": "Rendered customer and supplier compact summaries checked; 77 tests passed; installed 0.1.8 opened existing SQLite records with identical data. Transfer installer audited separately for no bundled shop data.",
+  "installed_upgrade": {
+    "from": "0.1.7",
+    "to": "0.1.8",
+    "exitCode": 0,
+    "recordsPreserved": true
+  },
+  "existing_records_unchanged": {
+    "records_identical": true,
+    "integrity": "ok"
+  },
+  "pdf_summary": {
+    "placement": "Compact bottom-right box aligned beneath Debit, Credit and Balance columns",
+    "rows": [
+      "Total Debit",
+      "Total Credit",
+      "Current Balance"
+    ],
+    "outer_border_only": true,
+    "balance_row_theme": "Pale green with signed debit/credit colors",
+    "customer_visual_check": "passed",
+    "supplier_visual_check": "passed",
+    "layout_cases": [
+      {
+        "case": "large",
+        "pages": 1,
+        "summaryFinalY": 110.33916666666666,
+        "summaryStartX": 190.49584409726222
+      },
+      {
+        "case": "credit",
+        "pages": 1,
+        "summaryFinalY": 110.33916666666666,
+        "summaryStartX": 194.49963975977354
+      },
+      {
+        "case": "settled",
+        "pages": 1,
+        "summaryFinalY": 102.0936111111111,
+        "summaryStartX": 194.49963975977354
+      },
+      {
+        "case": "long",
+        "pages": 9,
+        "summaryFinalY": 81.08472222222221,
+        "summaryStartX": 194.49963975977354
+      }
+    ]
+  }
+}

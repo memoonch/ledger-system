@@ -90,3 +90,8 @@ A range entirely before the customer's opening date shows zero balance and no op
 
 Form validation, domain validation and SQLite constraints overlap but are not identical. Changes should keep them consistent.
 
+
+
+## 0.1.5 — Advanced search and collections (2026-10-19)
+
+Topbar Ctrl+K search, archived-account jumps, outstanding customer dues with FIFO aging and optional actual due dates. Migration 7 adds blank-default due-date fields; backups are now v5 with v1–v4 compatibility. See [[Alfazal Ledgher System/Shop Ledger Documentation/18 Advanced Search and Outstanding Dues]] for behavior, source map and verification.

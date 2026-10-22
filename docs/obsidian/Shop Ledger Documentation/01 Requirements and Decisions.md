@@ -2,7 +2,7 @@
 title: "Requirements and decisions"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-19"
+updated: "2026-10-20"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
@@ -75,3 +75,9 @@ Logo upload; tax/registration number; bank/payment details; invoice numbering pr
 Actual shop-printer output, clean-machine installer testing, UI feedback from daily use, and detailed inventory/billing requirements.
 
 Future changes are expected. Confirm changed business rules with the owner, preserve existing records, update `REQUIREMENTS.md`, and record the decision here.
+
+
+
+## 0.1.5 — Advanced search and collections (2026-10-19)
+
+Topbar Ctrl+K search, archived-account jumps, outstanding customer dues with FIFO aging and optional actual due dates. Migration 7 adds blank-default due-date fields; backups are now v5 with v1–v4 compatibility. See [[Alfazal Ledgher System/Shop Ledger Documentation/18 Advanced Search and Outstanding Dues]] for behavior, source map and verification.

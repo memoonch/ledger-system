@@ -1,0 +1,46 @@
+{
+  "version": "0.1.6",
+  "distribution_folder": "releases\\Shop Ledger 0.1.6 - New Computer",
+  "installer": "Shop Ledger_0.1.6_x64-setup.exe",
+  "sha256": "13b3e6770770e3355e65d39886b97d8e8f0ecaed5d9a89fc030057a805ea4cea",
+  "bytes": 220804892,
+  "fresh_database_rows": {
+    "parties": 0,
+    "ledger_transactions": 0,
+    "suppliers": 0,
+    "supplier_transactions": 0,
+    "cash_movements": 0,
+    "cash_closings": 0,
+    "restore_requests": 0,
+    "supplier_bill_requests": 0
+  },
+  "profile_generic": true,
+  "cash_not_initialized": true,
+  "bundle_extra_resources": false,
+  "nsis_payload_directives": [
+    "File \"/oname=$TEMP\\MicrosoftEdgeWebview2Setup.exe\" \"${WEBVIEW2BOOTSTRAPPERPATH}\"",
+    "File \"/oname=$TEMP\\MicrosoftEdgeWebView2RuntimeInstaller.exe\" \"${WEBVIEW2INSTALLERPATH}\"",
+    "File \"${MAINBINARYSRCPATH}\""
+  ],
+  "embedded_icons": {
+    "installer": {
+      "matching_icon_images": 6,
+      "verified": true
+    },
+    "application": {
+      "matching_icon_images": 6,
+      "verified": true
+    }
+  },
+  "distribution_files": [
+    "READ ME FIRST.txt",
+    "SHA256.txt",
+    "Shop Ledger Icon.png",
+    "Shop Ledger_0.1.6_x64-setup.exe"
+  ],
+  "shop_data_included": false,
+  "existing_installation_modified": false,
+  "tests_passed": 77,
+  "fresh_database_integrity": "ok",
+  "validation_note": "Fresh SQLite initialization and package payload/resource audit; not a second physical computer install."
+}

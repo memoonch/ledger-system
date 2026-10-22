@@ -2,7 +2,7 @@
 title: "Editing playbook and roadmap"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-19"
+updated: "2026-10-20"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---

@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src-tauri/migrations/001_initial.sql
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src-tauri/migrations/001_initial.sql`.
 - SHA-256 of original file bytes: `5c837f8b44922a3792ae6a8c2721b53fa93e7215b517fb8753203b0b64f66da3`.
 - Original bytes: 3713; source lines: 51.

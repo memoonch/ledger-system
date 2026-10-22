@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "src/domain.ts"
-sha256: "533ca96b1acab582d3387aedca2f4bfa48a77f82b421e29e2158892ef378558a"
+sha256: "f083e8ed36596621271c9fb06cebc2bb0f2fd5d7739e062726ec6a89a7ad7558"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: src/domain.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/domain.ts`.
-- SHA-256 of original file bytes: `533ca96b1acab582d3387aedca2f4bfa48a77f82b421e29e2158892ef378558a`.
-- Original bytes: 13321; source lines: 178.
+- SHA-256 of original file bytes: `f083e8ed36596621271c9fb06cebc2bb0f2fd5d7739e062726ec6a89a7ad7558`.
+- Original bytes: 13975; source lines: 180.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Exported symbols
@@ -27,12 +27,12 @@ tags: [shop-ledger, development]
 import { validateCash, type CashData } from './cash';
 import { validateProfile, type ShopProfile } from './profile';
 export interface Party {
-  archived?: number; id: string; name: string; phone: string; address: string; opening_date: string; opening_paisa: number;
+  opening_due_date?: string; archived?: number; id: string; name: string; phone: string; address: string; opening_date: string; opening_paisa: number;
 }
 export interface LedgerTransaction {
   id: string; party_id: string; date: string; description: string; brand: string;
   vehicle_number: string; bill_number: string; quantity_milli: number; rate_paisa: number;
-  debit_paisa: number; credit_paisa: number; created_at: string; payment_method?: '' | 'Cash' | 'Cheque' | 'Bank transfer';
+  due_date?: string; debit_paisa: number; credit_paisa: number; created_at: string; payment_method?: '' | 'Cash' | 'Cheque' | 'Bank transfer';
 }
 export interface Supplier extends Party { contact_person: string }
 export interface SupplierTransaction extends LedgerTransaction {
@@ -91,6 +91,7 @@ export function ledger(party: Party, transactions: LedgerTransaction[], from = '
   return { rows, broughtForward, openingInPeriod, debit, credit, closing: balance };
 }
 export function validateParty(party: Party, transactions: LedgerTransaction[]) {
+  if(party.opening_due_date !== undefined && (typeof party.opening_due_date !== 'string' || party.opening_due_date && (!validDate(party.opening_due_date)||party.opening_due_date<party.opening_date||party.opening_paisa<=0)))throw new Error('Opening due date is only for a debit opening balance and must be on or after its date.');
   if (party.archived !== undefined && party.archived !== 0 && party.archived !== 1) throw new Error('Invalid customer archive status.');
   if (typeof party.id !== 'string' || !party.id || typeof party.name !== 'string' || !party.name.trim() || party.name.length > 120) throw new Error('Enter a customer name (up to 120 characters).');
   if (!validDate(party.opening_date)) throw new Error('Choose a valid opening balance date.');
@@ -98,6 +99,7 @@ export function validateParty(party: Party, transactions: LedgerTransaction[]) {
   if (transactions.some(t => t.party_id === party.id && t.date < party.opening_date)) throw new Error('The opening date cannot be after an existing transaction.');
 }
 export function validateTransaction(tx: LedgerTransaction, party: Party) {
+  if(tx.due_date !== undefined && (typeof tx.due_date !== 'string' || tx.due_date && (!validDate(tx.due_date)||tx.due_date<tx.date||tx.debit_paisa<=0||!!tx.payment_method)))throw new Error('Due date is only for a debit charge and must be on or after its transaction date.');
   if(tx.payment_method !== undefined && !['','Cash','Cheque','Bank transfer'].includes(tx.payment_method))throw new Error('Invalid payment method.');
   if(tx.payment_method && (tx.quantity_milli || tx.rate_paisa))throw new Error('Payments must use a direct amount without material quantity/rate.');
   if (!tx.id || tx.party_id !== party.id || !validDate(tx.date) || tx.date < party.opening_date) throw new Error('The transaction date must be on or after the opening balance date.');
@@ -193,13 +195,13 @@ export function supplierBalanceClass(value: number) { return balanceClass(-value
 export function supplierBalanceLabel(value: number) { return value < 0 ? 'You owe supplier' : value > 0 ? 'Your advance with supplier' : 'Account is settled'; }
 
 export function backupData(data:Store) {
- return {format:'shop-ledger',version:4,exported_at:new Date().toISOString(),data:{...data,suppliers:data.suppliers??[],supplierTransactions:data.supplierTransactions??[],cash:data.cash??{settings:null,movements:[],closings:[]}}};
+ return {format:'shop-ledger',version:5,exported_at:new Date().toISOString(),data:{...data,suppliers:data.suppliers??[],supplierTransactions:data.supplierTransactions??[],cash:data.cash??{settings:null,movements:[],closings:[]}}};
 }
 export function decodeBackup(raw:string):Store {
  const parsed=JSON.parse(raw);
- if(!((parsed.format==='alfazal-ledger'&&parsed.version===1)||(parsed.format==='shop-ledger'&&[2,3,4].includes(parsed.version))))throw new Error('Choose a supported Shop Ledger backup.');
+ if(!((parsed.format==='alfazal-ledger'&&parsed.version===1)||(parsed.format==='shop-ledger'&&[2,3,4,5].includes(parsed.version))))throw new Error('Choose a supported Shop Ledger backup.');
  if(parsed.version>=3 && (!Array.isArray(parsed.data?.suppliers)||!Array.isArray(parsed.data?.supplierTransactions)))throw new Error('Backup is missing supplier data.');
- if(parsed.version===4 && !parsed.data?.cash)throw new Error('Backup is missing cash book data.');
+ if(parsed.version>=4 && !parsed.data?.cash)throw new Error('Backup is missing cash book data.');
  return validateStore(parsed.data);
 }
 ```

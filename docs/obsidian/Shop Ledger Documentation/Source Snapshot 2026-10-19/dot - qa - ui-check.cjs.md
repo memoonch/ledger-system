@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: .qa/ui-check.cjs
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/.qa/ui-check.cjs`.
 - SHA-256 of original file bytes: `bb0b62fd471d64dbfdcf47c494e32c92f1d50a571f3e4bf7b32daf40d50c5006`.
 - Original bytes: 5111; source lines: 72.

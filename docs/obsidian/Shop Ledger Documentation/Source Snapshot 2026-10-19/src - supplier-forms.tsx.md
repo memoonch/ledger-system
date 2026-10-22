@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src/supplier-forms.tsx
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/supplier-forms.tsx`.
 - SHA-256 of original file bytes: `db6de3636ce1d7b4efb7ea7c9af78a8873bcf42d44770d0f4d7a105222ef0d0f`.
 - Original bytes: 11245; source lines: 32.

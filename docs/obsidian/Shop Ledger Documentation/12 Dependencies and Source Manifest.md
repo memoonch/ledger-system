@@ -2,30 +2,35 @@
 title: "Dependencies and source manifest"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-19"
+updated: "2026-10-20"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
 
 # Dependencies and source manifest
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-20T23:30:14+05:00 (Asia/Karachi).
 - Repository: `C:/Users/FROST/Documents/GitHub/ledger-system`.
-- Product version: 0.1.4.
-- Git HEAD: `7301a9fb6077052a93409122502f7e607e885ede`.
-- Latest commit: 7301a9f update to few things.
+- Product version: 0.1.8.
+- Git HEAD: `be91ed9aea1eb3ae5b305ec248a07c4896c9448d`.
+- Latest commit: be91ed9 Update added Supplier and daily expense.
 - Working-tree state at generation (documentation can itself be new/uncommitted):
 
 ```text
-M README.md
+M .gitignore
+ M README.md
  M REQUIREMENTS.md
+ M assets/icon.svg
  M "docs/obsidian-guides/00 Start Here.md"
  M "docs/obsidian-guides/01 Requirements and Decisions.md"
+ M "docs/obsidian-guides/03 Code Map and API.md"
  M "docs/obsidian-guides/04 Database and Migrations.md"
+ M "docs/obsidian-guides/05 Accounting and Validation.md"
+ M "docs/obsidian-guides/06 Interface Profile and Suggestions.md"
  M "docs/obsidian-guides/07 Statements and Backups.md"
- M "docs/obsidian-guides/08 Setup Build and Troubleshooting.md"
  M "docs/obsidian-guides/09 Tests and Verification.md"
  M "docs/obsidian-guides/11 History and Handoff.md"
+ M "docs/obsidian-guides/14 Windows Installer and Updates.md"
  M "docs/obsidian/Project Documentation.md"
  M "docs/obsidian/Shop Ledger Documentation/00 Start Here.md"
  M "docs/obsidian/Shop Ledger Documentation/01 Requirements and Decisions.md"
@@ -41,45 +46,110 @@ M README.md
  M "docs/obsidian/Shop Ledger Documentation/11 History and Handoff.md"
  M "docs/obsidian/Shop Ledger Documentation/12 Dependencies and Source Manifest.md"
  M "docs/obsidian/Shop Ledger Documentation/13 Excel and CSV Import.md"
+ M "docs/obsidian/Shop Ledger Documentation/14 Windows Installer and Updates.md"
+ M "docs/obsidian/Shop Ledger Documentation/15 Customer Archive Restore and Delete.md"
+ M "docs/obsidian/Shop Ledger Documentation/16 Purchase and Supplier Ledger.md"
+ M "docs/obsidian/Shop Ledger Documentation/17 Daily Cash Book and Expenses.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/README - markdown.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/REQUIREMENTS - markdown.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/assets - icon.svg.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - gitignore.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - generic-check.cjs.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - native-check.cjs.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - native-profile-check.cjs.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - ui-check.cjs.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/index.html.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/package-lock.json.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/package.json.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/scripts - export-obsidian.py.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - App.tsx.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - CashBookPage.tsx.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - DeleteCustomer.tsx.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - ImportCustomer.tsx.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - ProfilePage.tsx.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - SupplierPage.tsx.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - cash.test.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - cash.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - database.test.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - domain.test.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - domain.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - forms.tsx.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - import-ledger.test.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - import-ledger.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - main.tsx.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - pdf.test.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - pdf.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - profile.test.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - profile.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - sample.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - storage.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - styles.css.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - supplier-forms.tsx.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - suppliers.test.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - Cargo.lock.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - Cargo.toml.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - build.rs.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - capabilities - default.json.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 001_initial.sql.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 002_shop_profile.sql.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 003_customer_import.sql.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 004_customer_archive.sql.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 005_suppliers.sql.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 006_cash_book.sql.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - src - lib.rs.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - src - main.rs.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - tauri.conf.json.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/tsconfig.json.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/vite.config.ts.md"
+ M "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/vitest.config.ts.md"
  M docs/obsidian/documentation-manifest.json
  M package-lock.json
  M package.json
+ M scripts/export-obsidian.py
  M src-tauri/Cargo.lock
  M src-tauri/Cargo.toml
- M src-tauri/src/lib.rs
+ M src-tauri/icons/128x128.png
+ M src-tauri/icons/128x128@2x.png
+ M src-tauri/icons/32x32.png
+ M src-tauri/icons/64x64.png
+ M src-tauri/icons/Square107x107Logo.png
+ M src-tauri/icons/Square142x142Logo.png
+ M src-tauri/icons/Square150x150Logo.png
+ M src-tauri/icons/Square284x284Logo.png
+ M src-tauri/icons/Square30x30Logo.png
+ M src-tauri/icons/Square310x310Logo.png
+ M src-tauri/icons/Square44x44Logo.png
+ M src-tauri/icons/Square71x71Logo.png
+ M src-tauri/icons/Square89x89Logo.png
+ M src-tauri/icons/StoreLogo.png
+ M src-tauri/icons/icon.icns
+ M src-tauri/icons/icon.ico
+ M src-tauri/icons/icon.png
  M src-tauri/tauri.conf.json
  M src/App.tsx
- M src/database.test.ts
- M src/domain.test.ts
- M src/domain.ts
- M src/forms.tsx
+ M src/CashBookPage.tsx
+ M src/DuesPage.tsx
+ M src/GlobalSearch.tsx
+ M src/SupplierPage.tsx
+ M src/pdf.test.ts
  M src/pdf.ts
- M src/storage.ts
  M src/styles.css
-?? docs/WINDOWS-INSTALL.md
-?? "docs/obsidian-guides/14 Windows Installer and Updates.md"
-?? "docs/obsidian-guides/15 Customer Archive Restore and Delete.md"
-?? "docs/obsidian-guides/16 Purchase and Supplier Ledger.md"
-?? "docs/obsidian-guides/17 Daily Cash Book and Expenses.md"
-?? "docs/obsidian/Shop Ledger Documentation/14 Windows Installer and Updates.md"
-?? "docs/obsidian/Shop Ledger Documentation/15 Customer Archive Restore and Delete.md"
-?? "docs/obsidian/Shop Ledger Documentation/16 Purchase and Supplier Ledger.md"
-?? "docs/obsidian/Shop Ledger Documentation/17 Daily Cash Book and Expenses.md"
-?? "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/"
-?? docs/release-validation-0.1.1.json
-?? docs/release-validation-0.1.2.json
-?? docs/release-validation-0.1.3.json
-?? docs/release-validation-0.1.4.json
-?? src-tauri/migrations/004_customer_archive.sql
-?? src-tauri/migrations/005_suppliers.sql
-?? src-tauri/migrations/006_cash_book.sql
-?? src/CashBookPage.tsx
-?? src/DeleteCustomer.tsx
-?? src/SupplierPage.tsx
-?? src/cash.test.ts
-?? src/cash.ts
-?? src/supplier-forms.tsx
-?? src/suppliers.test.ts
+?? "docs/obsidian-guides/18 Advanced Search and Outstanding Dues.md"
+?? "docs/obsidian-guides/19 New Computer Installer and App Icon.md"
+?? "docs/obsidian/Shop Ledger Documentation/18 Advanced Search and Outstanding Dues.md"
+?? "docs/obsidian/Shop Ledger Documentation/19 New Computer Installer and App Icon.md"
+?? "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/scripts - package-new-computer.py.md"
+?? "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - DuesPage.tsx.md"
+?? "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - GlobalSearch.tsx.md"
+?? "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - discovery.test.ts.md"
+?? "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - discovery.ts.md"
+?? "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 007_customer_due_dates.sql.md"
+?? "docs/obsidian/Shop Ledger Documentation/Source Snapshot 2026-10-20/"
+?? docs/release-validation-0.1.5.json
+?? docs/release-validation-0.1.6.json
+?? docs/release-validation-0.1.7.json
+?? scripts/package-new-computer.py
+?? src/discovery.test.ts
 ```
 
 ## Direct npm dependencies
@@ -124,58 +194,64 @@ Every production source/config file, test file, both dependency lockfiles, the i
 
 | Repository file | Bytes | SHA-256 prefix | Source note |
 |---|---:|---|---|
-| `.gitignore` | 106 | ec3cabb0e095e7ba | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - gitignore|Full source]] |
-| `.qa/generic-check.cjs` | 5765 | 765268d0d97e690c | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - generic-check.cjs|Full source]] |
-| `.qa/native-check.cjs` | 3807 | 64c0ba553708a8ae | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - native-check.cjs|Full source]] |
-| `.qa/native-profile-check.cjs` | 2770 | 94bdfef25c31f938 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - native-profile-check.cjs|Full source]] |
-| `.qa/ui-check.cjs` | 5111 | bb0b62fd471d64db | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/dot - qa - ui-check.cjs|Full source]] |
-| `README.md` | 7515 | b215ffb9f9d75f5f | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/README - markdown|Full source]] |
-| `REQUIREMENTS.md` | 3948 | 41dc55da11ad4c6b | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/REQUIREMENTS - markdown|Full source]] |
-| `assets/icon.svg` | 383 | 5d9b09e5045a3b71 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/assets - icon.svg|Full source]] |
-| `index.html` | 302 | c6a37b7c0518ad03 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/index.html|Full source]] |
-| `package-lock.json` | 209079 | 4abb22a7006b689c | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/package-lock.json|Full source]] |
-| `package.json` | 1067 | 5570eae70a515fdd | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/package.json|Full source]] |
-| `scripts/export-obsidian.py` | 13034 | 032828b47a3a8fe3 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/scripts - export-obsidian.py|Full source]] |
-| `src-tauri/Cargo.lock` | 135309 | 23ea3585a658517f | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - Cargo.lock|Full source]] |
-| `src-tauri/Cargo.toml` | 486 | 85316ecfe5a76076 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - Cargo.toml|Full source]] |
-| `src-tauri/build.rs` | 36 | ce55d94ef836cc13 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - build.rs|Full source]] |
-| `src-tauri/capabilities/default.json` | 465 | d96c2e21b8f36f23 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - capabilities - default.json|Full source]] |
-| `src-tauri/migrations/001_initial.sql` | 3713 | 5c837f8b44922a37 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 001_initial.sql|Full source]] |
-| `src-tauri/migrations/002_shop_profile.sql` | 1797 | 49ffafdf1fb5dfc5 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 002_shop_profile.sql|Full source]] |
-| `src-tauri/migrations/003_customer_import.sql` | 1210 | 2100b85d11543c06 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 003_customer_import.sql|Full source]] |
-| `src-tauri/migrations/004_customer_archive.sql` | 1672 | 1cda48800dd68745 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 004_customer_archive.sql|Full source]] |
-| `src-tauri/migrations/005_suppliers.sql` | 7419 | 2968e0a3da00ce2c | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 005_suppliers.sql|Full source]] |
-| `src-tauri/migrations/006_cash_book.sql` | 10386 | d826e05cc6c3bf9d | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - migrations - 006_cash_book.sql|Full source]] |
-| `src-tauri/src/lib.rs` | 1572 | ffb6581fecc76382 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - src - lib.rs|Full source]] |
-| `src-tauri/src/main.rs` | 108 | c7a31644d3747aff | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - src - main.rs|Full source]] |
-| `src-tauri/tauri.conf.json` | 1342 | eda7374da030eb0e | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src-tauri - tauri.conf.json|Full source]] |
-| `src/App.tsx` | 24033 | 1e4b981ea7c470a2 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - App.tsx|Full source]] |
-| `src/CashBookPage.tsx` | 10518 | 5519961e9889e2ed | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - CashBookPage.tsx|Full source]] |
-| `src/DeleteCustomer.tsx` | 1996 | c5b4467fb97cc5b8 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - DeleteCustomer.tsx|Full source]] |
-| `src/ImportCustomer.tsx` | 8311 | 0a372d7bb821151d | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - ImportCustomer.tsx|Full source]] |
-| `src/ProfilePage.tsx` | 4272 | 6879f89e90f616ca | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - ProfilePage.tsx|Full source]] |
-| `src/SupplierPage.tsx` | 13513 | 4e0ae8d5528389ad | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - SupplierPage.tsx|Full source]] |
-| `src/cash.test.ts` | 9118 | 7f2ae562312df192 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - cash.test.ts|Full source]] |
-| `src/cash.ts` | 5485 | 1d8377a012380479 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - cash.ts|Full source]] |
-| `src/database.test.ts` | 8028 | de7010b7d62c1e3c | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - database.test.ts|Full source]] |
-| `src/domain.test.ts` | 5671 | 94573622920a272a | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - domain.test.ts|Full source]] |
-| `src/domain.ts` | 13321 | 533ca96b1acab582 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - domain.ts|Full source]] |
-| `src/forms.tsx` | 11184 | 5e38c5e3f5bb359d | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - forms.tsx|Full source]] |
-| `src/import-ledger.test.ts` | 4947 | d408baa34d183449 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - import-ledger.test.ts|Full source]] |
-| `src/import-ledger.ts` | 9736 | 3e19e1c450594d21 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - import-ledger.ts|Full source]] |
-| `src/main.tsx` | 225 | 86393317a594c30b | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - main.tsx|Full source]] |
-| `src/pdf.test.ts` | 1967 | e15222cdb1ba48c1 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - pdf.test.ts|Full source]] |
-| `src/pdf.ts` | 5321 | 8770065047fb5901 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - pdf.ts|Full source]] |
-| `src/profile.test.ts` | 1028 | 7f610ac098ebc330 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - profile.test.ts|Full source]] |
-| `src/profile.ts` | 1776 | c316f239e32d31ba | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - profile.ts|Full source]] |
-| `src/sample.ts` | 1649 | 3bea936ec62e7bfe | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - sample.ts|Full source]] |
-| `src/storage.ts` | 15151 | 7f260b9690444aeb | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - storage.ts|Full source]] |
-| `src/styles.css` | 27552 | 18d6b700b63e7144 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - styles.css|Full source]] |
-| `src/supplier-forms.tsx` | 11245 | db6de3636ce1d7b4 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - supplier-forms.tsx|Full source]] |
-| `src/suppliers.test.ts` | 8288 | 48d27d932ea6a613 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/src - suppliers.test.ts|Full source]] |
-| `tsconfig.json` | 453 | f55c101738bafa21 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/tsconfig.json|Full source]] |
-| `vite.config.ts` | 354 | efbb958bcc3f1f73 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/vite.config.ts|Full source]] |
-| `vitest.config.ts` | 142 | ee17157b192e07de | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-19/vitest.config.ts|Full source]] |
+| `.gitignore` | 128 | 0bf33cbc0e43d69d | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/dot - gitignore|Full source]] |
+| `.qa/generic-check.cjs` | 5765 | 765268d0d97e690c | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/dot - qa - generic-check.cjs|Full source]] |
+| `.qa/native-check.cjs` | 3807 | 64c0ba553708a8ae | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/dot - qa - native-check.cjs|Full source]] |
+| `.qa/native-profile-check.cjs` | 2770 | 94bdfef25c31f938 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/dot - qa - native-profile-check.cjs|Full source]] |
+| `.qa/ui-check.cjs` | 5111 | bb0b62fd471d64db | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/dot - qa - ui-check.cjs|Full source]] |
+| `README.md` | 8575 | b1a82ced1f37ef64 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/README - markdown|Full source]] |
+| `REQUIREMENTS.md` | 4531 | 863af9fef52dc460 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/REQUIREMENTS - markdown|Full source]] |
+| `assets/icon.svg` | 1527 | b8a04582e4eb25b0 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/assets - icon.svg|Full source]] |
+| `index.html` | 302 | c6a37b7c0518ad03 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/index.html|Full source]] |
+| `package-lock.json` | 209079 | a0c2869074c9fcbb | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/package-lock.json|Full source]] |
+| `package.json` | 1067 | 674b40d8bf3fbf85 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/package.json|Full source]] |
+| `scripts/export-obsidian.py` | 13287 | 51f4f8509b830cdb | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/scripts - export-obsidian.py|Full source]] |
+| `scripts/package-new-computer.py` | 5761 | f056ad3b141a012f | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/scripts - package-new-computer.py|Full source]] |
+| `src-tauri/Cargo.lock` | 135309 | 1d504bc0cfaed611 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - Cargo.lock|Full source]] |
+| `src-tauri/Cargo.toml` | 486 | 6572d9d7d398ddd7 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - Cargo.toml|Full source]] |
+| `src-tauri/build.rs` | 36 | ce55d94ef836cc13 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - build.rs|Full source]] |
+| `src-tauri/capabilities/default.json` | 465 | d96c2e21b8f36f23 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - capabilities - default.json|Full source]] |
+| `src-tauri/migrations/001_initial.sql` | 3713 | 5c837f8b44922a37 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - migrations - 001_initial.sql|Full source]] |
+| `src-tauri/migrations/002_shop_profile.sql` | 1797 | 49ffafdf1fb5dfc5 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - migrations - 002_shop_profile.sql|Full source]] |
+| `src-tauri/migrations/003_customer_import.sql` | 1210 | 2100b85d11543c06 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - migrations - 003_customer_import.sql|Full source]] |
+| `src-tauri/migrations/004_customer_archive.sql` | 1672 | 1cda48800dd68745 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - migrations - 004_customer_archive.sql|Full source]] |
+| `src-tauri/migrations/005_suppliers.sql` | 7419 | 2968e0a3da00ce2c | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - migrations - 005_suppliers.sql|Full source]] |
+| `src-tauri/migrations/006_cash_book.sql` | 10386 | d826e05cc6c3bf9d | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - migrations - 006_cash_book.sql|Full source]] |
+| `src-tauri/migrations/007_customer_due_dates.sql` | 4370 | 8cb78d1ea84fe380 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - migrations - 007_customer_due_dates.sql|Full source]] |
+| `src-tauri/src/lib.rs` | 1763 | 92df3f878664b748 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - src - lib.rs|Full source]] |
+| `src-tauri/src/main.rs` | 108 | c7a31644d3747aff | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - src - main.rs|Full source]] |
+| `src-tauri/tauri.conf.json` | 1432 | b356c322c794c2ff | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src-tauri - tauri.conf.json|Full source]] |
+| `src/App.tsx` | 26553 | ef072cbe2ab45796 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - App.tsx|Full source]] |
+| `src/CashBookPage.tsx` | 10897 | 6998a2e232163b5d | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - CashBookPage.tsx|Full source]] |
+| `src/DeleteCustomer.tsx` | 1996 | c5b4467fb97cc5b8 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - DeleteCustomer.tsx|Full source]] |
+| `src/DuesPage.tsx` | 5076 | c19499a641167252 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - DuesPage.tsx|Full source]] |
+| `src/GlobalSearch.tsx` | 2389 | 3c872accad7d6932 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - GlobalSearch.tsx|Full source]] |
+| `src/ImportCustomer.tsx` | 8311 | 0a372d7bb821151d | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - ImportCustomer.tsx|Full source]] |
+| `src/ProfilePage.tsx` | 4272 | 6879f89e90f616ca | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - ProfilePage.tsx|Full source]] |
+| `src/SupplierPage.tsx` | 13987 | 8d386c2d2d7f679f | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - SupplierPage.tsx|Full source]] |
+| `src/cash.test.ts` | 9150 | 1eb8e5dc3ed90237 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - cash.test.ts|Full source]] |
+| `src/cash.ts` | 5485 | 1d8377a012380479 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - cash.ts|Full source]] |
+| `src/database.test.ts` | 8028 | de7010b7d62c1e3c | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - database.test.ts|Full source]] |
+| `src/discovery.test.ts` | 6477 | da320894574baca1 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - discovery.test.ts|Full source]] |
+| `src/discovery.ts` | 5728 | a799c7ddc79d1b05 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - discovery.ts|Full source]] |
+| `src/domain.test.ts` | 5671 | 94573622920a272a | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - domain.test.ts|Full source]] |
+| `src/domain.ts` | 13975 | f083e8ed36596621 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - domain.ts|Full source]] |
+| `src/forms.tsx` | 11899 | 89177164164ab659 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - forms.tsx|Full source]] |
+| `src/import-ledger.test.ts` | 4947 | d408baa34d183449 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - import-ledger.test.ts|Full source]] |
+| `src/import-ledger.ts` | 9736 | 3e19e1c450594d21 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - import-ledger.ts|Full source]] |
+| `src/main.tsx` | 225 | 86393317a594c30b | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - main.tsx|Full source]] |
+| `src/pdf.test.ts` | 2167 | 78a1d964bfe4cd1b | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - pdf.test.ts|Full source]] |
+| `src/pdf.ts` | 7122 | 5ccb8975818aaf1b | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - pdf.ts|Full source]] |
+| `src/profile.test.ts` | 1028 | 7f610ac098ebc330 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - profile.test.ts|Full source]] |
+| `src/profile.ts` | 1776 | c316f239e32d31ba | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - profile.ts|Full source]] |
+| `src/sample.ts` | 1649 | 3bea936ec62e7bfe | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - sample.ts|Full source]] |
+| `src/storage.ts` | 15297 | 8d7f0737087df326 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - storage.ts|Full source]] |
+| `src/styles.css` | 29551 | b763418b159e8715 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - styles.css|Full source]] |
+| `src/supplier-forms.tsx` | 11245 | db6de3636ce1d7b4 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - supplier-forms.tsx|Full source]] |
+| `src/suppliers.test.ts` | 8288 | 48d27d932ea6a613 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/src - suppliers.test.ts|Full source]] |
+| `tsconfig.json` | 453 | f55c101738bafa21 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/tsconfig.json|Full source]] |
+| `vite.config.ts` | 354 | efbb958bcc3f1f73 | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/vite.config.ts|Full source]] |
+| `vitest.config.ts` | 142 | ee17157b192e07de | [[Alfazal Ledgher System/Shop Ledger Documentation/Source Snapshot 2026-10-20/vitest.config.ts|Full source]] |
 
 ## Test names at this snapshot
 
@@ -204,6 +280,19 @@ Every production source/config file, test file, both dependency lockfiles, the i
 - upgrades existing customers to active, preserves archive in backups, and restores legacy backups as active
 - permanently deletes only the chosen customer and their transactions in one statement
 - rolls back child transaction removal if parent deletion fails
+
+### discovery.test.ts
+
+- finds normalized names, phone, punctuated bill and vehicle across archived customers and suppliers
+- limits large result lists without hiding the total, and ignores empty searches and voided cash
+- preserves Urdu names and exact bill matches before partial matches
+- reduces oldest charges first, including partial settlement of a dated opening
+- applies opening advances and overpayments to later charges without negative dues
+- excludes future charges and openings but includes archived debt; today is not overdue
+- sorts largest balance, oldest charge, or real due dates with undated balances last
+- validates optional due dates only on customer debit charges and debit openings
+- round trips due dates with full v5 backups
+- migrates and restores dated and legacy backups without losing cash snapshots
 
 ### domain.test.ts
 
@@ -267,7 +356,7 @@ Every production source/config file, test file, both dependency lockfiles, the i
 - restores suppliers with archive flags, preserves them for legacy backups, and rolls back all sections on failure
 - deletes only the targeted supplier ledger and retains customer data
 
-Discovered named test cases: **67**. This is a source inventory, not a new test run.
+Discovered named test cases: **77**. This is a source inventory, not a new test run.
 
 ## Generated icon assets
 
@@ -275,23 +364,23 @@ These are reproducible assets generated from assets/icon.svg. Binary files are i
 
 | File | Bytes | SHA-256 prefix |
 |---|---:|---|
-| src-tauri/icons/128x128.png | 2043 | a31e9065d95ccbad |
-| src-tauri/icons/128x128@2x.png | 3808 | 39f559290b315bc2 |
-| src-tauri/icons/32x32.png | 637 | c5a7ab610f150424 |
-| src-tauri/icons/64x64.png | 1192 | 1071c88ff6f1f716 |
-| src-tauri/icons/icon.icns | 47880 | 3d308fce591cd683 |
-| src-tauri/icons/icon.ico | 8779 | 477c97500214e87e |
-| src-tauri/icons/icon.png | 7691 | 1cfabba41dcddd74 |
-| src-tauri/icons/Square107x107Logo.png | 1790 | a67aff79846bc436 |
-| src-tauri/icons/Square142x142Logo.png | 2163 | 18d92e83bfacf85c |
-| src-tauri/icons/Square150x150Logo.png | 2375 | 93559de13a899e5e |
-| src-tauri/icons/Square284x284Logo.png | 4470 | ff5f4607879fe699 |
-| src-tauri/icons/Square30x30Logo.png | 600 | b5cc92d26a875785 |
-| src-tauri/icons/Square310x310Logo.png | 4936 | c93a1e851f300a80 |
-| src-tauri/icons/Square44x44Logo.png | 844 | 6b649fac45d82600 |
-| src-tauri/icons/Square71x71Logo.png | 1285 | 59f5c12ed63ae86b |
-| src-tauri/icons/Square89x89Logo.png | 1462 | 88ee88163b47ba4f |
-| src-tauri/icons/StoreLogo.png | 966 | 88d99a233ca75466 |
+| src-tauri/icons/128x128.png | 5784 | 0f8eeebd5eb46d58 |
+| src-tauri/icons/128x128@2x.png | 11710 | d2d8f6a9e922dd85 |
+| src-tauri/icons/32x32.png | 1425 | 0a8c88d91796a399 |
+| src-tauri/icons/64x64.png | 2819 | f3a7a81a731a25a8 |
+| src-tauri/icons/icon.icns | 150211 | 2a435701e7fb74e9 |
+| src-tauri/icons/icon.ico | 23806 | 3843883dc00d6f96 |
+| src-tauri/icons/icon.png | 25557 | aa00f4ee7e49a214 |
+| src-tauri/icons/Square107x107Logo.png | 4896 | 904179432a437b92 |
+| src-tauri/icons/Square142x142Logo.png | 6654 | 8ff9b4b6c629fb26 |
+| src-tauri/icons/Square150x150Logo.png | 6957 | b988b5ddea96c473 |
+| src-tauri/icons/Square284x284Logo.png | 13169 | 0833fdb5fc4af9e5 |
+| src-tauri/icons/Square30x30Logo.png | 1446 | d17bc49ffa0c27c3 |
+| src-tauri/icons/Square310x310Logo.png | 14931 | 2ae445fae1b54c10 |
+| src-tauri/icons/Square44x44Logo.png | 2066 | fd6a56723f2f07ab |
+| src-tauri/icons/Square71x71Logo.png | 3364 | 5458b65bd15314cc |
+| src-tauri/icons/Square89x89Logo.png | 4235 | 503df7c51249acf4 |
+| src-tauri/icons/StoreLogo.png | 2223 | 10efc4da99e2a5f1 |
 
 ## Verification and drift
 

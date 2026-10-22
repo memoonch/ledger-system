@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src-tauri/migrations/006_cash_book.sql
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src-tauri/migrations/006_cash_book.sql`.
 - SHA-256 of original file bytes: `d826e05cc6c3bf9d938a5ce45544d3bcee8e3542a26be0b6d64536cb1787b67c`.
 - Original bytes: 10386; source lines: 66.

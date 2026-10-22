@@ -5,16 +5,16 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "README.md"
-sha256: "b215ffb9f9d75f5f535931c1f36d8db28e6da9e9e96e47a54c3e599a59f3d857"
+sha256: "b1a82ced1f37ef64c0484ca66f13e2055ad0eccfec154505b7b3b0088316a5de"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: README.md
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/README.md`.
-- SHA-256 of original file bytes: `b215ffb9f9d75f5f535931c1f36d8db28e6da9e9e96e47a54c3e599a59f3d857`.
-- Original bytes: 7515; source lines: 71.
+- SHA-256 of original file bytes: `b1a82ced1f37ef64c0484ca66f13e2055ad0eccfec154505b7b3b0088316a5de`.
+- Original bytes: 8575; source lines: 81.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
 ## Complete source
@@ -91,4 +91,14 @@ Supplier ledgers is a separate section with dated opening balances, multi-line p
 ## Roznamcha / daily cash book (0.1.4)
 
 Daily Cash Book tracks explicitly marked customer cash receipts/refunds and supplier cash payments, shop expenses and other counter movements. Start with a dated drawer opening balance, then save end-of-day physical counts with shortage/excess and stale-closing detection. Cheque/bank/material entries do not affect physical cash. Old customer credits remain unclassified. Backup format 4 includes cash; older backups preserve current cash history. See `docs/obsidian-guides/17 Daily Cash Book and Expenses.md`.
+
+
+## Advanced search and collections (0.1.5)
+
+Use topbar search or Ctrl+K to find customer/supplier accounts, bill and vehicle numbers, descriptions and active cash entries across archived and active records. Outstanding dues shows positive customer balances with as-of/status/age/minimum/overdue filters, highest-balance or oldest-date sorting, ledger jumps and A4 printing. Optional opening/charge due dates support actual overdue amounts; FIFO aging is an estimate, not invoice allocation. SQLite migration 7 and backup v5 preserve existing records and accept older backups.
+
+
+## Installer for another computer (0.1.6)
+
+The separate `releases/Shop Ledger 0.1.6 - New Computer/` folder contains the offline Windows installer, new icon, instructions and checksum. No live database or backups are bundled. A new computer starts empty with a generic profile; an existing installation keeps its records. `scripts/package-new-computer.py` validates fresh SQLite initialization, NSIS payloads and embedded icon resources before copying the distribution.
 ```

@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: tsconfig.json
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/tsconfig.json`.
 - SHA-256 of original file bytes: `f55c101738bafa210b3c5f4c1e5bd9cae60b5b2d1c1f5b0d5334d4fb6b9d035e`.
 - Original bytes: 453; source lines: 26.

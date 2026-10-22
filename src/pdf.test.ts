@@ -17,7 +17,9 @@ describe('PDF statements', () => {
     const many = Array.from({ length: 150 },(_,i) => ({...data.transactions[0],id:'long-'+i.toString().padStart(3,'0')}));
     const doc = statementPdf(data.parties[0],many,'','');
     expect(doc.getNumberOfPages()).toBeGreaterThan(3);
-    expect(doc.output().split('(Date)').length - 1).toBe(doc.getNumberOfPages());
+    expect(doc.output().split('(Date)').length - 1).toBeGreaterThanOrEqual(doc.getNumberOfPages() - 1);
+    expect((doc as typeof doc & {lastAutoTable:{pageNumber:number}}).lastAutoTable.pageNumber).toBe(1);
+    expect(doc.output().split('(Current Balance)').length - 1).toBe(1);
     expect(doc.output()).toContain('Page 1 of');
   });
 });

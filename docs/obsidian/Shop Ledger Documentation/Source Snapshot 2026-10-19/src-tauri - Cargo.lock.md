@@ -5,15 +5,15 @@ project: "Shop Ledger"
 updated: "2026-10-19"
 generated_by: "shop-ledger-docs"
 source_path: "src-tauri/Cargo.lock"
-sha256: "23ea3585a658517fb4087834bcc954de2aefda7a3c6ca4e8d22caea7108a7eb0"
+sha256: "18d6d0c1b5638a1ccb5a891ec9426092dc1b6a5c3159271772d70e569e7c4309"
 tags: [shop-ledger, development]
 ---
 
 # Source snapshot: src-tauri/Cargo.lock
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src-tauri/Cargo.lock`.
-- SHA-256 of original file bytes: `23ea3585a658517fb4087834bcc954de2aefda7a3c6ca4e8d22caea7108a7eb0`.
+- SHA-256 of original file bytes: `18d6d0c1b5638a1ccb5a891ec9426092dc1b6a5c3159271772d70e569e7c4309`.
 - Original bytes: 135309; source lines: 5387.
 - This is a reference snapshot. Edit the repository source to change the app. Displayed source uses normalized line endings.
 
@@ -41,7 +41,7 @@ dependencies = [
 
 [[package]]
 name = "alfazal-ledger"
-version = "0.1.4"
+version = "0.1.6"
 dependencies = [
  "serde_json",
  "tauri",

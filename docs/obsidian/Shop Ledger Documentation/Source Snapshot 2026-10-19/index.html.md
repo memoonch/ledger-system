@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: index.html
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/index.html`.
 - SHA-256 of original file bytes: `c6a37b7c0518ad0342495454963e07d729a2c2203350b9cfa358866d3bcee917`.
 - Original bytes: 302; source lines: 1.

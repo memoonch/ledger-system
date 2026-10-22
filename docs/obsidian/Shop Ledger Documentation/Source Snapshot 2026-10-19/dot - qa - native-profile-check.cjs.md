@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: .qa/native-profile-check.cjs
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/.qa/native-profile-check.cjs`.
 - SHA-256 of original file bytes: `94bdfef25c31f938cd384a979ea507cf5cb18e7a6898fe35f6775e4d05744e9f`.
 - Original bytes: 2770; source lines: 14.

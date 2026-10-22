@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: vite.config.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/vite.config.ts`.
 - SHA-256 of original file bytes: `efbb958bcc3f1f7307346b29595a35fcac1f36a23c7ffad3f8ccdc888b54efd8`.
 - Original bytes: 354; source lines: 9.

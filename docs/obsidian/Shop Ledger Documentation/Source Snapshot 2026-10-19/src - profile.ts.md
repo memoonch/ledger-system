@@ -11,7 +11,7 @@ tags: [shop-ledger, development]
 
 # Source snapshot: src/profile.ts
 
-- Captured: 2026-10-19T01:12:18+05:00 (Asia/Karachi).
+- Captured: 2026-10-19T01:48:00+05:00 (Asia/Karachi).
 - Repository source: `C:/Users/FROST/Documents/GitHub/ledger-system/src/profile.ts`.
 - SHA-256 of original file bytes: `c316f239e32d31bace552254c55fd6dc239a903966223386563819d330f944bb`.
 - Original bytes: 1776; source lines: 33.

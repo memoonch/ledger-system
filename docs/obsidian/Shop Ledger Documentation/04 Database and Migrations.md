@@ -2,7 +2,7 @@
 title: "Database and migrations"
 type: "Reference"
 project: "Shop Ledger"
-updated: "2026-10-19"
+updated: "2026-10-20"
 generated_by: "shop-ledger-docs"
 tags: [shop-ledger, development]
 ---
@@ -144,3 +144,8 @@ Adds independent suppliers, supplier_transactions and supplier_bill_requests tab
 ## Daily cash book update
 
 Migration 6 adds customer payment methods, cash tables, atomic source projections and cash snapshot restore. Earlier migrations remain unchanged. See [[17 Daily Cash Book and Expenses]].
+
+
+## 0.1.5 — Advanced search and collections (2026-10-19)
+
+Topbar Ctrl+K search, archived-account jumps, outstanding customer dues with FIFO aging and optional actual due dates. Migration 7 adds blank-default due-date fields; backups are now v5 with v1–v4 compatibility. See [[Alfazal Ledgher System/Shop Ledger Documentation/18 Advanced Search and Outstanding Dues]] for behavior, source map and verification.
